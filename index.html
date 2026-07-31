@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SeaweedAsia — Premium Seaweed, Sourced Across the Archipelago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ===========================================================
+   SeaweedAsia — shared stylesheet
+   Theme: deep-water teal, bioluminescent seafoam, sun-flecked sand
+   Signature: a living reef layer — schooling fish, drifting jellyfish,
+   swaying kelp and a "depth gauge" that tracks scroll position like
+   a diver's dive computer.
+=========================================================== */
+
+:root{
+  --bg: #061420;
+  --bg-panel: #0B2431;
+  --bg-panel-2: #0F2E3C;
+  --teal: #1FA396;
+  --teal-deep: #0d6e64;
+  --seafoam: #6EEBD4;
+  --sand: #E8C77E;
+  --coral: #FF8A65;
+  --ink: #EAF3F1;
+  --muted: #90ADAB;
+  --line: rgba(234,243,241,0.10);
+  --radius: 18px;
+  --serif: 'Fraunces', serif;
+  --sans: 'Inter', sans-serif;
+  --mono: 'Space Mono', monospace;
+
+  /* deep-ocean glass/glow tokens layered on top of the palette above */
+  --abyss: #050B14;
+  --midnight: #081226;
+  --glow-cyan: rgba(110,235,212,0.55);
+  --glow-gold: rgba(232,199,126,0.35);
+  --glass-bg: rgba(15,46,60,0.35);
+  --glass-border: rgba(234,243,241,0.14);
+}
+
+/* ---------- custom cursor: glowing orb + trailing ring ---------- */
+@media (hover:hover) and (pointer:fine){
+  html.has-cursor, html.has-cursor *{ cursor:none; }
+}
+.cursor-orb{
+  position:fixed; top:0; left:0; width:10px; height:10px; border-radius:50%;
+  background:radial-gradient(circle, #fff 0%, var(--seafoam) 55%, transparent 75%);
+  box-shadow:0 0 12px 2px var(--glow-cyan);
+  pointer-events:none; z-index:9999; transform:translate(-50%,-50%);
+  mix-blend-mode:screen; will-change:transform;
+}
+.cursor-ring{
+  position:fixed; top:0; left:0; width:36px; height:36px; border-radius:50%;
+  border:1.5px solid rgba(110,235,212,0.55);
+  pointer-events:none; z-index:9998; transform:translate(-50%,-50%);
+  transition:width .25s ease, height .25s ease, border-color .25s ease, opacity .25s ease;
+  will-change:transform;
+}
+.cursor-ring.hover{ width:56px; height:56px; border-color:rgba(232,199,126,0.7); }
+@media (max-width:1024px), (hover:none){
+  .cursor-orb,.cursor-ring{ display:none; }
+}
+
+/* ---------- glassmorphism surfaces ---------- */
+.glass{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+}
+.glow-edge{ box-shadow:0 0 0 1px rgba(110,235,212,0.08), 0 20px 60px -20px rgba(0,0,0,0.7); }
+
+/* ---------- magnetic interactive elements ---------- */
+.magnetic{ display:inline-block; will-change:transform; transition:transform .15s ease-out; }
+.magnetic .magnetic-inner{ display:inline-block; will-change:transform; transition:transform .15s ease-out; }
+
+/* ---------- word/char stagger reveal (populated via JS) ---------- */
+.split-line{ display:block; overflow:hidden; }
+.split-word{ display:inline-block; opacity:0; transform:translateY(110%) rotate(2deg); will-change:transform,opacity; }
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.12; margin:0 0 .5em; letter-spacing:-0.01em; }
+p{ margin:0 0 1em; color:var(--muted); }
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:2; }
+section{ position:relative; }
+.mono{ font-family:var(--mono); }
+
+/* ---------- scroll progress + depth gauge ---------- */
+.scroll-progress{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:linear-gradient(90deg,var(--seafoam),var(--teal));
+  z-index:300; transition:width .08s linear;
+}
+.depth-gauge{
+  position:fixed; right:26px; top:130px; bottom:130px; width:1px;
+  background:var(--line); z-index:60; display:flex; flex-direction:column; justify-content:space-between;
+  pointer-events:none;
+}
+.depth-tick{ position:relative; display:flex; align-items:center; }
+.depth-tick::before{ content:''; position:absolute; left:-3px; width:7px; height:1px; background:var(--muted); }
+.depth-tick .depth-label{
+  position:absolute; right:12px; white-space:nowrap; font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--muted); text-align:right;
+}
+.depth-marker{
+  position:absolute; right:-4.5px; width:10px; height:10px; border-radius:50%;
+  background:var(--seafoam); box-shadow:0 0 10px rgba(110,235,212,.7);
+  top:0%; transition:top .12s linear;
+}
+@media (max-width:1024px){ .depth-gauge{ display:none; } }
+
+/* ---------- global drifting specks / plankton ---------- */
+.drift-layer{ position:fixed; inset:0; z-index:2; pointer-events:none; overflow:hidden; }
+.speck{ position:absolute; opacity:.22; animation:speck-drift linear infinite; }
+.speck.b{ animation-name:speck-drift-b; }
+@keyframes speck-drift{ 0%{transform:translate(0,0) rotate(0deg);} 50%{transform:translate(24px,-46vh) rotate(180deg);} 100%{transform:translate(-10px,-96vh) rotate(360deg);} }
+@keyframes speck-drift-b{ 0%{transform:translate(0,0) rotate(0deg);} 50%{transform:translate(-30px,-46vh) rotate(-160deg);} 100%{transform:translate(14px,-96vh) rotate(-320deg);} }
+@media (prefers-reduced-motion:reduce){ .speck{ animation:none; opacity:.12; } }
+
+/* ---------- water-touch ripple ---------- */
+.ripple-el{
+  position:fixed; width:12px; height:12px; border-radius:50%;
+  border:1.5px solid var(--seafoam); transform:translate(-50%,-50%) scale(0);
+  opacity:.75; pointer-events:none; z-index:400; animation:ripple-expand .9s cubic-bezier(.2,.6,.3,1) forwards;
+}
+.ripple-el.r2{ border-color:rgba(110,235,212,.55); animation-duration:1.15s; }
+.ripple-el.r3{ border-color:rgba(232,199,126,.5); animation-duration:1.35s; }
+@keyframes ripple-expand{
+  0%{ transform:translate(-50%,-50%) scale(0); opacity:.8; }
+  70%{ opacity:.35; }
+  100%{ transform:translate(-50%,-50%) scale(11); opacity:0; }
+}
+.droplet-el{
+  position:fixed; width:5px; height:5px; border-radius:50%; background:var(--seafoam);
+  pointer-events:none; z-index:400; opacity:.9; animation:droplet-fly .6s ease-out forwards;
+}
+@keyframes droplet-fly{ to{ transform:translate(var(--dx),var(--dy)) scale(0.3); opacity:0; } }
+
+/* ---------- kelp divider ---------- */
+.kelp-divider{ width:100%; height:64px; overflow:hidden; line-height:0; }
+.kelp-divider svg{ width:100%; height:100%; display:block; }
+.kelp-strand{ animation:sway 9s ease-in-out infinite; transform-origin:center; }
+@keyframes sway{ 0%,100%{transform:translateX(0) scaleY(1);} 50%{transform:translateX(-14px) scaleY(1.03);} }
+@media (prefers-reduced-motion:reduce){ .kelp-strand{ animation:none; } }
+
+/* ---------- top bar ---------- */
+.topbar{ background:#040D14; border-bottom:1px solid var(--line); font-size:13px; color:var(--muted); }
+.topbar .wrap{ display:flex; justify-content:space-between; align-items:center; padding:8px 32px; }
+.topbar a{ color:var(--seafoam); font-weight:600; }
+
+/* ---------- nav ---------- */
+nav{ position:sticky; top:0; z-index:50; background:rgba(6,20,32,.55); backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%); border-bottom:1px solid var(--glass-border); transition:background .4s ease, box-shadow .4s ease; }
+nav.scrolled{ background:rgba(4,13,20,.75); box-shadow:0 8px 30px rgba(0,0,0,.35), 0 1px 0 var(--glow-cyan); }
+nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; }
+.logo{ font-family:var(--serif); font-size:22px; font-weight:700; letter-spacing:-.02em; }
+.logo span{ color:var(--seafoam); }
+.nav-links{ display:flex; gap:32px; font-size:14px; font-weight:500; }
+.nav-links a{ color:var(--ink); opacity:.85; transition:opacity .2s; position:relative; }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--seafoam); transition:width .25s ease; }
+.nav-links a:hover{ opacity:1; color:var(--seafoam); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a.active{ color:var(--seafoam); opacity:1; }
+.nav-links a.active::after{ width:100%; }
+.nav-cta{ background:var(--teal); color:#06211D; font-weight:600; font-size:14px; padding:10px 20px; border-radius:999px; transition:background .2s; white-space:nowrap; }
+.nav-cta:hover{ background:var(--seafoam); }
+
+.nav-toggle{
+  display:none; width:40px; height:40px; border-radius:10px; border:1px solid var(--line);
+  background:transparent; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+}
+.nav-toggle span{ display:block; width:18px; height:2px; background:var(--ink); position:relative; transition:transform .25s ease, opacity .25s ease; }
+.nav-toggle span::before,.nav-toggle span::after{ content:''; position:absolute; left:0; width:18px; height:2px; background:var(--ink); transition:transform .25s ease, top .25s ease; }
+.nav-toggle span::before{ top:-6px; }
+.nav-toggle span::after{ top:6px; }
+.nav-toggle.open span{ background:transparent; }
+.nav-toggle.open span::before{ top:0; transform:rotate(45deg); }
+.nav-toggle.open span::after{ top:0; transform:rotate(-45deg); }
+
+.nav-mobile-menu{
+  max-height:0; overflow:hidden; background:rgba(4,13,20,.97); border-bottom:1px solid var(--line);
+  transition:max-height .3s ease;
+}
+.nav-mobile-menu.open{ max-height:320px; }
+.nav-mobile-menu .wrap{ display:flex; flex-direction:column; padding:8px 32px 22px; gap:4px; }
+.nav-mobile-menu a{ padding:12px 4px; font-size:15px; color:var(--ink); border-bottom:1px solid var(--line); }
+.nav-mobile-menu a:last-child{ border-bottom:none; }
+
+/* ---------- buttons ---------- */
+.btn{ display:inline-block; padding:14px 28px; border-radius:999px; font-weight:600; font-size:15px; transition:transform .2s, background .2s; position:relative; overflow:hidden; }
+.btn::before{ content:''; position:absolute; top:0; left:-75%; width:50%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-20deg); }
+.btn:hover::before{ animation:shine .8s ease; }
+@keyframes shine{ from{left:-75%;} to{left:130%;} }
+.btn-primary{ background:var(--teal); color:#06211D; box-shadow:0 0 24px -6px var(--glow-cyan); }
+.btn-primary:hover{ background:var(--seafoam); transform:translateY(-2px); box-shadow:0 0 36px -4px var(--glow-cyan); }
+.btn-ghost{ border:1px solid var(--line); color:var(--ink); }
+.btn-ghost:hover{ border-color:var(--seafoam); color:var(--seafoam); }
+.btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+
+/* ---------- hero ---------- */
+.hero{
+  padding:100px 0 160px;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(31,163,150,.32), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(110,235,212,.16), transparent 60%),
+    radial-gradient(ellipse 600px 500px at 60% 90%, rgba(232,199,126,.08), transparent 65%),
+    linear-gradient(180deg, var(--midnight) 0%, var(--bg) 60%);
+  overflow:hidden; position:relative;
+}
+.hero .wrap{ position:relative; z-index:3; }
+.eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--seafoam); background:rgba(110,235,212,.08); border:1px solid rgba(110,235,212,.25); padding:6px 14px; border-radius:999px; margin-bottom:24px; }
+.hero h1{ font-size:clamp(34px,5.5vw,64px); max-width:800px; color:#fff; }
+.hero h1 em{ font-style:italic; color:var(--seafoam); }
+.hero p.lead{ font-size:19px; max-width:560px; color:var(--muted); margin-bottom:32px; }
+.hero .eyebrow,.hero h1,.hero p.lead,.hero .btn-row{ opacity:0; transform:translateY(20px); animation:rise .9s ease forwards; }
+.hero .eyebrow{ animation-delay:.05s; } .hero h1{ animation-delay:.18s; } .hero p.lead{ animation-delay:.32s; } .hero .btn-row{ animation-delay:.46s; }
+@keyframes rise{ to{opacity:1; transform:translateY(0);} }
+@media (prefers-reduced-motion:reduce){ .hero .eyebrow,.hero h1,.hero p.lead,.hero .btn-row{ animation:none; opacity:1; transform:none; } }
+
+.caustics{
+  position:absolute; inset:-20% -10%; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 500px 300px at 20% 30%, rgba(110,235,212,.10), transparent 60%),
+    radial-gradient(ellipse 400px 260px at 75% 60%, rgba(31,163,150,.12), transparent 60%);
+  mix-blend-mode:screen; animation:drift 16s ease-in-out infinite alternate;
+}
+@keyframes drift{ from{transform:translate(0,0) scale(1);} to{transform:translate(4%,-3%) scale(1.06);} }
+@media (prefers-reduced-motion:reduce){ .caustics{ animation:none; } }
+
+/* sunbeams shining down through water */
+.sunbeams{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.5; }
+.sunbeam{ position:absolute; top:-10%; width:120px; height:140%; background:linear-gradient(180deg, rgba(232,199,126,.16), transparent 70%); transform-origin:top center; animation:beam-sway 11s ease-in-out infinite; }
+@keyframes beam-sway{ 0%,100%{ transform:rotate(6deg) translateX(0);} 50%{ transform:rotate(11deg) translateX(30px);} }
+@media (prefers-reduced-motion:reduce){ .sunbeam{ animation:none; } }
+
+/* ---------- bubbles ---------- */
+.bubbles{ position:absolute; inset:0; overflow:hidden; z-index:1; pointer-events:none; }
+.bubble{ position:absolute; bottom:-40px; border-radius:50%; background:radial-gradient(circle at 30% 30%, rgba(110,235,212,.5), rgba(110,235,212,.05)); animation:float-up linear infinite; }
+@keyframes float-up{ 0%{transform:translateY(0) translateX(0); opacity:0;} 10%{opacity:.8;} 100%{transform:translateY(-680px) translateX(20px); opacity:0;} }
+@media (prefers-reduced-motion:reduce){ .bubble{ animation:none; display:none; } }
+
+/* ---------- swimming fish (site-wide reef layer) ---------- */
+.fish-layer{ position:fixed; inset:0; z-index:1; overflow:hidden; pointer-events:none; opacity:0.5; mix-blend-mode:screen; }
+.fish-layer.local{ position:absolute; z-index:1; opacity:0.75; mix-blend-mode:normal; }
+.fish-wrap{ position:absolute; left:0; animation-name:swim; animation-timing-function:linear; animation-iteration-count:infinite; }
+.fish-wrap.rev{ animation-name:swim-rev; }
+.fish-bob{ animation-name:bob; animation-timing-function:ease-in-out; animation-iteration-count:infinite; animation-direction:alternate; }
+.fish-wrap svg{ display:block; filter:drop-shadow(0 3px 6px rgba(0,0,0,.35)); }
+@keyframes swim{ from{transform:translateX(-160px);} to{transform:translateX(calc(100vw + 160px));} }
+@keyframes swim-rev{ from{transform:translateX(calc(100vw + 160px)) scaleX(-1);} to{transform:translateX(-160px) scaleX(-1);} }
+@keyframes bob{ from{transform:translateY(0);} to{transform:translateY(10px);} }
+.fish-tail{ animation:tail-flick .55s ease-in-out infinite alternate; transform-origin:right center; }
+@keyframes tail-flick{ from{transform:rotate(-14deg);} to{transform:rotate(14deg);} }
+@media (prefers-reduced-motion:reduce){ .fish-wrap,.fish-bob,.fish-tail{ animation:none; } .fish-layer{ display:none; } }
+
+/* ---------- jellyfish ---------- */
+.jelly-wrap{ position:absolute; animation:jelly-rise linear infinite; opacity:.85; }
+.jelly-bell{ animation:jelly-pulse 2.6s ease-in-out infinite; transform-origin:center top; }
+.jelly-tentacle{ animation:jelly-trail 3.2s ease-in-out infinite alternate; transform-origin:top center; }
+@keyframes jelly-rise{ 0%{ transform:translateY(10vh) translateX(0); } 50%{ transform:translateY(-55vh) translateX(40px); } 100%{ transform:translateY(-120vh) translateX(-20px); } }
+@keyframes jelly-pulse{ 0%,100%{ transform:scaleY(1) scaleX(1); } 50%{ transform:scaleY(.82) scaleX(1.08); } }
+@keyframes jelly-trail{ from{ transform:rotate(-6deg); } to{ transform:rotate(6deg); } }
+@media (prefers-reduced-motion:reduce){ .jelly-wrap,.jelly-bell,.jelly-tentacle{ animation:none; } }
+
+/* ---------- kelp bed ---------- */
+.kelp-bed{ position:absolute; left:0; right:0; bottom:-2px; height:150px; z-index:1; pointer-events:none; }
+.kelp-bed svg{ width:100%; height:100%; display:block; }
+.frond{ animation:frond-sway ease-in-out infinite alternate; transform-origin:bottom center; }
+@keyframes frond-sway{ from{transform:rotate(-4deg);} to{transform:rotate(5deg);} }
+@media (prefers-reduced-motion:reduce){ .frond{ animation:none; } }
+
+/* ---------- scroll reveal ---------- */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.in-view{ opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+/* ---------- stats strip ---------- */
+.stats{ background:var(--bg-panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:48px 0; }
+.stats .wrap{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center; }
+.stat-num{ font-family:var(--serif); font-size:40px; font-weight:700; color:var(--seafoam); transition:color .3s ease; }
+.stat-label{ font-size:14px; color:var(--muted); margin-top:4px; }
+
+/* ---------- section head ---------- */
+.section{ padding:100px 0; }
+.section-head{ max-width:640px; margin-bottom:56px; }
+.tag-row{ display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.tag-row .tag{ color:var(--sand); font-weight:600; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+.tag-row .tag-icon path{ transform-origin:bottom center; }
+.section-head h2{ font-size:clamp(28px,3.5vw,40px); color:#fff; }
+.section-head p{ font-size:17px; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+
+/* ---------- products ---------- */
+.products-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.product-card{
+  background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:32px;
+  backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease, box-shadow .35s ease;
+  position:relative; overflow:hidden;
+}
+.product-card::before{
+  content:''; position:absolute; inset:-40% -40% auto auto; width:140px; height:140px; border-radius:50%;
+  background:radial-gradient(circle, var(--glow-cyan), transparent 70%); opacity:0; transition:opacity .4s ease;
+}
+.product-card:hover{ transform:translateY(-8px); border-color:rgba(110,235,212,.45); box-shadow:0 24px 60px -24px rgba(0,0,0,.7), 0 0 40px -12px var(--glow-cyan); }
+.product-card:hover::before{ opacity:.5; }
+.product-icon{ width:52px; height:52px; border-radius:14px; background:rgba(31,163,150,.15); display:flex; align-items:center; justify-content:center; margin-bottom:20px; overflow:visible; transition:transform .35s ease, background .35s ease; }
+.product-card:hover .product-icon{ transform:rotate(-8deg) scale(1.08); background:rgba(31,163,150,.28); }
+.product-icon path{ transform-origin:bottom center; }
+.product-card h3{ color:#fff; font-size:22px; }
+.product-card .latin{ font-style:italic; color:var(--muted); font-size:14px; margin-bottom:14px; display:block; }
+.product-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+.product-tags span{ font-size:12px; font-weight:600; color:var(--seafoam); background:rgba(110,235,212,.08); border:1px solid rgba(110,235,212,.2); padding:4px 10px; border-radius:999px; }
+
+/* ---------- quality checklist ---------- */
+.qa-section{ background:var(--bg-panel); }
+.qa-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.qa-item{ display:flex; gap:16px; align-items:flex-start; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:14px; padding:20px 22px; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); transition:transform .3s ease, box-shadow .3s ease; }
+.qa-item:hover{ transform:translateY(-4px); box-shadow:0 16px 40px -20px rgba(0,0,0,.6), 0 0 24px -8px var(--glow-cyan); }
+.qa-check{ flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--teal); box-shadow:0 0 14px 1px var(--glow-cyan); display:flex; align-items:center; justify-content:center; margin-top:2px; transition:transform .3s ease; }
+.qa-item:hover .qa-check{ transform:scale(1.15); }
+.qa-item h4{ color:#fff; font-size:16px; margin-bottom:4px; }
+.qa-item p{ font-size:14px; margin:0; }
+
+/* ---------- process timeline (about page signature) ---------- */
+.dive-timeline{ position:relative; padding-left:48px; }
+.dive-timeline::before{ content:''; position:absolute; left:11px; top:8px; bottom:8px; width:2px; background:linear-gradient(180deg, var(--seafoam), var(--teal-deep)); }
+.dive-step{ position:relative; margin-bottom:48px; }
+.dive-step:last-child{ margin-bottom:0; }
+.dive-step::before{ content:''; position:absolute; left:-48px; top:2px; width:24px; height:24px; border-radius:50%; background:var(--bg); border:2px solid var(--seafoam); box-shadow:0 0 0 4px rgba(110,235,212,.08); }
+.dive-step .depth-tag{ font-family:var(--mono); font-size:12px; color:var(--sand); letter-spacing:.04em; margin-bottom:6px; display:block; }
+.dive-step h4{ color:#fff; font-size:20px; margin-bottom:6px; }
+.dive-step p{ font-size:15px; max-width:560px; margin:0; }
+
+/* ---------- regions ---------- */
+.regions{ display:flex; flex-wrap:wrap; gap:14px; }
+.region-pill{ border:1px solid var(--glass-border); border-radius:999px; padding:12px 22px; font-size:15px; font-weight:600; color:var(--ink); background:var(--glass-bg); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); display:flex; align-items:center; gap:10px; transition:border-color .2s, transform .2s, box-shadow .2s; }
+.region-pill:hover{ border-color:var(--seafoam); transform:translateY(-2px); box-shadow:0 0 20px -6px var(--glow-cyan); }
+.region-pill .dot{ width:8px; height:8px; border-radius:50%; background:var(--sand); }
+
+/* ---------- team / values (about) ---------- */
+.team-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.team-card{ background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:28px; text-align:left; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); transition:transform .3s ease, box-shadow .3s ease; }
+.team-card:hover{ transform:translateY(-6px); box-shadow:0 20px 50px -22px rgba(0,0,0,.65), 0 0 30px -10px var(--glow-cyan); }
+.team-avatar{ width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--teal),var(--seafoam)); box-shadow:0 0 20px -2px var(--glow-cyan); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; color:#06211D; font-size:20px; margin-bottom:16px; }
+.team-card h4{ color:#fff; font-size:18px; margin-bottom:2px; }
+.team-role{ color:var(--seafoam); font-size:13px; font-weight:600; letter-spacing:.03em; text-transform:uppercase; margin-bottom:12px; display:block; }
+.team-card p{ font-size:14px; margin:0; }
+
+.value-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.value-card{ padding:0; }
+.value-num{ font-family:var(--mono); color:var(--sand); font-size:13px; letter-spacing:.06em; margin-bottom:14px; display:block; }
+.value-card h4{ color:#fff; font-size:19px; }
+.value-card p{ font-size:15px; }
+
+/* about hero split */
+.about-hero{ padding:80px 0 60px; }
+.about-hero-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; }
+.about-portrait{ position:relative; border-radius:24px; overflow:hidden; aspect-ratio:4/5; background:linear-gradient(160deg,var(--bg-panel-2),var(--bg-panel)); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+.about-quote{ border-left:2px solid var(--seafoam); padding-left:20px; margin-top:28px; font-family:var(--serif); font-style:italic; font-size:18px; color:var(--ink); }
+.about-quote cite{ display:block; font-style:normal; font-family:var(--sans); font-size:13px; color:var(--muted); margin-top:8px; }
+
+.stat-inline-row{ display:flex; gap:36px; margin-top:32px; flex-wrap:wrap; }
+.stat-inline{ }
+.stat-inline .stat-num{ font-size:30px; }
+
+/* ---------- CTA ---------- */
+.cta{ background:linear-gradient(135deg,var(--teal),var(--teal-deep)); border-radius:28px; margin:0 32px; padding:64px 48px; text-align:center; position:relative; overflow:hidden; box-shadow:0 30px 80px -30px rgba(0,0,0,.6), 0 0 60px -20px var(--glow-cyan); }
+.cta::after{ content:''; position:absolute; inset:0; background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 55%); pointer-events:none; }
+.cta h2{ color:#06211D; font-size:clamp(26px,4vw,38px); max-width:640px; margin:0 auto 16px; }
+.cta p{ color:rgba(6,33,29,.75); max-width:480px; margin:0 auto 28px; }
+.cta .btn-primary{ background:#06211D; color:#fff; }
+.cta .btn-primary:hover{ background:#0a2e28; }
+
+/* ---------- footer ---------- */
+footer{ padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px; position:relative; z-index:3; }
+.footer-kelp{ width:100%; height:56px; overflow:hidden; margin-bottom:32px; }
+.footer-kelp svg{ width:100%; height:100%; display:block; }
+.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+.footer-col h5{ font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:16px; }
+.footer-col a{ display:block; color:var(--ink); opacity:.8; font-size:14px; margin-bottom:10px; }
+.footer-col a:hover{ opacity:1; color:var(--seafoam); }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--muted); flex-wrap:wrap; gap:12px; }
+.credit{ color:var(--muted); }
+.credit strong{ color:var(--seafoam); font-weight:600; }
+
+/* subtle elevation for a more polished, professional feel */
+.product-card,.qa-item,.team-card,.region-pill{ box-shadow:0 1px 0 rgba(255,255,255,0.02) inset, 0 12px 24px -18px rgba(0,0,0,0.6); }
+.product-card:hover{ box-shadow:0 1px 0 rgba(255,255,255,0.03) inset, 0 20px 34px -18px rgba(0,0,0,0.65); }
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .team-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .stats .wrap{ grid-template-columns:1fr 1fr; gap:32px; }
+  .products-grid,.team-grid,.value-grid{ grid-template-columns:1fr; }
+  .qa-grid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  .hero{ padding:64px 0 100px; }
+  .kelp-bed{ height:90px; }
+  .cta{ margin:0 16px; padding:48px 24px; }
+  .about-hero-grid{ grid-template-columns:1fr; }
+  .dive-timeline{ padding-left:36px; }
+  .dive-step::before{ left:-36px; }
+  .topbar .wrap{ flex-direction:column; align-items:flex-start; gap:4px; padding:10px 20px; }
+  nav .wrap{ padding:14px 20px; }
+  .wrap{ padding:0 20px; }
+}
+@media (max-width:520px){
+  .stats .wrap{ grid-template-columns:1fr 1fr; gap:20px; }
+  .stat-num{ font-size:30px; }
+  .section{ padding:64px 0; }
+  .hero{ padding:56px 0 88px; }
+  .hero p.lead{ font-size:17px; }
+  .btn{ padding:13px 22px; font-size:14px; }
+  .nav-cta{ padding:9px 16px; font-size:13px; }
+  .cta{ padding:36px 20px; }
+  .footer-grid{ grid-template-columns:1fr; gap:28px; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+}
+
+</style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <div class="depth-gauge" id="depthGauge">
+    <div class="depth-marker" id="depthMarker"></div>
+    <div class="depth-tick"><span class="depth-label">Surface</span></div>
+    <div class="depth-tick"><span class="depth-label">Grow Lines</span></div>
+    <div class="depth-tick"><span class="depth-label">Farm Bed</span></div>
+    <div class="depth-tick"><span class="depth-label">Export Dock</span></div>
+  </div>
+
+  <div class="drift-layer">
+    <div class="speck" style="left:6%; top:92%; animation-duration:22s; animation-delay:0s;"><svg width="14" height="8" viewBox="0 0 14 8"><path d="M1,4 C4,0 10,0 13,4 C10,8 4,8 1,4 Z" fill="#6EEBD4"/></svg></div>
+    <div class="speck b" style="left:18%; top:96%; animation-duration:28s; animation-delay:4s;"><svg width="10" height="6" viewBox="0 0 10 6"><path d="M1,3 C3,0 7,0 9,3 C7,6 3,6 1,3 Z" fill="#1FA396"/></svg></div>
+    <div class="speck" style="left:32%; top:90%; animation-duration:19s; animation-delay:2s;"><svg width="16" height="9" viewBox="0 0 16 9"><path d="M1,4.5 C5,0 11,0 15,4.5 C11,9 5,9 1,4.5 Z" fill="#E8C77E"/></svg></div>
+    <div class="speck b" style="left:47%; top:98%; animation-duration:24s; animation-delay:1s;"><svg width="12" height="7" viewBox="0 0 12 7"><path d="M1,3.5 C4,0 8,0 11,3.5 C8,7 4,7 1,3.5 Z" fill="#6EEBD4"/></svg></div>
+    <div class="speck" style="left:60%; top:94%; animation-duration:26s; animation-delay:5s;"><svg width="10" height="6" viewBox="0 0 10 6"><path d="M1,3 C3,0 7,0 9,3 C7,6 3,6 1,3 Z" fill="#1FA396"/></svg></div>
+    <div class="speck b" style="left:73%; top:90%; animation-duration:21s; animation-delay:3s;"><svg width="15" height="8" viewBox="0 0 15 8"><path d="M1,4 C5,0 10,0 14,4 C10,8 5,8 1,4 Z" fill="#E8C77E"/></svg></div>
+    <div class="speck" style="left:85%; top:97%; animation-duration:30s; animation-delay:.5s;"><svg width="11" height="6" viewBox="0 0 11 6"><path d="M1,3 C3,0 8,0 10,3 C8,6 3,6 1,3 Z" fill="#6EEBD4"/></svg></div>
+    <div class="speck b" style="left:94%; top:93%; animation-duration:23s; animation-delay:6s;"><svg width="13" height="7" viewBox="0 0 13 7"><path d="M1,3.5 C4,0 9,0 12,3.5 C9,7 4,7 1,3.5 Z" fill="#1FA396"/></svg></div>
+  </div>
+
+  <!-- Ambient fish that swim across the ENTIRE site, over every section -->
+  <div class="fish-layer" id="globalFishLayer"></div>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span>Exporting premium Indonesian seaweed since day one — quality-checked, container-ready.</span>
+      <a href="#contact">Get an Export Quote →</a>
+    </div>
+  </div>
+
+  <nav>
+    <div class="wrap">
+      <div class="logo">Seaweed<span>Asia</span></div>
+      <div class="nav-links">
+        <a href="index.html#products">Products</a>
+        <a href="index.html#quality">Quality</a>
+        <a href="index.html#regions">Sourcing</a>
+        <a href="about.html">About</a>
+      </div>
+      <a href="#contact" class="nav-cta">Export & Contact</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </nav>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <div class="wrap">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#quality">Quality</a>
+      <a href="index.html#regions">Sourcing</a>
+      <a href="about.html">About</a>
+      <a href="#contact">Export & Contact</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="caustics"></div>
+    <div class="sunbeams">
+      <div class="sunbeam" style="left:10%; animation-delay:0s;"></div>
+      <div class="sunbeam" style="left:38%; animation-delay:2s; width:90px;"></div>
+      <div class="sunbeam" style="left:64%; animation-delay:4s; width:150px;"></div>
+      <div class="sunbeam" style="left:86%; animation-delay:1s; width:70px;"></div>
+    </div>
+
+    <div class="bubbles"></div>
+    <div class="fish-layer local"></div>
+
+    <div class="kelp-bed">
+      <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
+        <g class="frond" style="animation-duration:6s;"><path d="M60,160 C40,110 90,90 60,40 C30,20 70,0 50,-10" stroke="#123243" stroke-width="14" fill="none" stroke-linecap="round"/></g>
+        <g class="frond" style="animation-duration:7s; animation-delay:.4s;"><path d="M160,160 C180,100 130,80 160,20" stroke="#0F2A38" stroke-width="18" fill="none" stroke-linecap="round"/></g>
+        <g class="frond" style="animation-duration:5.4s; animation-delay:.8s;"><path d="M300,160 C280,100 330,90 300,30" stroke="#123243" stroke-width="12" fill="none" stroke-linecap="round"/></g>
+        <g class="frond" style="animation-duration:6.6s; animation-delay:.2s;"><path d="M980,160 C1000,100 950,80 980,20" stroke="#0F2A38" stroke-width="16" fill="none" stroke-linecap="round"/></g>
+        <g class="frond" style="animation-duration:5.8s; animation-delay:.6s;"><path d="M1100,160 C1080,110 1130,90 1100,40" stroke="#123243" stroke-width="14" fill="none" stroke-linecap="round"/></g>
+        <path d="M0,160 L1200,160 L1200,140 C1000,110 900,150 760,130 C600,105 520,150 380,135 C240,118 140,150 0,140 Z" fill="#081620"/>
+      </svg>
+    </div>
+
+    <div class="wrap">
+      <div class="eyebrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M2,14 Q6,9 12,14 T22,14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M2,19 Q6,14 12,19 T22,19" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/></svg> Direct from 6,000+ Indonesian islands</div>
+      <h1>Premium seaweed, <em>harvested by hand</em>, exported with precision.</h1>
+      <p class="lead">SeaweedAsia connects coastal farming cooperatives across the archipelago to food, cosmetic, and hydrocolloid manufacturers worldwide — with lab-verified quality on every container.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-primary">Request a Sample</a>
+        <a href="about.html" class="btn btn-ghost">Our Story →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="wrap">
+      <div class="reveal"><div class="stat-num">4,200t</div><div class="stat-label">Exported annually</div></div>
+      <div class="reveal"><div class="stat-num">38</div><div class="stat-label">Coastal farming villages</div></div>
+      <div class="reveal"><div class="stat-num">17</div><div class="stat-label">Countries supplied</div></div>
+      <div class="reveal"><div class="stat-num">99.2%</div><div class="stat-label">Shipments passing lab QC</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="tag-row"><span class="tag">What we export</span></div>
+        <h2>Four species, one standard of quality</h2>
+        <p>Every variety is traceable back to the farm bed it grew on, sun-dried on raised racks, and graded before it ever reaches a container.</p>
+      </div>
+
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-icon"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M13,24 C13,24 4,17 4,10 C4,5 8,2 13,4 C18,2 22,5 22,10 C22,17 13,24 13,24 Z" fill="#6EEBD4"/></svg></div>
+          <h3>Cottonii</h3>
+          <span class="latin">Eucheuma cottonii</span>
+          <p>The backbone of our exports — a high-yield carrageenan source, dried to a consistent 35–38% moisture and hand-sorted for foreign matter.</p>
+          <div class="product-tags"><span>Carrageenan grade</span><span>Food & cosmetic</span></div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-icon"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M4,20 Q13,2 22,20 Q13,26 4,20 Z" fill="#E8C77E"/></svg></div>
+          <h3>Spinosum</h3>
+          <span class="latin">Eucheuma spinosum</span>
+          <p>Prized for its distinct gel texture in dairy and confectionery applications. Farmed on deeper long-lines for thicker, sturdier thalli.</p>
+          <div class="product-tags"><span>Iota carrageenan</span><span>Dairy grade</span></div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-icon"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M6,22 C2,14 6,4 13,2 C20,4 24,14 20,22 C16,18 10,18 6,22 Z" fill="#1FA396"/></svg></div>
+          <h3>Gracilaria</h3>
+          <span class="latin">Gracilaria spp.</span>
+          <p>Our agar-grade species, pond-cultivated in brackish coastal waters for a cleaner, lower-ash harvest suited to pharmaceutical use.</p>
+          <div class="product-tags"><span>Agar grade</span><span>Pharma-suited</span></div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-icon"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M13,2 C6,6 4,14 8,20 C10,24 16,24 18,20 C22,14 20,6 13,2 Z" fill="#FF8A65"/></svg></div>
+          <h3>Sea Grapes</h3>
+          <span class="latin">Caulerpa lentillifera</span>
+          <p>Fresh and semi-dried lato, packed same-day from tide-pool farms for the growing sashimi and salad export market across Asia.</p>
+          <div class="product-tags"><span>Fresh export</span><span>Culinary grade</span></div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-icon"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M13,3 L18,10 L13,10 L20,17 L13,15 L14,24 L11,15 L4,17 L10,10 L5,10 Z" fill="#CFEFEA"/></svg></div>
+          <h3>Sea Lettuce</h3>
+          <span class="latin">Ulva lactuca</span>
+          <p>Bright, mineral-rich green algae, wild-harvested from reef flats and shade-dried to preserve colour for the health-food trade.</p>
+          <div class="product-tags"><span>Health food</span><span>Whole-leaf</span></div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-icon"><svg width="26" height="26" viewBox="0 0 26 26"><path d="M4,18 C8,10 6,4 13,2 C20,4 18,10 22,18 C16,14 10,14 4,18 Z" fill="#90ADAB"/></svg></div>
+          <h3>Sargassum</h3>
+          <span class="latin">Sargassum spp.</span>
+          <p>Wild-collected brown algae supplying alginate producers and, increasingly, biostimulant manufacturers across our export network.</p>
+          <div class="product-tags"><span>Alginate grade</span><span>Biostimulant</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="kelp-divider">
+    <svg viewBox="0 0 1200 64" preserveAspectRatio="none">
+      <g class="kelp-strand"><path d="M0,64 Q300,10 600,50 Q900,90 1200,20 L1200,64 Z" fill="#0B2431"/></g>
+    </svg>
+  </div>
+
+  <section class="section qa-section" id="quality">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="tag-row"><span class="tag">Quality control</span></div>
+        <h2>Checked before it ever leaves the beach</h2>
+        <p>Field agents grade every batch at the point of harvest; a second inspection happens at our consolidation warehouse before loading.</p>
+      </div>
+
+      <div class="qa-grid">
+        <div class="qa-item reveal">
+          <div class="qa-check"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2,7 L6,11 L12,3" stroke="#06211D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Moisture-tested</h4><p>Every lot is checked to sit within 35–38% moisture before packing, preventing mould in transit.</p></div>
+        </div>
+        <div class="qa-item reveal">
+          <div class="qa-check"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2,7 L6,11 L12,3" stroke="#06211D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Hand-sorted</h4><p>Sand, shell fragments, and other seaweed species are removed by hand before bailing.</p></div>
+        </div>
+        <div class="qa-item reveal">
+          <div class="qa-check"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2,7 L6,11 L12,3" stroke="#06211D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Lab-verified</h4><p>Independent labs confirm gel strength, viscosity, and ash content on every shipment batch.</p></div>
+        </div>
+        <div class="qa-item reveal">
+          <div class="qa-check"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2,7 L6,11 L12,3" stroke="#06211D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Sun-dried, not machine-dried</h4><p>Raised bamboo racks preserve colour and gel quality better than kiln-drying.</p></div>
+        </div>
+        <div class="qa-item reveal">
+          <div class="qa-check"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2,7 L6,11 L12,3" stroke="#06211D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Container-ready packaging</h4><p>Ventilated woven bags and moisture-barrier liners are matched to each destination climate.</p></div>
+        </div>
+        <div class="qa-item reveal">
+          <div class="qa-check"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M2,7 L6,11 L12,3" stroke="#06211D" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h4>Full traceability</h4><p>Every bag is tagged back to its farming cooperative and harvest week.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="regions">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="tag-row"><span class="tag">Sourcing map</span></div>
+        <h2>Farmed across the archipelago</h2>
+        <p>Our cooperatives span warm, current-fed waters from Sulawesi to the Lesser Sunda Islands — each region suited to different species and seasons.</p>
+      </div>
+      <div class="regions reveal">
+        <div class="region-pill"><span class="dot"></span>South Sulawesi</div>
+        <div class="region-pill"><span class="dot"></span>Nusa Tenggara Timur</div>
+        <div class="region-pill"><span class="dot"></span>Nusa Tenggara Barat</div>
+        <div class="region-pill"><span class="dot"></span>Maluku Islands</div>
+        <div class="region-pill"><span class="dot"></span>Bali</div>
+        <div class="region-pill"><span class="dot"></span>Lombok</div>
+        <div class="region-pill"><span class="dot"></span>Sumbawa</div>
+        <div class="region-pill"><span class="dot"></span>Takalar Coast</div>
+        <div class="region-pill"><span class="dot"></span>Rote Island</div>
+      </div>
+
+      <svg class="reveal" width="100%" height="90" viewBox="0 0 1200 90" style="margin-top:48px; opacity:0.7;">
+        <g fill="#123243">
+          <path d="M40,90 C40,60 20,50 30,20 C40,40 50,30 55,50 C60,25 75,30 75,55 C85,35 95,45 90,70 C90,84 60,90 40,90 Z"/>
+          <path d="M240,90 C230,55 260,50 255,15 C270,40 285,25 290,55 C300,30 320,45 310,70 C305,86 260,90 240,90 Z"/>
+          <path d="M900,90 C895,58 920,48 915,18 C928,42 945,30 948,58 C958,35 975,48 965,72 C960,86 920,90 900,90 Z"/>
+          <path d="M1120,90 C1112,55 1140,48 1132,16 C1146,42 1162,28 1166,56 C1176,32 1192,46 1182,70 C1176,85 1140,90 1120,90 Z"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta reveal">
+        <h2>Ready to bring the archipelago to your production line?</h2>
+        <p>Send us your target species and monthly volume — we'll come back with pricing, lead time, and a sample within 5 working days.</p>
+        <a href="#contact" class="btn btn-primary">Get an Export Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="footer-kelp">
+        <svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+          <path d="M0,56 Q200,10 400,40 Q600,66 800,30 Q1000,4 1200,36 L1200,56 Z" fill="#0B2431"/>
+        </svg>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom:14px;">Seaweed<span>Asia</span></div>
+          <p style="max-width:260px;">A founder-led export house connecting Indonesian coastal farmers to global manufacturers, one clean, traceable container at a time.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="about.html">About</a>
+          <a href="index.html#products">Products</a>
+          <a href="index.html#quality">Quality</a>
+        </div>
+        <div class="footer-col">
+          <h5>Sourcing</h5>
+          <a href="index.html#regions">Our regions</a>
+          <a href="about.html#process">Our process</a>
+          <a href="about.html#team">Our team</a>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <a href="mailto:export@seaweedasia.com">export@seaweedasia.com</a>
+          <a href="tel:+6280000000">+62 800 000 000</a>
+          <a href="#">Makassar, Indonesia</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SeaweedAsia. All rights reserved.</span>
+        <span class="credit">Built by <strong>Nagaraj</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+// ===========================================================
+// SeaweedAsia — shared interaction layer
+// ===========================================================
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- scroll progress + depth gauge ---------- */
+  const progress = document.getElementById('scrollProgress');
+  const marker = document.getElementById('depthMarker');
+  function onScroll(){
+    const h = document.documentElement;
+    const scrolled = h.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (scrolled / max) * 100 : 0;
+    if(progress) progress.style.width = pct + '%';
+    if(marker) marker.style.top = pct + '%';
+    const nav = document.querySelector('nav');
+    if(nav){ if(scrolled > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }
+  }
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* ---------- scroll reveal (CSS fallback — GSAP overrides this below when available) ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const gsapWillHandleReveals = !!(window.gsap && window.ScrollTrigger);
+  if(gsapWillHandleReveals){
+    // GSAP + ScrollTrigger will animate these directly further down;
+    // just make sure they're not stuck invisible if something goes wrong.
+    revealEls.forEach(el=>el.classList.add('in-view'));
+  } else if('IntersectionObserver' in window && !reduceMotion){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold:0.15 });
+    revealEls.forEach(el=>io.observe(el));
+  } else {
+    revealEls.forEach(el=>el.classList.add('in-view'));
+  }
+
+  /* ---------- mobile nav toggle ---------- */
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('navMobileMenu');
+  if(navToggle && mobileMenu){
+    navToggle.addEventListener('click', ()=>{
+      navToggle.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        navToggle.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+  }
+
+  /* ---------- active nav link ---------- */
+  const path = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    const href = a.getAttribute('href');
+    if(href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+  });
+
+  /* ---------- water-touch ripple ---------- */
+  function makeWaterTouch(x, y){
+    if(reduceMotion) return;
+    // three staggered concentric rings, like a real water ripple
+    [ '', 'r2', 'r3' ].forEach((cls, i)=>{
+      setTimeout(()=>{
+        const el = document.createElement('div');
+        el.className = 'ripple-el' + (cls ? ' ' + cls : '');
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(), 1400);
+      }, i * 110);
+    });
+    // a few small droplets flicking outward
+    const dropletCount = 5;
+    for(let i=0;i<dropletCount;i++){
+      const angle = (Math.PI * 2 * i / dropletCount) + Math.random()*0.6;
+      const dist = 18 + Math.random()*22;
+      const dx = Math.cos(angle) * dist;
+      const dy = Math.sin(angle) * dist - 10;
+      const d = document.createElement('div');
+      d.className = 'droplet-el';
+      d.style.left = x + 'px';
+      d.style.top = y + 'px';
+      d.style.setProperty('--dx', dx + 'px');
+      d.style.setProperty('--dy', dy + 'px');
+      document.body.appendChild(d);
+      setTimeout(()=>d.remove(), 650);
+    }
+  }
+  document.addEventListener('pointerdown', function(e){
+    makeWaterTouch(e.clientX, e.clientY);
+  });
+
+  /* ---------- bubble spawner ---------- */
+  document.querySelectorAll('.bubbles').forEach(container=>{
+    if(reduceMotion) return;
+    const count = 16;
+    for(let i=0;i<count;i++){
+      const b = document.createElement('div');
+      b.className = 'bubble';
+      const size = 4 + Math.random()*14;
+      b.style.width = size+'px';
+      b.style.height = size+'px';
+      b.style.left = Math.random()*100+'%';
+      b.style.animationDuration = (6+Math.random()*7)+'s';
+      b.style.animationDelay = (Math.random()*10)+'s';
+      container.appendChild(b);
+    }
+  });
+
+  /* ---------- fish SVG templates ---------- */
+  const fishColors = ['#6EEBD4','#E8C77E','#1FA396','#FF8A65','#CFEFEA'];
+  function fishSVG(color, w){
+    const h = w*0.52;
+    return `<svg class="fish-bob" width="${w}" height="${h}" viewBox="0 0 100 52" style="animation-duration:${(2+Math.random()*1.4).toFixed(2)}s">
+      <g class="fish-tail" style="transform-origin:34px 26px;">
+        <path d="M34,26 L2,6 L10,26 L2,46 Z" fill="${color}" opacity="0.85"/>
+      </g>
+      <ellipse cx="60" cy="26" rx="34" ry="17" fill="${color}"/>
+      <path d="M50,14 Q60,2 74,10 Q64,16 58,20 Z" fill="${color}" opacity="0.7"/>
+      <circle cx="84" cy="22" r="3.2" fill="#06211D"/>
+      <path d="M40,26 Q52,34 66,30" stroke="rgba(6,33,29,0.35)" stroke-width="1.5" fill="none"/>
+    </svg>`;
+  }
+  function jellySVG(color){
+    const w = 40 + Math.random()*30;
+    return `<svg class="jelly-bell" width="${w}" height="${w*0.7}" viewBox="0 0 60 42">
+        <path d="M4,26 Q4,2 30,2 Q56,2 56,26 Q42,34 30,26 Q18,34 4,26 Z" fill="${color}" opacity="0.55"/>
+      </svg>
+      <svg class="jelly-tentacle" width="${w}" height="${w*1.4}" viewBox="0 0 60 80" style="margin-top:-6px;">
+        <path d="M14,0 Q10,40 16,80 M28,0 Q26,42 30,78 M42,0 Q46,40 40,80" stroke="${color}" stroke-width="2" fill="none" opacity="0.4"/>
+      </svg>`;
+  }
+
+  /* ---------- populate reef layers ---------- */
+  function populateReef(container, opts){
+    if(reduceMotion || !container) return;
+    const fishCount = opts.fish || 6;
+    const jellyCount = opts.jelly || 0;
+    for(let i=0;i<fishCount;i++){
+      const rev = Math.random() > 0.5;
+      const top = opts.minTop + Math.random()*(opts.maxTop - opts.minTop);
+      const duration = 18 + Math.random()*22;
+      const delay = (-Math.random()*duration) + 's';
+      const color = fishColors[Math.floor(Math.random()*fishColors.length)];
+
+      // ~30% chance of a small school (3 fry) moving as one loose group
+      if(Math.random() < 0.3){
+        const wrap = document.createElement('div');
+        wrap.className = 'fish-wrap' + (rev ? ' rev' : '');
+        wrap.style.top = top + '%';
+        wrap.style.animationDuration = duration + 's';
+        wrap.style.animationDelay = delay;
+        wrap.style.display = 'flex';
+        wrap.style.gap = '6px';
+        wrap.style.alignItems = 'center';
+        let html = '';
+        for(let f=0; f<3; f++){
+          const frySize = 16 + Math.random()*10;
+          html += `<span style="margin-top:${(f%2)*8}px; display:inline-block;">${fishSVG(color, frySize)}</span>`;
+        }
+        wrap.innerHTML = html;
+        container.appendChild(wrap);
+        continue;
+      }
+
+      const wrap = document.createElement('div');
+      wrap.className = 'fish-wrap' + (rev ? ' rev' : '');
+      wrap.style.top = top + '%';
+      wrap.style.animationDuration = duration + 's';
+      wrap.style.animationDelay = delay;
+      const size = 34 + Math.random()*30;
+      wrap.innerHTML = fishSVG(color, size);
+      container.appendChild(wrap);
+    }
+    for(let i=0;i<jellyCount;i++){
+      const wrap = document.createElement('div');
+      wrap.className = 'jelly-wrap';
+      wrap.style.left = (5 + Math.random()*90) + '%';
+      const duration = 20 + Math.random()*16;
+      wrap.style.animationDuration = duration + 's';
+      wrap.style.animationDelay = (-Math.random()*duration) + 's';
+      const color = Math.random() > 0.5 ? '#6EEBD4' : '#E8C77E';
+      wrap.innerHTML = jellySVG(color);
+      container.appendChild(wrap);
+    }
+  }
+
+  // Global reef that swims across the whole viewport, always present, sparse & ambient.
+  const globalReef = document.getElementById('globalFishLayer');
+  populateReef(globalReef, { fish:5, jelly:2, minTop:8, maxTop:70 });
+
+  // Local hero reef — denser, sits within the hero section only.
+  document.querySelectorAll('.fish-layer.local').forEach(el=>{
+    populateReef(el, { fish:7, jelly:1, minTop:15, maxTop:80 });
+  });
+
+  /* =========================================================
+     CUSTOM CURSOR — a glowing orb (tight, follows instantly)
+     plus a trailing ring (loose, eases toward the pointer).
+     Disabled on touch devices and when reduced motion is set.
+  ========================================================= */
+  const canUseCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if(canUseCursor && !reduceMotion){
+    document.documentElement.classList.add('has-cursor');
+    const orb = document.createElement('div');
+    orb.className = 'cursor-orb';
+    const ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(orb);
+    document.body.appendChild(ring);
+
+    // Target = real mouse position. Ring position eases toward target each frame (lerp)
+    // for a fluid, slightly-delayed "liquid" trail feel.
+    let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+    let ringX = mouseX, ringY = mouseY;
+    document.addEventListener('mousemove', (e)=>{
+      mouseX = e.clientX; mouseY = e.clientY;
+      orb.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%,-50%)`;
+    });
+    function tick(){
+      // lerp factor 0.16 = how "loose" the trailing ring feels; raise for snappier, lower for laggier
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%,-50%)`;
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // Ring grows + changes color when hovering anything clickable
+    const hoverables = 'a, button, .btn, .product-card, .region-pill, .team-card, .nav-toggle';
+    document.addEventListener('mouseover', (e)=>{
+      if(e.target.closest(hoverables)) ring.classList.add('hover');
+    });
+    document.addEventListener('mouseout', (e)=>{
+      if(e.target.closest(hoverables)) ring.classList.remove('hover');
+    });
+  }
+
+  /* =========================================================
+     MAGNETIC BUTTONS — the element gently pulls toward the
+     cursor while hovered, and springs back on mouse leave.
+     Strength is capped so it never drifts far from its slot.
+  ========================================================= */
+  if(!reduceMotion && canUseCursor){
+    const magnets = document.querySelectorAll('.btn, .nav-cta');
+    magnets.forEach(el=>{
+      const strength = 0.35; // 0 = no pull, 1 = follows cursor exactly
+      const maxPull = 14; // px cap so buttons don't travel too far
+      el.addEventListener('mousemove', (e)=>{
+        const rect = el.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width/2);
+        const relY = e.clientY - (rect.top + rect.height/2);
+        const dx = Math.max(-maxPull, Math.min(maxPull, relX * strength));
+        const dy = Math.max(-maxPull, Math.min(maxPull, relY * strength));
+        el.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+      el.addEventListener('mouseleave', ()=>{
+        el.style.transform = 'translate(0,0)';
+      });
+    });
+  }
+
+  /* =========================================================
+     GSAP SCROLL REVEALS + PARALLAX
+     Falls back gracefully to the plain CSS .reveal transition
+     (already applied above) if GSAP failed to load from the CDN.
+  ========================================================= */
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Stagger-reveal every .reveal element as it enters the viewport.
+    // Cards inside the same grid stagger off one another for a fluid cascade.
+    document.querySelectorAll('.products-grid, .qa-grid, .team-grid, .value-grid').forEach(grid=>{
+      const items = grid.children;
+      if(!items.length) return;
+      gsap.fromTo(items, { y:40, opacity:0 }, {
+        y:0, opacity:1, duration:0.9, ease:'power3.out', stagger:0.12,
+        scrollTrigger:{ trigger:grid, start:'top 85%' }
+      });
+    });
+
+    // Any remaining standalone .reveal elements (section heads, CTAs, quotes)
+    document.querySelectorAll('.reveal').forEach(el=>{
+      if(el.closest('.products-grid, .qa-grid, .team-grid, .value-grid')) return;
+      gsap.fromTo(el, { y:36, opacity:0 }, {
+        y:0, opacity:1, duration:0.9, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 88%' }
+      });
+    });
+
+    // Depth-of-field parallax: ocean layers scroll at different speeds.
+    // Kelp (foreground) moves fastest, ambient fish (mid-depth) slowest —
+    // mimics how closer objects appear to move faster underwater.
+    gsap.utils.toArray('.kelp-bed').forEach(el=>{
+      gsap.to(el, { y:-40, ease:'none', scrollTrigger:{ trigger:el, scrub:0.6, start:'top bottom', end:'bottom top' } });
+    });
+    const globalReef = document.getElementById('globalFishLayer');
+    if(globalReef){
+      gsap.to(globalReef, { y:60, ease:'none', scrollTrigger:{ trigger:document.body, scrub:1, start:'top top', end:'bottom bottom' } });
+    }
+    gsap.utils.toArray('.caustics, .sunbeams').forEach(el=>{
+      gsap.to(el, { y:-25, ease:'none', scrollTrigger:{ trigger:el, scrub:0.8, start:'top bottom', end:'bottom top' } });
+    });
+  }
+
+  /* =========================================================
+     TEXT REVEAL — splits headline text into word-spans at
+     runtime (content itself is untouched, only the markup
+     wrapping it) and staggers them up into place.
+  ========================================================= */
+  function splitWords(el){
+    const text = el.textContent;
+    el.innerHTML = '';
+    text.split(/(\s+)/).forEach(chunk=>{
+      if(chunk.trim() === ''){
+        el.appendChild(document.createTextNode(chunk));
+      } else {
+        const span = document.createElement('span');
+        span.className = 'split-word';
+        span.textContent = chunk;
+        el.appendChild(span);
+      }
+    });
+    return el.querySelectorAll('.split-word');
+  }
+
+  const heroHeading = document.querySelector('.hero h1');
+  if(heroHeading && !reduceMotion){
+    const words = splitWords(heroHeading);
+    if(window.gsap){
+      gsap.to(words, { y:0, opacity:1, rotate:0, duration:0.9, ease:'power4.out', stagger:0.045, delay:0.3 });
+    } else {
+      words.forEach(w=>{ w.style.opacity='1'; w.style.transform='none'; });
+    }
+  }
+  // Section headings get the same word-stagger treatment, triggered on scroll.
+  if(window.gsap && window.ScrollTrigger && !reduceMotion){
+    document.querySelectorAll('.section-head h2').forEach(h2=>{
+      const words = splitWords(h2);
+      gsap.to(words, {
+        y:0, opacity:1, rotate:0, duration:0.7, ease:'power4.out', stagger:0.03,
+        scrollTrigger:{ trigger:h2, start:'top 88%' }
+      });
+    });
+  }
+
+})();
+
+
+</script>
+</body>
+</html>
