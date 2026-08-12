@@ -41,7 +41,7 @@ p { margin-bottom: 1em; color: var(--muted); }
 a { color: inherit; text-decoration: none; }
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
 
-/* NAV */
+/* NAV - MATCHED WITH INDEX.HTML */
 nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
 .logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; }
@@ -57,14 +57,31 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .blog-hero h1 { font-size: clamp(36px, 5vw, 56px); color: #fff; max-width: 860px; margin: 0 auto 16px; }
 .blog-hero p { font-size: 18px; max-width: 680px; margin: 0 auto; }
 
-/* SEARCH & FILTER BAR */
-.filter-bar { padding: 32px 0; background: var(--bg-panel); border-bottom: 1px solid var(--line); sticky; top: 80px; z-index: 40; }
-.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; }
+/* CREATIVE SEARCH & FILTER BAR */
+.filter-bar { padding: 40px 0; background: var(--bg-panel); border-bottom: 1px solid var(--line); sticky; top: 80px; z-index: 40; }
+.filter-container { display: flex; flex-direction: column; gap: 24px; }
+
+/* Search Box Design */
+.search-wrapper { position: relative; max-width: 720px; margin: 0 auto; width: 100%; }
+.search-box { display: flex; align-items: center; background: rgba(15,46,60,0.6); border: 1px solid var(--seafoam); border-radius: 999px; padding: 6px 8px 6px 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px); transition: box-shadow 0.3s, border-color 0.3s; }
+.search-box:focus-within { border-color: var(--seafoam); box-shadow: 0 0 20px var(--glow-cyan); }
+.search-icon { width: 20px; height: 20px; fill: var(--seafoam); margin-right: 14px; flex-shrink: 0; }
+.search-input { width: 100%; background: transparent; border: none; color: #fff; font-size: 16px; font-family: var(--sans); outline: none; }
+.search-input::placeholder { color: var(--muted); }
+.clear-btn { background: rgba(234,243,241,0.1); border: none; color: var(--muted); width: 28px; height: 28px; border-radius: 50%; display: none; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; margin-right: 8px; transition: all 0.2s; }
+.clear-btn:hover { background: var(--seafoam); color: #06211D; }
+
+/* Quick Tag Suggestions */
+.quick-tags { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.quick-tag-pill { background: rgba(234,243,241,0.05); border: 1px solid var(--line); padding: 3px 12px; border-radius: 999px; cursor: pointer; transition: all 0.2s; color: var(--ink); }
+.quick-tag-pill:hover { border-color: var(--seafoam); color: var(--seafoam); }
+
+/* Category Pills & Counter */
+.filter-wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 8px; }
 .filter-categories { display: flex; gap: 10px; flex-wrap: wrap; }
-.filter-btn { background: rgba(234,243,241,0.05); border: 1px solid var(--line); color: var(--muted); padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.filter-btn { background: rgba(234,243,241,0.05); border: 1px solid var(--line); color: var(--muted); padding: 8px 20px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
 .filter-btn:hover, .filter-btn.active { background: var(--teal); color: #06211D; border-color: var(--teal); }
-.search-input { background: rgba(6,20,32,0.8); border: 1px solid var(--line); border-radius: 999px; padding: 10px 20px; color: #fff; font-size: 14px; outline: none; width: 280px; }
-.search-input:focus { border-color: var(--seafoam); }
+.results-count { font-size: 13px; color: var(--seafoam); font-weight: 600; }
 
 /* FEATURED POST */
 .featured-section { padding: 60px 0 30px; }
@@ -73,7 +90,6 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .featured-badge { color: var(--sand); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: block; }
 .featured-card h2 { font-size: 32px; color: #fff; }
 .meta-info { display: flex; gap: 16px; font-size: 13px; color: var(--muted); margin-top: 20px; align-items: center; }
-.meta-info span { display: flex; align-items: center; gap: 6px; }
 
 /* BLOG GRID */
 .blog-grid-section { padding: 40px 0 100px; }
@@ -90,7 +106,6 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .keywords-list { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
 .kw-tag { font-size: 11px; color: var(--muted); background: rgba(234,243,241,0.05); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(234,243,241,0.08); }
 .read-more-link { font-size: 14px; font-weight: 600; color: var(--seafoam); display: inline-flex; align-items: center; gap: 6px; }
-.read-more-link:hover { text-decoration: underline; }
 
 /* NEWSLETTER */
 .newsletter-box { background: var(--bg-panel-2); border: 1px solid var(--glass-border); border-radius: 24px; padding: 60px; text-align: center; margin-top: 60px; }
@@ -98,7 +113,6 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .newsletter-form { display: flex; gap: 12px; max-width: 500px; margin: 24px auto 0; }
 .newsletter-form input { flex: 1; background: rgba(6,20,32,0.8); border: 1px solid var(--line); border-radius: 999px; padding: 14px 20px; color: #fff; outline: none; }
 .newsletter-form button { background: var(--teal); color: #06211D; border: none; font-weight: 600; padding: 14px 28px; border-radius: 999px; cursor: pointer; transition: background .2s; }
-.newsletter-form button:hover { background: var(--seafoam); }
 
 footer { padding: 60px 0 30px; border-top: 1px solid var(--line); text-align: center; font-size: 14px; color: var(--muted); }
 
@@ -109,25 +123,25 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); text-align: ce
 @media (max-width: 680px) {
   .blog-grid { grid-template-columns: 1fr; }
   .filter-wrap { flex-direction: column; align-items: stretch; }
-  .search-input { width: 100%; }
   .newsletter-form { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV (MATCHED WITH INDEX.HTML) -->
   <nav>
     <div class="wrap">
       <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html#about">About Us</a>
         <a href="index.html#products">Products</a>
-        <a href="index.html#quality">Quality Standards</a>
-        <a href="about.html">About Us</a>
-        <a href="blog.html" class="active">Insights & Blog</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contact">Contact</a>
       </div>
-      <a href="index.html#contact" class="nav-cta">Get Export Quote</a>
+      <a href="index.html#contact" class="nav-cta">Get Quote</a>
     </div>
   </nav>
 
@@ -140,17 +154,42 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); text-align: ce
     </div>
   </section>
 
-  <!-- FILTER & SEARCH -->
+  <!-- CREATIVE SEARCH & FILTER BAR -->
   <section class="filter-bar">
-    <div class="wrap filter-wrap">
-      <div class="filter-categories" id="filterCategories">
-        <button class="filter-btn active" onclick="filterBlog('all', this)">All Articles (20)</button>
-        <button class="filter-btn" onclick="filterBlog('carrageenan', this)">Carrageenan & Chemistry</button>
-        <button class="filter-btn" onclick="filterBlog('quality', this)">Quality & Moisture Specs</button>
-        <button class="filter-btn" onclick="filterBlog('aquaculture', this)">Farming & Cooperatives</button>
-        <button class="filter-btn" onclick="filterBlog('logistics', this)">Export & Freight</button>
+    <div class="wrap filter-container">
+      
+      <!-- Interactive Glassmorphic Search Input -->
+      <div class="search-wrapper">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input type="text" class="search-input" id="searchInput" onkeyup="searchBlog()" placeholder="Search articles, species, moisture levels, or export terms...">
+          <button class="clear-btn" id="clearBtn" onclick="clearSearch()">✕</button>
+        </div>
       </div>
-      <input type="text" class="search-input" id="searchInput" onkeyup="searchBlog()" placeholder="Search articles or keywords...">
+
+      <!-- Quick Tag Suggestions -->
+      <div class="quick-tags">
+        <span>Popular topics:</span>
+        <span class="quick-tag-pill" onclick="quickSearch('Cottonii')">Eucheuma Cottonii</span>
+        <span class="quick-tag-pill" onclick="quickSearch('Moisture')">Moisture Standards</span>
+        <span class="quick-tag-pill" onclick="quickSearch('Freight')">Freight Logistics</span>
+        <span class="quick-tag-pill" onclick="quickSearch('Agar')">Agar Grade</span>
+      </div>
+
+      <!-- Categories & Result Count -->
+      <div class="filter-wrap">
+        <div class="filter-categories" id="filterCategories">
+          <button class="filter-btn active" onclick="filterBlog('all', this)">All Articles</button>
+          <button class="filter-btn" onclick="filterBlog('carrageenan', this)">Carrageenan & Chemistry</button>
+          <button class="filter-btn" onclick="filterBlog('quality', this)">Quality & Moisture Specs</button>
+          <button class="filter-btn" onclick="filterBlog('aquaculture', this)">Farming & Cooperatives</button>
+          <button class="filter-btn" onclick="filterBlog('logistics', this)">Export & Freight</button>
+        </div>
+        <div class="results-count" id="resultsCount">Showing 20 articles</div>
+      </div>
+
     </div>
   </section>
 
@@ -569,35 +608,50 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); text-align: ce
   </footer>
 
   <script>
+    let activeCategory = 'all';
+
     function filterBlog(category, btn) {
-      // Button states
+      activeCategory = category;
       const buttons = document.querySelectorAll('.filter-btn');
       buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if(btn) btn.classList.add('active');
 
-      // Grid items
-      const cards = document.querySelectorAll('.blog-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      searchBlog(); // Re-apply current search with new category filter
     }
 
     function searchBlog() {
       const query = document.getElementById('searchInput').value.toLowerCase();
+      const clearBtn = document.getElementById('clearBtn');
       const cards = document.querySelectorAll('.blog-card');
+      let visibleCount = 0;
+
+      clearBtn.style.display = query ? 'flex' : 'none';
 
       cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if (text.includes(query)) {
+        const matchesCategory = (activeCategory === 'all' || card.getAttribute('data-category') === activeCategory);
+        const matchesQuery = card.innerText.toLowerCase().includes(query);
+
+        if (matchesCategory && matchesQuery) {
           card.style.display = 'flex';
+          visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+
+      document.getElementById('resultsCount').innerText = `Showing ${visibleCount} article${visibleCount === 1 ? '' : 's'}`;
+    }
+
+    function quickSearch(keyword) {
+      const input = document.getElementById('searchInput');
+      input.value = keyword;
+      searchBlog();
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      searchBlog();
     }
   </script>
 </body>
