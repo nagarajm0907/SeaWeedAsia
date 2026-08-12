@@ -108,8 +108,8 @@ nav .wrap { display:flex; align-items:center; justify-content:space-between; pad
 .page-hero {
   padding:100px 0 80px;
   background:
-    radial-gradient(ellipse 800px 400px at 50% -10%, rgba(31,163,150,.25), transparent 70%),
-    linear-gradient(180deg, #081226 0%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(6,20,32,0.85) 0%, rgba(6,20,32,0.98) 100%),
+    url('ASSET/underwater-farm.jpg') center/cover no-repeat;
   border-bottom:1px solid var(--line);
 }
 .eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--seafoam); background:rgba(110,235,212,.08); border:1px solid rgba(110,235,212,.25); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
@@ -127,9 +127,9 @@ nav .wrap { display:flex; align-items:center; justify-content:space-between; pad
 .story-box h3 { color:#fff; font-size:24px; margin-bottom:16px; }
 
 .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.value-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:32px; backdrop-filter:blur(12px); }
+.value-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:24px; backdrop-filter:blur(12px); }
+.value-card img { width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:16px; }
 .value-card h4 { color:#fff; font-size:20px; margin-bottom:10px; }
-.value-icon { font-size:28px; color:var(--seafoam); margin-bottom:16px; }
 
 .timeline { display:flex; flex-direction:column; gap:24px; max-width:800px; margin:0 auto; }
 .timeline-item { display:flex; gap:24px; background:var(--bg-panel); border:1px solid var(--line); border-radius:16px; padding:28px; }
@@ -190,7 +190,7 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
     </div>
   </div>
 
-  <!-- ABOUT HERO -->
+  <!-- ABOUT HERO (Prompt 20: Wide shot of a healthy seaweed farm underwater) -->
   <section class="page-hero">
     <div class="wrap">
       <div class="eyebrow">Our Mission & Heritage</div>
@@ -204,11 +204,15 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
     <div class="wrap">
       <div class="grid-2 reveal">
         <div class="story-box">
+          <!-- Prompt 18: Portrait of a smiling Indonesian seaweed farming family -->
+          <img src="ASSET/farmer-family.jpg" alt="Portrait of a smiling Indonesian seaweed farming family standing together near their boat and drying racks" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:20px;">
           <h3>Empowering Coastal Farming Communities</h3>
           <p>Seaweed farming is the lifeblood of thousands of coastal villages across South Sulawesi, NTT, and NTB. By working directly with farming cooperatives, we eliminate unnecessary middle-tier markups and return fair values to local producers.</p>
           <p>Our direct involvement guarantees strict quality control right at the drying tables, ensuring high gel strength, low moisture content, and contamination-free shipments.</p>
         </div>
         <div>
+          <!-- Prompt 19: Farmer teaching a younger family member -->
+          <img src="ASSET/generational-transfer.jpg" alt="Farmer teaching a younger family member how to tie seedlings onto a line, generational knowledge transfer feel" style="width:100%; height:220px; object-fit:cover; border-radius:var(--radius); margin-bottom:24px;">
           <div class="section-head" style="margin-bottom:24px;">
             <div class="tag-row"><span class="tag">Why Choose Us</span></div>
             <h2>Standardizing the Raw Marine Commodity Trade</h2>
@@ -230,17 +234,20 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
 
       <div class="values-grid reveal">
         <div class="value-card">
-          <div class="value-icon">🌊</div>
+          <!-- Prompt 6: Farmer's hands closely tying seaweed cuttings -->
+          <img src="ASSET/hands-tying.jpg" alt="Farmer's hands closely tying seaweed cuttings onto monofilament rope, focus on technique">
           <h4>Oceanic Integrity</h4>
           <p>Farming strictly in unpolluted marine channels with natural water movement for high-yield carrageenan growth.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">⚖️</div>
+          <!-- Prompt 9: Woman farmer standing in shallow water sorting -->
+          <img src="ASSET/sorting-crates.jpg" alt="Woman farmer standing in shallow water sorting freshly harvested seaweed into large plastic crates on a boat">
           <h4>Fair Co-Op Trade</h4>
           <p>Guaranteed baseline pricing for local farming families to build sustainable coastal micro-economies.</p>
         </div>
         <div class="value-card">
-          <div class="value-icon">📦</div>
+          <!-- Prompt 16: Close-up of export-ready seaweed sacks stacked and labeled -->
+          <img src="ASSET/labeled-sacks.jpg" alt="Close-up of export-ready seaweed sacks stacked and labeled, forklift moving pallets in a warehouse">
           <h4>Container Traceability</h4>
           <p>Full batch reporting from origin reef, dry-weight verification, to port loading documentation.</p>
         </div>
@@ -272,6 +279,8 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
           </div>
         </div>
         <div class="timeline-item">
+          <!-- Prompt 17: Cargo ship at sea ocean horizon for global reach section -->
+          <img src="ASSET/cargo-ship-sea.jpg" alt="World map style shot showing a cargo ship at sea, ocean horizon, for a global reach section" style="width:100%; height:140px; object-fit:cover; border-radius:10px; margin-bottom:12px;">
           <div class="timeline-year">2026</div>
           <div>
             <h4 style="color:#fff; margin-bottom:4px;">Global Footprint Crossover</h4>
