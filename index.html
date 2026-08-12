@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SeaweedAsia | Industrial Seaweed Supplier & Exporter</title>
-<meta name="description" content="Direct exporter of Eucheuma Cottonii, Spinosum, and Gracilaria seaweed from Indonesia. High gel-strength raw materials for global hydrocolloid processing.">
+<title>SeaweedAsia | Direct Ocean Sourcing & Bulk Raw Seaweed</title>
+<meta name="description" content="SeaweedAsia connects local farming cooperatives in Indonesia directly to global buyers, providing standardized raw dried Eucheuma Cottonii and Spinosum seaweed.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,107 +28,205 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-h1,h2,h3,h4 { font-family: var(--serif); font-weight: 600; color: #fff; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; color: #fff; }
 p { color: var(--muted); margin-bottom: 1em; }
 a { color: inherit; text-decoration: none; }
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
 
-/* ANIMATION KEYFRAMES */
+/* ANIMATIONS */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-.animate-fade {
-  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.delay-1 { animation-delay: 0.15s; }
-.delay-2 { animation-delay: 0.3s; }
-.delay-3 { animation-delay: 0.45s; }
+.animate-fade { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
 /* NAV */
-nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); transition: all 0.3s ease; }
+nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; transition: transform 0.3s ease; }
-.logo:hover { transform: scale(1.02); }
+.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; }
 .logo span { color: var(--seafoam); }
 .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
-.nav-links a { transition: color 0.3s ease; }
 .nav-links a:hover, .nav-links a.active { color: var(--seafoam); }
-.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(31,163,150,0.4); }
+.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; transition: background 0.2s; }
+.nav-cta:hover { background: var(--seafoam); }
 
 /* HERO */
-.hero { padding: 120px 0 100px; background: radial-gradient(circle at 50% 20%, rgba(31,163,150,0.22) 0%, transparent 65%); border-bottom: 1px solid var(--line); }
-.hero-content { max-width: 860px; margin: 0 auto; text-align: center; }
-.eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--seafoam); background: rgba(110,235,212,.1); border: 1px solid rgba(110,235,212,.3); padding: 6px 16px; border-radius: 999px; margin-bottom: 20px; }
-.hero h1 { font-size: clamp(38px, 5.5vw, 68px); line-height: 1.12; margin-bottom: 24px; }
-.hero p { font-size: 19px; margin-bottom: 36px; }
-.hero-actions { display: flex; gap: 16px; justify-content: center; }
-.btn-primary { background: var(--seafoam); color: #06211D; font-weight: 700; padding: 14px 32px; border-radius: 999px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(110,235,212,0.4); }
-.btn-secondary { background: var(--bg-panel); color: var(--ink); border: 1px solid var(--glass-border); font-weight: 600; padding: 14px 32px; border-radius: 999px; transition: transform 0.3s ease, border-color 0.3s ease; }
-.btn-secondary:hover { transform: translateY(-3px); border-color: var(--seafoam); }
+.hero { padding: 120px 0 80px; text-align: center; background: radial-gradient(circle at top, rgba(31,163,150,0.18) 0%, transparent 60%); border-bottom: 1px solid var(--line); }
+.eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--seafoam); background: rgba(110,235,212,.1); border: 1px solid rgba(110,235,212,.3); padding: 6px 16px; border-radius: 999px; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(38px, 5vw, 64px); line-height: 1.15; margin-bottom: 20px; }
+.hero p { font-size: 18px; max-width: 680px; margin: 0 auto 32px auto; }
+.hero-btns { display: flex; gap: 16px; justify-content: center; }
+.btn-primary { background: var(--teal); color: #06211D; font-weight: 600; padding: 14px 28px; border-radius: 999px; transition: background 0.2s; }
+.btn-primary:hover { background: var(--seafoam); }
+.btn-secondary { background: var(--bg-panel); border: 1px solid var(--glass-border); color: #fff; font-weight: 600; padding: 14px 28px; border-radius: 999px; transition: background 0.2s; }
+.btn-secondary:hover { background: var(--bg-panel-2); }
 
-/* STATS STRIP */
-.stats-strip { padding: 48px 0; background: var(--bg-panel-2); border-bottom: 1px solid var(--line); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
-.stat-number { font-family: var(--serif); font-size: 40px; font-weight: 700; color: var(--seafoam); margin-bottom: 4px; }
-.stat-label { font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+/* SECTION ABOUT PREVIEW */
+.section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+.section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 
-/* PRODUCTS HIGHLIGHT */
-.features { padding: 90px 0; border-bottom: 1px solid var(--line); }
-.section-title { text-align: center; margin-bottom: 56px; max-width: 680px; margin-left: auto; margin-right: auto; }
-.section-title h2 { font-size: 38px; margin-bottom: 12px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.card { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; padding: 28px; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
-.card:hover { transform: translateY(-8px); border-color: rgba(110,235,212,0.3); box-shadow: 0 12px 32px rgba(6,20,32,0.8); }
-.card-img-wrap { overflow: hidden; border-radius: 12px; margin-bottom: 20px; height: 220px; }
-.card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.card:hover .card-img { transform: scale(1.06); }
-.card h3 { font-size: 22px; margin-bottom: 8px; }
+/* CONTACT CARD CTA */
+.cta-box { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 60px 40px; text-align: center; margin: 80px 0; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.cta-box h2 { font-size: 32px; margin-bottom: 16px; }
+.cta-box p { max-width: 500px; margin: 0 auto 24px auto; }
 
-/* PROCESS PREVIEW */
-.process-preview { padding: 90px 0; background: var(--bg-panel); border-bottom: 1px solid var(--line); }
-.process-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
-.timeline-step { background: var(--bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 24px; transition: transform 0.3s ease, border-color 0.3s ease; }
-.timeline-step:hover { transform: translateY(-4px); border-color: var(--seafoam); }
-.step-badge { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--seafoam); margin-bottom: 12px; }
+/* FOOTER */
+footer { padding: 40px 0; text-align: center; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
 
-/* ABOUT SECTION */
-.about-section { padding: 90px 0; border-bottom: 1px solid var(--line); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-.about-img-wrap { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--glass-border); height: 440px; }
-.about-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-.about-img-wrap:hover .about-img { transform: scale(1.04); }
-
-/* QUALITY & LAB SECTION */
-.quality-section { padding: 90px 0; border-bottom: 1px solid var(--line); }
-.quality-card { background: linear-gradient(135deg, var(--bg-panel) 0%, var(--bg-panel-2) 100%); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-
-/* CONTACT BANNER */
-.contact-banner { padding: 90px 0; text-align: center; background: radial-gradient(circle at center, rgba(31,163,150,0.15) 0%, transparent 70%); }
-.contact-box { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 56px; max-width: 680px; margin: 0 auto; transition: transform 0.3s ease; }
-.contact-box:hover { transform: scale(1.01); }
-
-footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; text-align: left; }
-.footer-col h4 { color: #fff; margin-bottom: 16px; font-size: 16px; }
-.footer-col ul { list-style: none; }
-.footer-col ul li { margin-bottom: 8px; }
-.footer-col a { transition: color 0.2s ease; }
-.footer-col a:hover { color: var(--seafoam); }
-
-@media (max-width: 868px) {
-  .grid-3, .about-grid, .stats-grid, .process-timeline, .quality-card, .footer-grid { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  .section-grid { grid-template-columns: 1fr; }
   .nav-links { display: none; }
+  .hero-btns { flex-direction: column; }
+}
+
+/* ==========================================
+   SEAWEEDASIA EMBEDDABLE CHATBOT WIDGET STYLES
+   ========================================== */
+#sa-chat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  font-family: var(--sans);
+}
+#sa-chat-toggle {
+  width: 60px;
+  height: 60px;
+  background: var(--teal);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+#sa-chat-toggle:hover {
+  transform: scale(1.05);
+  background: var(--seafoam);
+}
+#sa-chat-toggle svg {
+  width: 28px;
+  height: 28px;
+  fill: #06211D;
+}
+#sa-chat-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 360px;
+  height: 500px;
+  background: var(--bg-panel);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#sa-chat-window.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+.sa-chat-header {
+  background: var(--bg);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sa-chat-title h4 {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: #fff;
+  margin: 0;
+}
+.sa-chat-title span {
+  font-size: 12px;
+  color: var(--seafoam);
+}
+#sa-chat-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 20px;
+  cursor: pointer;
+}
+#sa-chat-close:hover { color: #fff; }
+.sa-chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sa-msg {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.sa-msg.bot {
+  background: var(--bg-panel-2);
+  color: var(--ink);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.sa-msg.user {
+  background: var(--teal);
+  color: #06211D;
+  font-weight: 500;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.sa-chat-input-area {
+  padding: 12px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 8px;
+}
+.sa-chat-input-area input {
+  flex: 1;
+  background: var(--bg-panel);
+  border: 1px solid var(--glass-border);
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+.sa-chat-input-area input:focus {
+  border-color: var(--teal);
+}
+.sa-chat-input-area button {
+  background: var(--teal);
+  border: none;
+  color: #06211D;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sa-chat-input-area button:hover {
+  background: var(--seafoam);
+}
+@media (max-width: 480px) {
+  #sa-chat-window {
+    width: calc(100vw - 32px);
+    right: -10px;
+    height: 450px;
+  }
 }
 </style>
 </head>
@@ -136,219 +234,132 @@ footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top:
 
   <!-- NAV -->
   <nav>
-  <div class="wrap">
-    <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
-    <div class="nav-links">
-      <a href="about.html">About Us</a>
-      <a href="products.html">Products</a>
-      <a href="process.html">Process</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
+    <div class="wrap">
+      <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
+      <div class="nav-links">
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="process.html">Process</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Get Quote</a>
     </div>
-    <a href="contact.html" class="nav-cta">Get Quote</a>
-  </div>
-</nav>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero-content animate-fade">
-      <span class="eyebrow">Direct Indonesian Origin</span>
-      <h1>Sustainably Farmed Seaweed for Global Hydrocolloid Processors</h1>
-      <p>We connect international food, pharmaceutical, and cosmetic manufacturers directly with certified seaweed farmer networks across the Indonesian archipelago.</p>
-      <div class="hero-actions">
-        <a href="products.html" class="btn-primary">Explore Products</a>
-        <a href="contact.html" class="btn-secondary">Request Trade Quote</a>
+    <div class="wrap animate-fade">
+      <span class="eyebrow">Direct Ocean Sourcing</span>
+      <h1>Industrial Grade Seaweed Sourced From Indonesia</h1>
+      <p>Supplying consistent, premium-grade Eucheuma Cottonii and Spinosum seaweed directly from coastal farming cooperatives to global manufacturing desks.</p>
+      <div class="hero-btns">
+        <a href="products.html" class="btn-primary">View Products & Specs</a>
+        <a href="contact.html" class="btn-secondary">Request Bulk Quote</a>
       </div>
     </div>
   </section>
 
-  <!-- STATS STRIP -->
-  <section class="stats-strip">
-    <div class="wrap">
-      <div class="stats-grid">
-        <div class="animate-fade delay-1">
-          <div class="stat-number">1,200+</div>
-          <div class="stat-label">Metric Tons Exported</div>
-        </div>
-        <div class="animate-fade delay-1">
-          <div class="stat-number">32% Max</div>
-          <div class="stat-label">Moisture Guarantee</div>
-        </div>
-        <div class="animate-fade delay-2">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Traceable Farmers</div>
-        </div>
-        <div class="animate-fade delay-2">
-          <div class="stat-number">&lt; 3%</div>
-          <div class="stat-label">Impurity Ratio</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS HIGHLIGHT -->
-  <section class="features">
-    <div class="wrap">
-      <div class="section-title animate-fade">
-        <h2>Primary Export Raw Materials</h2>
-        <p>Thoroughly dried and lab-verified for optimal Kappa and Iota extraction yields.</p>
-      </div>
-      <div class="grid-3">
-        
-        <div class="card animate-fade delay-1">
-          <div class="card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Eucheuma Cottonii" class="card-img">
-          </div>
-          <h3>Eucheuma Cottonii</h3>
-          <p>The leading feedstock for Kappa-Carrageenan, delivering strong, rigid gel performance for dairy and pet food processing.</p>
-          <a href="products.html" style="color: var(--seafoam); font-weight: 600;">View Full Specs &rarr;</a>
-        </div>
-
-        <div class="card animate-fade delay-2">
-          <div class="card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Eucheuma Spinosum" class="card-img">
-          </div>
-          <h3>Eucheuma Spinosum</h3>
-          <p>Primary source for elastic, clear Iota-carrageenan gels. Highly sought after for confectionery and personal care applications.</p>
-          <a href="products.html" style="color: var(--seafoam); font-weight: 600;">View Full Specs &rarr;</a>
-        </div>
-
-        <div class="card animate-fade delay-3">
-          <div class="card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Gracilaria Seaweed" class="card-img">
-          </div>
-          <h3>Gracilaria Seaweed</h3>
-          <p>High gel-strength wild and pond-harvested Gracilaria, engineered for food-grade agar-agar production.</p>
-          <a href="products.html" style="color: var(--seafoam); font-weight: 600;">View Full Specs &rarr;</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS PREVIEW -->
-  <section class="process-preview">
-    <div class="wrap">
-      <div class="section-title">
-        <h2>Export Handling Journey</h2>
-        <p>From clean ocean line-harvesting to high-density container compression.</p>
-      </div>
-      <div class="process-timeline">
-        <div class="timeline-step">
-          <div class="step-badge">01</div>
-          <h4>Ocean Harvesting</h4>
-          <p>Hand-reaped at optimal 45-day maturity to maximize natural gel density.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="step-badge">02</div>
-          <h4>Platform Drying</h4>
-          <p>Sun-dried on raised bamboo platforms to eliminate silica and sand content.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="step-badge">03</div>
-          <h4>Sorting & Lab Test</h4>
-          <p>Manual sorting removes debris before moisture and gel-yield verification.</p>
-        </div>
-        <div class="timeline-step">
-          <div class="step-badge">04</div>
-          <h4>High-Cube Baling</h4>
-          <p>Hydraulically compressed into 100kg bales for ocean container shipping.</p>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="process.html" class="btn-secondary">Explore Quality Control Process &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-    <div class="wrap about-grid">
+  <!-- ABOUT PREVIEW SECTION -->
+  <section class="section">
+    <div class="wrap section-grid">
       <div>
         <span class="eyebrow">Our Mission</span>
-        <h2>Empowering Coastal Communities, Delivering Industrial Standards</h2>
-        <p>SeaweedAsia connects local farming cooperatives in South Sulawesi and NTT directly to global supply chains. By guaranteeing fair purchasing rates and supplying standardized drying equipment, we help coastal communities thrive.</p>
-        <p>For international buyers, this direct involvement eliminates middleman markups, secures consistent batch parameters, and ensures reliable year-round fulfillment.</p>
+        <h2 style="font-size: 32px; margin-bottom: 16px;">Empowering Coastal Communities & Standards</h2>
+        <p>SeaweedAsia bridges the gap between local Indonesian farming cooperatives and international industrial supply chains, guaranteeing clean processing, fair trade, and precise batch parameters.</p>
+        <a href="about.html" style="color: var(--seafoam); font-weight: 600;">Learn more about our operations &rarr;</a>
       </div>
-      <div class="about-img-wrap">
-        <img src="https://images.unsplash.com/photo-1468581264429-2548ef9eb732?auto=format&fit=crop&w=800&q=80" alt="Ocean Seaweed Farm" class="about-img">
-      </div>
-    </div>
-  </section>
-
-  <!-- QUALITY ASSURANCE CARD -->
-  <section class="quality-section">
-    <div class="wrap">
-      <div class="quality-card">
-        <div>
-          <h2>Rigorous Quality Verification</h2>
-          <p>Every lot dispatched from our central warehouse in Surabaya undergoes strict testing. We provide independent phytosanitary and lab moisture test documentation with every full container load (FCL).</p>
-        </div>
-        <div>
-          <ul style="list-style: none;">
-            <li style="margin-bottom: 12px; color: var(--seafoam); font-weight: 600;">✓ Certified Low Foreign Matter (&lt; 3%)</li>
-            <li style="margin-bottom: 12px; color: var(--seafoam); font-weight: 600;">✓ Standardized Baling for Optimal Freight Space</li>
-            <li style="margin-bottom: 12px; color: var(--seafoam); font-weight: 600;">✓ Phytosanitary & Certificate of Origin Included</li>
-          </ul>
-        </div>
+      <div class="cta-box" style="margin: 0; padding: 40px; text-align: left;">
+        <h3 style="font-size: 22px; margin-bottom: 12px;">Key Quality Parameters</h3>
+        <p style="margin-bottom: 8px;">• Moisture content strictly managed under 35%</p>
+        <p style="margin-bottom: 8px;">• Clean sun-dried natural sorting</p>
+        <p style="margin-bottom: 0;">• Standardized export pressing and secure bailing</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT BANNER -->
-  <section class="contact-banner" id="contact">
-    <div class="wrap">
-      <div class="contact-box">
-        <h2>Ready to Request Specifications or Bales?</h2>
-        <p>Contact our international sales desk to receive customized container pricing and product samples.</p>
-        <a href="contact.html" class="btn-primary">Go to Contact & Quote Form &rarr;</a>
-      </div>
+  <!-- CONTACT CTA BANNER -->
+  <section class="wrap">
+    <div class="cta-box animate-fade" id="contact">
+      <h2>Ready to Request Specifications or Bales?</h2>
+      <p>Contact our international sales desk to receive customized container pricing, shipping lead times, and product samples.</p>
+      <a href="contact.html" class="btn-primary">Go to Contact & Quote Form &rarr;</a>
     </div>
   </section>
 
-  <footer>
-    <div class="wrap">
-      <div class="footer-grid">
-        <div>
-          <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
-          <p style="margin-top: 12px; font-size: 14px;">Direct Indonesian origin seaweed supply chain, specialized in Eucheuma Cottonii, Spinosum, and Gracilaria export.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="process.html">Process</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="blog.html">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Direct Desk</h4>
-          <ul>
-            <li><a href="contact.html">Contact Form</a></li>
-            <li>export@seaweedasia.com</li>
-            <li>Jakarta, Indonesia</li>
-          </ul>
-        </div>
-      </div>
-      <p>&copy; 2026 SeaweedAsia. All rights reserved.</p>
-    </div>
-  </footer>
-
+  <!-- FOOTER -->
   <footer>
     <div class="wrap">
       <p>&copy; 2026 SeaweedAsia. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- PASTE THE CHATBOT CODE RIGHT HERE -->
+  <!-- ==========================================
+     SEAWEEDASIA EMBEDDABLE CHATBOT WIDGET HTML
+     ========================================== -->
   <div id="sa-chat-widget">
-    ...
+    <div id="sa-chat-window">
+      <div class="sa-chat-header">
+        <div class="sa-chat-title">
+          <h4>SeaweedAsia Support</h4>
+          <span>Online | Ask us anything</span>
+        </div>
+        <button id="sa-chat-close">&times;</button>
+      </div>
+      <div class="sa-chat-messages" id="sa-chat-msgs">
+        <div class="sa-msg bot">Hello! Welcome to SeaweedAsia. How can I help you with our raw seaweed grades, specifications, or shipping today?</div>
+      </div>
+      <div class="sa-chat-input-area">
+        <input type="text" id="sa-chat-input" placeholder="Type your question..." />
+        <button id="sa-chat-send">Send</button>
+      </div>
+    </div>
+    <button id="sa-chat-toggle" aria-label="Open Chat">
+      <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </button>
   </div>
 
-</body>
-</html>
+  <script>
+    const toggleBtn = document.getElementById('sa-chat-toggle');
+    const chatWindow = document.getElementById('sa-chat-window');
+    const closeBtn = document.getElementById('sa-chat-close');
+    const sendBtn = document.getElementById('sa-chat-send');
+    const inputField = document.getElementById('sa-chat-input');
+    const msgContainer = document.getElementById('sa-chat-msgs');
+
+    function toggleChat() {
+      chatWindow.classList.toggle('active');
+    }
+
+    toggleBtn.addEventListener('click', toggleChat);
+    closeBtn.addEventListener('click', toggleChat);
+
+    function handleSend() {
+      const text = inputField.value.trim();
+      if (!text) return;
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'sa-msg user';
+      userMsg.textContent = text;
+      msgContainer.appendChild(userMsg);
+      inputField.value = '';
+      msgContainer.scrollTop = msgContainer.scrollHeight;
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'sa-msg bot';
+        botMsg.textContent = "Thanks for your inquiry! Our sales desk handles custom container quotations directly. Feel free to fill out our Quote Form on the Contact page, or let me know if you need specific moisture/impurity data.";
+        msgContainer.appendChild(botMsg);
+        msgContainer.scrollTop = msgContainer.scrollHeight;
+      }, 800);
+    }
+
+    sendBtn.addEventListener('click', handleSend);
+    inputField.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleSend();
+    });
+  </script>
 
 </body>
 </html>
