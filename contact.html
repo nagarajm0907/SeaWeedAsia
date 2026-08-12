@@ -1,16 +1,255 @@
-<!-- GOOGLE MAP CARD -->
-<div class="info-card" style="padding: 0; overflow: hidden;">
-  <div style="padding: 24px 24px 12px;">
-    <h4 style="color: var(--seafoam); font-size: 14px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px;">Global Headquarters Location</h4>
-    <p style="color: #fff; font-size: 15px; margin-bottom: 0;">Jakarta Trade Tower, Indonesia</p>
-  </div>
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.28298064115!2d106.759478!3d-6.2297465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Special%20Capital%20Region%20of%20Jakarta%2C%20Indonesia!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
-    width="100%" 
-    height="260" 
-    style="border:0; display: block; filter: saturate(0.8) contrast(1.1);" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Inquiries | SeaweedAsia</title>
+<meta name="description" content="Get in touch with SeaweedAsia for bulk orders, spec sheets, custom moisture targets, and international trade quotes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #061420;
+  --bg-panel: #0B2431;
+  --bg-panel-2: #0F2E3C;
+  --teal: #1FA396;
+  --seafoam: #6EEBD4;
+  --sand: #E8C77E;
+  --ink: #EAF3F1;
+  --muted: #90ADAB;
+  --line: rgba(234,243,241,0.10);
+  --radius: 16px;
+  --serif: 'Fraunces', serif;
+  --sans: 'Inter', sans-serif;
+  --glass-border: rgba(234,243,241,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+h1,h2,h3,h4 { font-family: var(--serif); font-weight: 600; color: #fff; }
+p { color: var(--muted); margin-bottom: 1em; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; }
+.logo span { color: var(--seafoam); }
+.nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+.nav-links a:hover, .nav-links a.active { color: var(--seafoam); }
+.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; transition: opacity 0.2s; }
+
+/* HERO */
+.page-hero { padding: 80px 0 40px; text-align: center; background: radial-gradient(circle at top, rgba(31,163,150,0.15) 0%, transparent 70%); border-bottom: 1px solid var(--line); }
+.eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--seafoam); background: rgba(110,235,212,.1); border: 1px solid rgba(110,235,212,.3); padding: 6px 16px; border-radius: 999px; margin-bottom: 16px; }
+.page-hero h1 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 12px; }
+
+/* CONTACT GRID */
+.contact-section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+
+.info-card { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px; margin-bottom: 24px; }
+.info-item { margin-bottom: 20px; }
+.info-item:last-child { margin-bottom: 0; }
+.info-item h4 { color: var(--seafoam); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.info-item p { color: var(--ink); margin-bottom: 0; font-size: 15px; }
+
+/* MAP CARD STYLES */
+.map-card-wrapper { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-top: 24px; }
+.map-header { padding: 20px 24px; border-bottom: 1px solid var(--line); }
+.eyebrow-small { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--seafoam); margin-bottom: 2px; }
+.map-header h3 { font-size: 18px; margin: 0; color: #fff; }
+.map-frame-container iframe { display: block; filter: contrast(1.05) saturate(0.9) brightness(0.95); transition: filter 0.3s ease; }
+.map-frame-container:hover iframe { filter: contrast(1) saturate(1) brightness(1); }
+
+/* FORM STYLES */
+.contact-form { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 40px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.form-control { width: 100%; background: var(--bg-panel-2); border: 1px solid var(--glass-border); border-radius: 8px; padding: 12px 16px; color: #fff; font-family: var(--sans); font-size: 15px; outline: none; transition: border-color 0.2s; }
+.form-control:focus { border-color: var(--seafoam); }
+textarea.form-control { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.btn-submit { width: 100%; background: var(--seafoam); color: #06211D; font-weight: 700; font-size: 16px; padding: 14px; border: none; border-radius: 999px; cursor: pointer; transition: transform 0.2s, opacity 0.2s; }
+.btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* TRUST BANNER */
+.trust-banner { padding: 60px 0; text-align: center; background: var(--bg-panel-2); }
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+.trust-item h3 { color: var(--seafoam); font-size: 28px; margin-bottom: 8px; }
+
+footer { padding: 40px 0; text-align: center; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+
+@media (max-width: 868px) {
+  .contact-grid, .form-row, .trust-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrap">
+      <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
+      <div class="nav-links">
+        <a href="index.html#about">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="process.html">Process</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <a href="contact.html" class="nav-cta">Get Quote</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Let's Connect</span>
+      <h1>Start Your Trade Inquiry</h1>
+      <p>Whether you need lab samples, technical data sheets, or FOB/CIF pricing for bulk shipments, our trade specialists are here to help.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT & FORM -->
+  <section class="contact-section">
+    <div class="wrap contact-grid">
+      
+      <!-- LEFT COLUMN: CONTENT, INFO & GOOGLE MAP -->
+      <div class="animate-fade">
+        <div class="info-card">
+          <h2>Direct Ocean Sourcing Partner</h2>
+          <p style="margin-top: 12px; font-size: 15px;">We eliminate unnecessary intermediaries by establishing direct connections between coastal Indonesian farming networks and international hydrocolloid processors.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="info-item">
+            <h4>Trade Headquarters</h4>
+            <p>Jakarta Trade Tower, Level 14<br>Jl. Jend. Sudirman, Jakarta, Indonesia</p>
+          </div>
+          <div class="info-item">
+            <h4>Direct Trade Desk</h4>
+            <p>export@seaweedasia.com<br>+62 21 555 0192</p>
+          </div>
+          <div class="info-item">
+            <h4>Response Guarantee</h4>
+            <p>Quotations and spec sheets dispatched within 24 business hours.</p>
+          </div>
+        </div>
+
+        <!-- STYLED MAP CONTAINER -->
+        <div class="map-card-wrapper">
+          <div class="map-header">
+            <span class="eyebrow-small">Global Headquarters Location</span>
+            <h3>Jakarta, Indonesia</h3>
+          </div>
+          <div class="map-frame-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.28298064115!2d106.759478!3d-6.2297465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Special%20Capital%20Region%20of%20Jakarta%2C%20Indonesia!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+              width="100%" 
+              height="260" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: INTERACTIVE FORM -->
+      <div class="contact-form animate-fade">
+        <h3 style="font-size: 24px; margin-bottom: 8px;">Request a Custom Quotation</h3>
+        <p style="margin-bottom: 24px; font-size: 14px;">Fill out the specifications below to receive localized CIF/FOB freight pricing and moisture certificates.</p>
+
+        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for your inquiry! Our trade desk will respond within 24 hours.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" class="form-control" placeholder="e.g. Elena" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" class="form-control" placeholder="e.g. Rostova" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Business Email *</label>
+              <input type="email" id="email" class="form-control" placeholder="name@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name *</label>
+              <input type="text" id="company" class="form-control" placeholder="e.g. Hydrocolloids Ltd" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="product">Product of Interest *</label>
+            <select id="product" class="form-control" required>
+              <option value="" disabled selected>Select a Raw Material...</option>
+              <option value="cottonii">Eucheuma Cottonii (Kappa-Carrageenan Grade)</option>
+              <option value="spinosum">Eucheuma Spinosum (Iota-Carrageenan Grade)</option>
+              <option value="gracilaria">Gracilaria Seaweed (Agar-Agar Grade)</option>
+              <option value="mixed">Mixed Container Shipment</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Estimated Monthly Volume (MT)</label>
+            <input type="text" id="quantity" class="form-control" placeholder="e.g. 25 MT (1 FCL) or Sample Request">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Specific Specifications or Port of Destination *</label>
+            <textarea id="message" class="form-control" placeholder="Provide details regarding target moisture, impurity limits, or preferred shipping terms (FOB/CIF)..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Submit Official Inquiry &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST METRICS -->
+  <section class="trust-banner">
+    <div class="wrap">
+      <h2>Reliable Global Ocean Supply Chains</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h3>24/7</h3>
+          <p>Lab Moisture Testing & Quality Logs</p>
+        </div>
+        <div class="trust-item">
+          <h3>100%</h3>
+          <p>Export Standard Sun-Drying Process</p>
+        </div>
+        <div class="trust-item">
+          <h3>15+</h3>
+          <p>Direct Destination Ports Supported</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>&copy; 2026 SeaweedAsia. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
