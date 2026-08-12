@@ -109,9 +109,8 @@ nav .wrap { display:flex; align-items:center; justify-content:space-between; pad
 .hero {
   padding:120px 0 160px;
   background:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(31,163,150,.32), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(110,235,212,.16), transparent 60%),
-    linear-gradient(180deg, #081226 0%, var(--bg) 60%);
+    linear-gradient(180deg, rgba(6,20,32,0.8) 0%, rgba(6,20,32,0.95) 100%),
+    url('ASSET/hero-drone.jpg') center/cover no-repeat;
   overflow:hidden; position:relative;
 }
 .eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--seafoam); background:rgba(110,235,212,.08); border:1px solid rgba(110,235,212,.25); padding:6px 14px; border-radius:999px; margin-bottom:24px; }
@@ -130,9 +129,11 @@ nav .wrap { display:flex; align-items:center; justify-content:space-between; pad
 .tag-row .tag { color:var(--sand); font-weight:600; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
 .section-head h2 { font-size:clamp(28px,3.5vw,40px); color:#fff; }
 
+.card-img { width:100%; height:180px; object-fit:cover; border-radius:12px; margin-bottom:20px; }
+
 .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
 .product-card {
-  background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:32px;
+  background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:24px;
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
   transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
   position:relative; overflow:hidden;
@@ -143,14 +144,17 @@ nav .wrap { display:flex; align-items:center; justify-content:space-between; pad
 .product-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
 .product-tags span { font-size:12px; font-weight:600; color:var(--seafoam); background:rgba(110,235,212,.08); border:1px solid rgba(110,235,212,.2); padding:4px 10px; border-radius:999px; }
 
+.media-feature { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-bottom:60px; }
+.media-feature img { width:100%; height:320px; object-fit:cover; border-radius:var(--radius); border:1px solid var(--glass-border); }
+
 .qa-section { background:var(--bg-panel); }
 .qa-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
 .qa-item { display:flex; gap:16px; align-items:flex-start; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:14px; padding:20px 22px; }
 .qa-check { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--teal); color:#06211D; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:2px; }
 
 .regions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.region-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:28px; }
-.region-card h4 { color:#fff; font-size:20px; }
+.region-card { background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:var(--radius); padding:24px; }
+.region-card h4 { color:#fff; font-size:20px; margin-top:12px; }
 
 .contact-box { background:var(--bg-panel); border:1px solid var(--line); border-radius:24px; padding:48px; max-width:800px; margin:0 auto; }
 .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
@@ -175,7 +179,7 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
   .nav-links { display:none; }
   .nav-toggle { display:flex; }
   .stats .wrap { grid-template-columns:1fr 1fr; }
-  .products-grid, .qa-grid, .regions-grid { grid-template-columns:1fr; }
+  .products-grid, .qa-grid, .regions-grid, .media-feature { grid-template-columns:1fr; }
   .form-grid { grid-template-columns:1fr; }
   .form-group.full { grid-column:span 1; }
   .footer-grid { grid-template-columns:1fr 1fr; }
@@ -265,6 +269,8 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
 
       <div class="products-grid reveal">
         <div class="product-card">
+          <!-- Prompt 2: Close-up macro of wet Eucheuma Cottonii seaweed strands -->
+          <img src="ASSET/cottonii-macro.jpg" alt="Close-up macro of wet Eucheuma Cottonii seaweed strands, water droplets, vivid green-red hues, shallow depth of field" class="card-img">
           <h3>Eucheuma Cottonii</h3>
           <span class="latin">Kappaphycus alvarezii</span>
           <p>High kappa-carrageenan yield. Ideal for food stabilization, dairy gels, and industrial carrageenan extraction.</p>
@@ -276,6 +282,8 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
         </div>
 
         <div class="product-card">
+          <!-- Prompt 5: Overhead shot of long-line seaweed cultivation rafts -->
+          <img src="ASSET/spinosum-line.jpg" alt="Overhead shot of long-line seaweed cultivation rafts forming a grid pattern across a shallow bay" class="card-img">
           <h3>Eucheuma Spinosum</h3>
           <span class="latin">Eucheuma denticulatum</span>
           <p>Rich in iota-carrageenan. Perfect for elastic gels, personal care formulas, and pet food applications.</p>
@@ -287,6 +295,8 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
         </div>
 
         <div class="product-card">
+          <!-- Prompt 12: Close-up of sun-dried seaweed strands -->
+          <img src="ASSET/gracilaria-dried.jpg" alt="Close-up of sun-dried seaweed strands, curled and pale, texture detail" class="card-img">
           <h3>Gracilaria Seaweed</h3>
           <span class="latin">Gracilaria verrucosa</span>
           <p>Premium agar-agar feedstock harvested from coastal brackish ponds and clean marine inlets.</p>
@@ -300,13 +310,47 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
     </div>
   </section>
 
-  <!-- QUALITY -->
+  <!-- CULTIVATION & HARVESTING HIGHLIGHT -->
+  <section class="section" style="background:var(--bg-panel-2);">
+    <div class="wrap">
+      <div class="media-feature reveal">
+        <!-- Prompt 4: Indonesian seaweed farmer wading chest-deep -->
+        <img src="ASSET/farmer-wading.jpg" alt="Indonesian seaweed farmer wading chest-deep in clear water, tying seaweed seedlings to a rope line, ocean and hills in background">
+        <div>
+          <div class="tag-row"><span class="tag">Archipelago Cultivation</span></div>
+          <h2>Traditional Line-Tying Techniques</h2>
+          <p>Our farmers hand-tie seedling cuttings to monofilament long-lines anchored along nutrient-rich marine channels to promote rapid, natural growth.</p>
+        </div>
+      </div>
+
+      <div class="media-feature reveal" style="margin-bottom:0;">
+        <div>
+          <div class="tag-row"><span class="tag">Sustainable Harvest</span></div>
+          <h2>Hand-Harvested Marine Bounties</h2>
+          <p>Every strand is harvested by hand into woven baskets and transported in wooden canoes to maintain pristine biomass purity.</p>
+        </div>
+        <!-- Prompt 8: Farmer harvesting seaweed by hand from a rope line -->
+        <img src="ASSET/harvest-hand.jpg" alt="Farmer harvesting seaweed by hand from a rope line, pulling up dripping strands into a woven basket, mid-morning light">
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITY & PROCESSING -->
   <section class="section qa-section" id="quality">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="tag-row"><span class="tag">Quality Standard</span></div>
-        <h2>Rigorous Export QA Protocols</h2>
+        <h2>Rigorous Export QA & Processing</h2>
         <p>Every shipment is verified for moisture percentages, yield factors, and phytosanitary compliance.</p>
+      </div>
+
+      <div class="media-feature reveal">
+        <!-- Prompt 11: Rows of seaweed spread out on raised bamboo drying racks -->
+        <img src="ASSET/drying-racks.jpg" alt="Rows of seaweed spread out on raised bamboo drying racks under bright tropical sun, worker walking between rows">
+        <div>
+          <h3>Elevated Solar Platform Drying</h3>
+          <p>Drying seaweed off the sand on bamboo mesh platforms avoids contamination and controls moisture levels to strict commercial exporter standards.</p>
+        </div>
       </div>
 
       <div class="qa-grid reveal">
@@ -320,8 +364,9 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
         <div class="qa-item">
           <div class="qa-check">✓</div>
           <div>
-            <h4>Solar Platform Drying</h4>
-            <p>Dried on elevated mesh beds off the sand, keeping impurity levels strictly below 3%.</p>
+            <h4>Laboratory & Sorting Verification</h4>
+            <!-- Prompt 13: Interior of a processing facility, workers sorting -->
+            <p>Workers sort and grade dried strands on stainless steel tables prior to packing.</p>
           </div>
         </div>
         <div class="qa-item">
@@ -334,35 +379,53 @@ footer { padding:64px 0 32px; border-top:1px solid var(--line); margin-top:60px;
         <div class="qa-item">
           <div class="qa-check">✓</div>
           <div>
-            <h4>Direct Co-Op Procurement</h4>
-            <p>Ensures ethical trade, stable supply chains, and transparent price structures for buyers.</p>
+            <h4>Warehouse Scale Capping</h4>
+            <!-- Prompt 14: Warehouse shot of dried seaweed being bagged and weighed -->
+            <p>Bagged and weighed on calibrated industrial scales for precise shipment metric reporting.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REGIONS -->
+  <!-- REGIONS & LOGISTICS -->
   <section class="section" id="regions">
     <div class="wrap">
       <div class="section-head reveal">
-        <div class="tag-row"><span class="tag">Sourcing Hubs</span></div>
-        <h2>Key Indonesian Archipelago Origins</h2>
-        <p>Strategic purchasing nodes across key growing zones in Indonesia.</p>
+        <div class="tag-row"><span class="tag">Sourcing & Shipping</span></div>
+        <h2>Origins & Ocean Freight Logistics</h2>
+        <p>Strategic purchasing and container loading points across key Indonesian ports.</p>
       </div>
 
-      <div class="regions-grid reveal">
+      <div class="regions-grid reveal" style="margin-bottom:60px;">
         <div class="region-card">
+          <!-- Prompt 3: Wide shot of traditional Indonesian fishing village on stilts -->
+          <img src="ASSET/village-stilts.jpg" alt="Wide shot of a traditional Indonesian fishing village on stilts at sunrise, seaweed drying racks in foreground" class="card-img">
           <h4>South Sulawesi</h4>
           <p>Takalar, Bantaeng & Puntondo reef lines known for high gel-strength Cottonii production.</p>
         </div>
         <div class="region-card">
+          <!-- Prompt 10: Wide beach scene, dozens of villagers unloading -->
+          <img src="ASSET/beach-unloading.jpg" alt="Wide beach scene, dozens of villagers unloading harvested seaweed from boats onto the shore" class="card-img">
           <h4>East Nusa Tenggara</h4>
           <p>Sumba and Kupang clear-water oceanic currents producing premium grade Spinosum.</p>
         </div>
         <div class="region-card">
+          <!-- Prompt 7: Group of farmers paddling traditional wooden canoes -->
+          <img src="ASSET/canoes-shore.jpg" alt="Group of farmers paddling traditional wooden canoes loaded with fresh-cut seaweed toward shore" class="card-img">
           <h4>West Nusa Tenggara</h4>
           <p>Sumbawa coastal cooperatives delivering consistent, sun-dried commercial volume year-round.</p>
+        </div>
+      </div>
+
+      <!-- EXPORT LOGISTICS SECTION -->
+      <div class="media-feature reveal">
+        <!-- Prompt 15: Shipping container yard at an Indonesian port -->
+        <img src="ASSET/port-containers.jpg" alt="Shipping container yard at an Indonesian port, cranes loading containers, cargo ship in background at dusk">
+        <div>
+          <div class="tag-row"><span class="tag">Global Dispatch</span></div>
+          <h2>Global Ocean Freight Infrastructure</h2>
+          <p>From port loading in Surabaya and Makassar to destination hubs in Qingdao, Europe, and South America, we handle full container load (FCL) export logistics.</p>
         </div>
       </div>
     </div>
