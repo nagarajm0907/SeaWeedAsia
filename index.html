@@ -27,21 +27,43 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 h1,h2,h3,h4 { font-family: var(--serif); font-weight: 600; color: #fff; }
 p { color: var(--muted); margin-bottom: 1em; }
 a { color: inherit; text-decoration: none; }
 .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
 
+/* ANIMATION KEYFRAMES */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.45s; }
+
 /* NAV */
-nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
+nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); transition: all 0.3s ease; }
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; }
+.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; transition: transform 0.3s ease; }
+.logo:hover { transform: scale(1.02); }
 .logo span { color: var(--seafoam); }
 .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+.nav-links a { transition: color 0.3s ease; }
 .nav-links a:hover, .nav-links a.active { color: var(--seafoam); }
-.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; transition: opacity 0.2s; }
-.nav-cta:hover { opacity: 0.9; }
+.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(31,163,150,0.4); }
 
 /* HERO */
 .hero { padding: 120px 0 100px; background: radial-gradient(circle at 50% 20%, rgba(31,163,150,0.22) 0%, transparent 65%); border-bottom: 1px solid var(--line); }
@@ -50,8 +72,10 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .hero h1 { font-size: clamp(38px, 5.5vw, 68px); line-height: 1.12; margin-bottom: 24px; }
 .hero p { font-size: 19px; margin-bottom: 36px; }
 .hero-actions { display: flex; gap: 16px; justify-content: center; }
-.btn-primary { background: var(--seafoam); color: #06211D; font-weight: 700; padding: 14px 32px; border-radius: 999px; }
-.btn-secondary { background: var(--bg-panel); color: var(--ink); border: 1px solid var(--glass-border); font-weight: 600; padding: 14px 32px; border-radius: 999px; }
+.btn-primary { background: var(--seafoam); color: #06211D; font-weight: 700; padding: 14px 32px; border-radius: 999px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(110,235,212,0.4); }
+.btn-secondary { background: var(--bg-panel); color: var(--ink); border: 1px solid var(--glass-border); font-weight: 600; padding: 14px 32px; border-radius: 999px; transition: transform 0.3s ease, border-color 0.3s ease; }
+.btn-secondary:hover { transform: translateY(-3px); border-color: var(--seafoam); }
 
 /* STATS STRIP */
 .stats-strip { padding: 48px 0; background: var(--bg-panel-2); border-bottom: 1px solid var(--line); }
@@ -64,21 +88,26 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .section-title { text-align: center; margin-bottom: 56px; max-width: 680px; margin-left: auto; margin-right: auto; }
 .section-title h2 { font-size: 38px; margin-bottom: 12px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.card { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; padding: 28px; transition: transform 0.3s ease; }
-.card:hover { transform: translateY(-4px); }
-.card-img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+.card { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); overflow: hidden; padding: 28px; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; }
+.card:hover { transform: translateY(-8px); border-color: rgba(110,235,212,0.3); box-shadow: 0 12px 32px rgba(6,20,32,0.8); }
+.card-img-wrap { overflow: hidden; border-radius: 12px; margin-bottom: 20px; height: 220px; }
+.card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.card:hover .card-img { transform: scale(1.06); }
 .card h3 { font-size: 22px; margin-bottom: 8px; }
 
 /* PROCESS PREVIEW */
 .process-preview { padding: 90px 0; background: var(--bg-panel); border-bottom: 1px solid var(--line); }
 .process-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
-.timeline-step { background: var(--bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 24px; position: relative; }
+.timeline-step { background: var(--bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 24px; transition: transform 0.3s ease, border-color 0.3s ease; }
+.timeline-step:hover { transform: translateY(-4px); border-color: var(--seafoam); }
 .step-badge { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--seafoam); margin-bottom: 12px; }
 
 /* ABOUT SECTION */
 .about-section { padding: 90px 0; border-bottom: 1px solid var(--line); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-.about-img { width: 100%; height: 440px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--glass-border); }
+.about-img-wrap { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--glass-border); height: 440px; }
+.about-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.about-img-wrap:hover .about-img { transform: scale(1.04); }
 
 /* QUALITY & LAB SECTION */
 .quality-section { padding: 90px 0; border-bottom: 1px solid var(--line); }
@@ -86,13 +115,16 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 
 /* CONTACT BANNER */
 .contact-banner { padding: 90px 0; text-align: center; background: radial-gradient(circle at center, rgba(31,163,150,0.15) 0%, transparent 70%); }
-.contact-box { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 56px; max-width: 680px; margin: 0 auto; }
+.contact-box { background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 56px; max-width: 680px; margin: 0 auto; transition: transform 0.3s ease; }
+.contact-box:hover { transform: scale(1.01); }
 
 footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; text-align: left; }
 .footer-col h4 { color: #fff; margin-bottom: 16px; font-size: 16px; }
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 8px; }
+.footer-col a { transition: color 0.2s ease; }
+.footer-col a:hover { color: var(--seafoam); }
 
 @media (max-width: 868px) {
   .grid-3, .about-grid, .stats-grid, .process-timeline, .quality-card, .footer-grid { grid-template-columns: 1fr; }
@@ -120,7 +152,7 @@ footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top:
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero-content">
+    <div class="wrap hero-content animate-fade">
       <span class="eyebrow">Direct Indonesian Origin</span>
       <h1>Sustainably Farmed Seaweed for Global Hydrocolloid Processors</h1>
       <p>We connect international food, pharmaceutical, and cosmetic manufacturers directly with certified seaweed farmer networks across the Indonesian archipelago.</p>
@@ -135,19 +167,19 @@ footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top:
   <section class="stats-strip">
     <div class="wrap">
       <div class="stats-grid">
-        <div>
+        <div class="animate-fade delay-1">
           <div class="stat-number">1,200+</div>
           <div class="stat-label">Metric Tons Exported</div>
         </div>
-        <div>
+        <div class="animate-fade delay-1">
           <div class="stat-number">32% Max</div>
           <div class="stat-label">Moisture Guarantee</div>
         </div>
-        <div>
+        <div class="animate-fade delay-2">
           <div class="stat-number">100%</div>
           <div class="stat-label">Traceable Farmers</div>
         </div>
-        <div>
+        <div class="animate-fade delay-2">
           <div class="stat-number">&lt; 3%</div>
           <div class="stat-label">Impurity Ratio</div>
         </div>
@@ -158,28 +190,34 @@ footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top:
   <!-- PRODUCTS HIGHLIGHT -->
   <section class="features">
     <div class="wrap">
-      <div class="section-title">
+      <div class="section-title animate-fade">
         <h2>Primary Export Raw Materials</h2>
         <p>Thoroughly dried and lab-verified for optimal Kappa and Iota extraction yields.</p>
       </div>
       <div class="grid-3">
         
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Eucheuma Cottonii" class="card-img">
+        <div class="card animate-fade delay-1">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Eucheuma Cottonii" class="card-img">
+          </div>
           <h3>Eucheuma Cottonii</h3>
           <p>The leading feedstock for Kappa-Carrageenan, delivering strong, rigid gel performance for dairy and pet food processing.</p>
           <a href="products.html" style="color: var(--seafoam); font-weight: 600;">View Full Specs &rarr;</a>
         </div>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Eucheuma Spinosum" class="card-img">
+        <div class="card animate-fade delay-2">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Eucheuma Spinosum" class="card-img">
+          </div>
           <h3>Eucheuma Spinosum</h3>
           <p>Primary source for elastic, clear Iota-carrageenan gels. Highly sought after for confectionery and personal care applications.</p>
           <a href="products.html" style="color: var(--seafoam); font-weight: 600;">View Full Specs &rarr;</a>
         </div>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Gracilaria Seaweed" class="card-img">
+        <div class="card animate-fade delay-3">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Gracilaria Seaweed" class="card-img">
+          </div>
           <h3>Gracilaria Seaweed</h3>
           <p>High gel-strength wild and pond-harvested Gracilaria, engineered for food-grade agar-agar production.</p>
           <a href="products.html" style="color: var(--seafoam); font-weight: 600;">View Full Specs &rarr;</a>
@@ -233,7 +271,9 @@ footer { padding: 60px 0 40px; font-size: 14px; color: var(--muted); border-top:
         <p>SeaweedAsia connects local farming cooperatives in South Sulawesi and NTT directly to global supply chains. By guaranteeing fair purchasing rates and supplying standardized drying equipment, we help coastal communities thrive.</p>
         <p>For international buyers, this direct involvement eliminates middleman markups, secures consistent batch parameters, and ensures reliable year-round fulfillment.</p>
       </div>
-      <img src="https://images.unsplash.com/photo-1468581264429-2548ef9eb732?auto=format&fit=crop&w=800&q=80" alt="Ocean Seaweed Farm" class="about-img">
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1468581264429-2548ef9eb732?auto=format&fit=crop&w=800&q=80" alt="Ocean Seaweed Farm" class="about-img">
+      </div>
     </div>
   </section>
 
