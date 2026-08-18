@@ -1,133 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harvesting & Processing Journey | SeaweedAsia</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg: #061420;
-  --bg-panel: #0B2431;
-  --teal: #1FA396;
-  --seafoam: #6EEBD4;
-  --ink: #EAF3F1;
-  --muted: #90ADAB;
-  --line: rgba(234,243,241,0.10);
-  --radius: 16px;
-  --serif: 'Fraunces', serif;
-  --sans: 'Inter', sans-serif;
-  --glass-border: rgba(234,243,241,0.14);
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
-h1,h2,h3 { font-family: var(--serif); color: #fff; }
-p { color: var(--muted); }
-a { color: inherit; text-decoration: none; }
-.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-
-nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; }
-.logo span { color: var(--seafoam); }
-.nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
-.nav-links a:hover, .nav-links a.active { color: var(--seafoam); }
-.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; }
-
-.page-hero { padding: 80px 0 40px; text-align: center; border-bottom: 1px solid var(--line); }
-.eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--seafoam); background: rgba(110,235,212,.1); border: 1px solid rgba(110,235,212,.3); padding: 6px 16px; border-radius: 999px; margin-bottom: 16px; }
-
-/* STEPS */
-.process-steps { padding: 60px 0; }
-.step-card { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 32px; margin-bottom: 48px; background: var(--bg-panel); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 32px; align-items: center; }
-.step-num { font-family: var(--serif); font-size: 48px; font-weight: 700; color: var(--seafoam); }
-.step-img { width: 100%; height: 260px; object-fit: cover; border-radius: 12px; }
-
-footer { padding: 40px 0; text-align: center; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
-
-@media (max-width: 868px) { .step-card { grid-template-columns: 1fr; } }
-</style>
+    <meta charset="UTF-8">
+    <title>SeaweedAsia — Our Process</title>
 </head>
 <body>
-
-  <nav>
-    <div class="wrap">
-      <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
-      <div class="nav-links">
-        <a href="index.html#about">About Us</a>
-        <a href="products.html">Products</a>
-        <a href="process.html" class="active">Process</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-      <a href="index.html#contact" class="nav-cta">Get Quote</a>
-    </div>
-  </nav>
-
-  <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow">Quality Assurance</span>
-      <h1>From Ocean Farming to Global Shipping</h1>
-      <p>How we maintain stringent quality control across every stage of the supply chain.</p>
-    </div>
-  </section>
-
-  <section class="process-steps">
-    <div class="wrap">
-
-      <!-- STEP 1 -->
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <div>
-          <h2>Ocean Planting & Harvesting</h2>
-          <p>Cultivated along 45-day growth cycles on monofilament long-lines in pristine coastal currents. Harvested by hand to preserve crop health and carrageenan integrity.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Seaweed Harvest" class="step-img">
-      </div>
-
-      <!-- STEP 2 -->
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <div>
-          <h2>Solar Platform Drying</h2>
-          <p>Dried exclusively on elevated bamboo tables above coastal sands to prevent silica contamination and ensure moisture drops below 35% evenly.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Sun Drying" class="step-img">
-      </div>
-
-      <!-- STEP 3 -->
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <div>
-          <h2>Sorting & Quality Testing</h2>
-          <p>Manual sorting tables remove residual salt, shells, and non-target species. Batches are sample-tested for gel strength and anhydrous yield.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" alt="Quality Inspection" class="step-img">
-      </div>
-
-      <!-- STEP 4 -->
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <div>
-          <h2>Baling & Container Dispatch</h2>
-          <p>Hydraulically compressed into high-density 100kg bales, moisture-sealed with protective liners, and loaded into 40ft High Cube containers for international export.</p>
-        </div>
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Baling and Freight" class="step-img">
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <p>&copy; 2026 SeaweedAsia. All rights reserved.</p>
-    </div>
-  </footer>
-
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="process.html">Process</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Our Process</h1>
+        <ol>
+            <li><strong>Farm:</strong> Grown on racks or long-lines suited to each species, on farms we've mapped and registered by GPS.</li>
+            <li><strong>Harvest:</strong> Graded by our field team at the point of harvest, tagged with a batch ID tied to that farmer and plot.</li>
+            <li><strong>Dry:</strong> Sun-dried on raised bamboo racks — never machine-dried, preserving colour and gel strength.</li>
+            <li><strong>Verify:</strong> Second inspection and lab testing at our consolidation point, checked against the batch record.</li>
+            <li><strong>Ship:</strong> Container-ready packaging, with every bag traceable back to the farmer and farm plot.</li>
+        </ol>
+    </main>
 </body>
 </html>
