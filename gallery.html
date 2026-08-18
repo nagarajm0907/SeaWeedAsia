@@ -1,125 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Gallery | SeaweedAsia</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg: #061420;
-  --bg-panel: #0B2431;
-  --teal: #1FA396;
-  --seafoam: #6EEBD4;
-  --ink: #EAF3F1;
-  --muted: #90ADAB;
-  --line: rgba(234,243,241,0.10);
-  --radius: 16px;
-  --serif: 'Fraunces', serif;
-  --sans: 'Inter', sans-serif;
-  --glass-border: rgba(234,243,241,0.14);
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); }
-h1,h2 { font-family: var(--serif); color: #fff; }
-p { color: var(--muted); }
-a { color: inherit; text-decoration: none; }
-.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
-
-nav { position: sticky; top: 0; z-index: 50; background: rgba(6,20,32,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--glass-border); }
-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 80px; }
-.logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: #fff; }
-.logo span { color: var(--seafoam); }
-.nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
-.nav-links a:hover, .nav-links a.active { color: var(--seafoam); }
-.nav-cta { background: var(--teal); color: #06211D; font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 999px; }
-
-.page-hero { padding: 80px 0 40px; text-align: center; border-bottom: 1px solid var(--line); }
-.eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--seafoam); background: rgba(110,235,212,.1); border: 1px solid rgba(110,235,212,.3); padding: 6px 16px; border-radius: 999px; margin-bottom: 16px; }
-
-/* GALLERY MASONRY */
-.gallery-section { padding: 60px 0 100px; }
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
-.gallery-item { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--glass-border); height: 280px; }
-.gallery-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.gallery-item:hover .gallery-img { transform: scale(1.08); }
-.gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(transparent, rgba(6,20,32,0.95)); color: #fff; font-size: 14px; }
-
-footer { padding: 40px 0; text-align: center; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
-</style>
+    <meta charset="UTF-8">
+    <title>SeaweedAsia — Gallery</title>
 </head>
 <body>
-
-  <nav>
-    <div class="wrap">
-      <a href="index.html" class="logo">Seaweed<span>Asia</span></a>
-      <div class="nav-links">
-        <a href="index.html#about">About Us</a>
-        <a href="products.html">Products</a>
-        <a href="process.html">Process</a>
-        <a href="gallery.html" class="active">Gallery</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-      <a href="index.html#contact" class="nav-cta">Get Quote</a>
-    </div>
-  </nav>
-
-  <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow">Visual Tour</span>
-      <h1>Ocean Farms & Processing Facilities</h1>
-      <p>A glimpse into our coastal harvesting operations across the Indonesian archipelago.</p>
-    </div>
-  </section>
-
-  <section class="gallery-section">
-    <div class="wrap">
-      <div class="gallery-grid">
-        
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Undersea Seaweed Lines">
-          <div class="gallery-caption">Sub-surface long-line seaweed cultivation in clear waters.</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Coastal Drying Racks">
-          <div class="gallery-caption">Solar drying platforms situated along coastal shorelines.</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Marine Farming Canoes">
-          <div class="gallery-caption">Traditional wooden canoes transporting fresh harvests to shore.</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Port Loading Facility">
-          <div class="gallery-caption">High-cube containers prepared for ocean freight dispatch.</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1468581264429-2548ef9eb732?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Archipelago Waters">
-          <div class="gallery-caption">Pristine coastal channels supporting high-growth aquaculture.</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=80" class="gallery-img" alt="Seaweed Harvest Close Up">
-          <div class="gallery-caption">Close-up inspection of mature Eucheuma Cottonii biomass.</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <p>&copy; 2026 SeaweedAsia. All rights reserved.</p>
-    </div>
-  </footer>
-
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="products.html">Products</a>
+            <a href="process.html">Process</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Gallery</h1>
+        <p>From farm to container, in pictures.</p>
+        <ul>
+            <li><strong>Farm Site:</strong> Wide view of the farm site — floating buoy lines marking cultivation rows.</li>
+            <li><strong>Farmers:</strong> Farmers at the Seriwe cooperative sorting and tying seaweed by hand.</li>
+            <li><strong>Warehouse / Drying:</strong> Seaweed laid out to dry on raised bamboo racks.</li>
+            <li><strong>Harvest:</strong> Fresh harvest collected by boat, ready to bring to shore.</li>
+        </ul>
+    </main>
 </body>
 </html>
