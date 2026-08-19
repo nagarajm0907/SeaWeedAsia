@@ -31,11 +31,13 @@
         </div>
     </section>
 
-    <section>
+    <section id="rfq">
         <div class="wrap grid-2" style="align-items:start;">
             <div>
-                <h2>Send a Message</h2>
-                <form class="contact-form" action="#" method="post">
+                <span class="tag">Bulk / industrial buyers</span>
+                <h2>Request for Quote (RFQ)</h2>
+                <p style="font-size:0.92rem;max-width:52ch;">For container-scale orders. Fill in as much as you can &mdash; our export desk will follow up with pricing and a sample within 5 working days.</p>
+                <form class="contact-form" action="#" method="post" style="margin-top:10px;">
                     <div class="form-row">
                         <div>
                             <label for="name">Name</label>
@@ -52,28 +54,67 @@
                             <input type="text" id="country" name="country" required>
                         </div>
                         <div>
-                            <label for="species">Species of Interest</label>
-                            <select id="species" name="species">
-                                <option value="">Select&hellip;</option>
-                                <option>Cottonii</option>
-                                <option>Spinosum</option>
-                                <option>Gracilaria</option>
-                                <option>Sea Lettuce</option>
-                                <option>Sargassum</option>
-                                <option>Not sure yet</option>
-                            </select>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                     </div>
+
+                    <fieldset>
+                        <legend>Order Details</legend>
+                        <div class="form-row">
+                            <div>
+                                <label for="species">Species of Interest</label>
+                                <select id="species" name="species">
+                                    <option value="">Select&hellip;</option>
+                                    <option>Cottonii</option>
+                                    <option>Spinosum</option>
+                                    <option>Gracilaria</option>
+                                    <option>Sea Lettuce</option>
+                                    <option>Sargassum</option>
+                                    <option>Not sure yet</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="application">Industrial Application</label>
+                                <select id="application" name="application">
+                                    <option value="">Select&hellip;</option>
+                                    <option>Hydrocolloid / Carrageenan Processing</option>
+                                    <option>Food &amp; Beverage</option>
+                                    <option>Cosmetics &amp; Personal Care</option>
+                                    <option>Pharmaceutical</option>
+                                    <option>Agriculture / Biostimulant</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-top:16px;">
+                            <div>
+                                <label for="tonnage">Target Tonnage (MT)</label>
+                                <input type="text" id="tonnage" name="tonnage" placeholder="e.g. 60 MT / month">
+                            </div>
+                            <div>
+                                <label for="incoterm">Incoterms</label>
+                                <select id="incoterm" name="incoterm">
+                                    <option value="">Select&hellip;</option>
+                                    <option>FOB</option>
+                                    <option>CIF</option>
+                                    <option>CFR</option>
+                                    <option>Not sure yet</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin-top:16px;">
+                            <label for="port">Destination Port</label>
+                            <input type="text" id="port" name="port" placeholder="e.g. Port of Rotterdam">
+                        </div>
+                    </fieldset>
+
                     <div>
-                        <label for="volume">Estimated Monthly Volume</label>
-                        <input type="text" id="volume" name="volume" placeholder="e.g. 2 containers / month">
-                    </div>
-                    <div>
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message"></textarea>
+                        <label for="message">Additional Notes</label>
+                        <textarea id="message" name="message" placeholder="Spec requirements, timeline, or anything else we should know"></textarea>
                     </div>
                     <div class="cta-row">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit RFQ</button>
                     </div>
                 </form>
             </div>
@@ -109,22 +150,6 @@
             <h2>FAQ</h2>
             <div style="margin-top:20px;">
                 <div class="faq-item">
-                    <h3>What seaweed species does SeaweedAsia supply?</h3>
-                    <p>We supply five main species: Cottonii (Kappaphycus alvarezii), Spinosum (Eucheuma denticulatum), Gracilaria, Sargassum, and Ulva (Ulva lactuca) &mdash; sourced directly from farmers in various parts of Indonesia.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What is the moisture content of your dried seaweed?</h3>
-                    <p>Sun-dried raw seaweed with standard moisture content of 35&ndash;38%, max 3&ndash;5% impurity. Grading and specs can be adjusted to buyer requirements.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How do I get a price quotation?</h3>
-                    <p>Send your product, species, and order volume through the form above or contact our export desk directly &mdash; we'll respond with a quotation based on current market pricing.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Where does your seaweed come from?</h3>
-                    <p>We source directly from smallholder farmers across Indonesia, with full traceability from farm to shipment &mdash; no cooperative or broker layer in between.</p>
-                </div>
-                <div class="faq-item">
                     <h3>What are your payment terms?</h3>
                     <p>Typically a 30% deposit via T/T upon order confirmation, with the remaining 70% due before shipment. Letters of Credit (L/C) can be arranged for larger orders.</p>
                 </div>
@@ -147,18 +172,6 @@
                 <div class="faq-item">
                     <h3>Which ports do you ship from?</h3>
                     <p>All major ports across Indonesia.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How is the seaweed packaged, and how much fits per container?</h3>
-                    <p>Packed in 50 kg bags. A 20ft container loads approximately 13&ndash;15 tons (~260&ndash;300 bags); a 40ft container loads approximately 23&ndash;25 tons (~460&ndash;500 bags).</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What is the shelf life, and how should it be stored?</h3>
-                    <p>Up to 12 months when stored in a cool, dry, sealed environment away from direct sunlight and moisture.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do you offer annual or long-term supply contracts?</h3>
-                    <p>Yes &mdash; recurring/annual supply agreements are available for buyers with consistent volume needs, alongside standard per-order purchases.</p>
                 </div>
             </div>
         </div>
