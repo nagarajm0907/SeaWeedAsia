@@ -8,6 +8,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ---- Header shadow on scroll ----
+  var header = document.querySelector('header.site-header');
+  if (header) {
+    var onScroll = function () {
+      if (window.scrollY > 8) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // ---- Scroll-reveal for cards, images, and repeating blocks ----
+  var revealTargets = document.querySelectorAll(
+    '.card, .step, .faq-item, .stat, .product-block, .testimonial-placeholder, .media-card, .gallery-grid figure, .gallery-grid .empty-slot'
+  );
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    revealTargets.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (Math.min(i % 6, 5) * 60) + 'ms';
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach(function (el) { io.observe(el); });
+  }
+
   // ---- Chatbot widget (front-end demo — wire to a real backend later) ----
   var chatToggle = document.getElementById('sa-chat-toggle');
   var chatPanel = document.getElementById('sa-chat-panel');
