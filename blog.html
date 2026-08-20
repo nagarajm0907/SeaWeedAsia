@@ -90,6 +90,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            align-items: stretch;
         }
 
         @media(max-width: 950px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -115,13 +116,14 @@
 
         .blog-img-container {
             width: 100%;
-            height: 180px;
+            min-height: 180px;
             background: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748b;
             font-weight: 500;
+            flex-shrink: 0;
         }
 
         .blog-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
