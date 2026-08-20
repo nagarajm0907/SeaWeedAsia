@@ -90,7 +90,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            align-items: stretch;
         }
 
         @media(max-width: 950px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -116,7 +115,7 @@
 
         .blog-img-container {
             width: 100%;
-            min-height: 180px;
+            height: 180px; /* Explicit height to prevent collapse */
             background: #e2e8f0;
             display: flex;
             align-items: center;
