@@ -20,7 +20,7 @@
             width: 100%;
         }
 
-        /* Make site header sticky and transition smoothly on scroll */
+        /* Make site header sticky and ensure inner wrapper controls alignment */
         .site-header {
             position: sticky;
             top: 0;
@@ -29,9 +29,21 @@
             border-bottom: 1px solid transparent;
             transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 0 !important;
+            width: 100%;
         }
 
-        /* Scrolled state for sticky header with aligned colors */
+        /* Constrain header content using standard site .wrap to align with page content */
+        .site-header .nav-inner {
+            max-width: var(--max-width, 1200px);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        /* Scrolled state for sticky header with aligned colors & glassmorphism */
         .site-header.scrolled {
             background: rgba(10, 25, 47, 0.85) !important;
             backdrop-filter: blur(12px);
