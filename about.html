@@ -11,6 +11,14 @@
         .on-sand-alt .card p {
             color: #111827 !important;
         }
+        
+        /* Make the header transparent and flow into the ocean background */
+        .site-header {
+            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.45)), url('story-bg.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -30,7 +38,7 @@
         </div>
     </header>
 
-    <!-- Perfectly balanced hero background image overlay -->
+    <!-- Ocean background flows continuously from the header -->
     <section class="hero" style="padding:70px 0 60px; background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.55)), url('story-bg.png'); background-size: cover; background-position: center;">
         <div class="wrap">
             <span class="tag">Since 2023</span>
