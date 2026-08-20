@@ -161,7 +161,13 @@ section {
   padding: 72px 0;
 }
 section.on-dark {
-  background: var(--teal-950);
+  background-color: var(--teal-950);
+  background-image:
+    linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
+    url('ocean-depths-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--sand-100);
 }
 section.on-sand-alt { background: var(--sand-200); }
