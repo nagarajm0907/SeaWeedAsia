@@ -12,22 +12,21 @@
             color: #111827 !important;
         }
         
-        /* Force the ocean background through the header */
+        /* Perfectly seamless header and hero blend with zero lines */
         .site-header {
-            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.45)), url('story-bg.png') !important;
+            background: url('story-bg.png') !important;
             background-size: cover !important;
-            background-position: center !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-            padding-bottom: 15px;
+            background-position: center top !important;
+            border-bottom: none !important;
+            margin-bottom: 0 !important;
         }
 
-        /* Make hero seamlessly attach right under the header */
         .hero {
-            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.55)), url('story-bg.png') !important;
+            background: url('story-bg.png') !important;
             background-size: cover !important;
-            background-position: center !important;
-            padding-top: 50px !important;
+            background-position: center bottom !important;
+            border-top: none !important;
+            padding-top: 20px !important;
         }
     </style>
 </head>
@@ -48,7 +47,7 @@
         </div>
     </header>
 
-    <!-- Ocean background flows continuously from the header -->
+    <!-- Ocean background flows continuously from the header with no seam -->
     <section class="hero">
         <div class="wrap">
             <span class="tag">Since 2023</span>
