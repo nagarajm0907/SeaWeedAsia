@@ -12,14 +12,15 @@
             color: #111827 !important;
         }
         
-        /* Master container holding header & hero together as one continuous background image */
+        /* Master container holding header & hero together with precise image positioning */
         .header-hero-wrapper {
-            background: url('story-bg.png') no-repeat center top;
+            background: url('story-bg.png') no-repeat;
             background-size: cover;
+            background-position: 0% 15%; /* Adjust this vertical percentage if you want to shift the image up or down */
             width: 100%;
         }
 
-        /* Make site header fully transparent to let the wave background pass through */
+        /* Make site header fully transparent to let the target wave background pass through */
         .site-header {
             background: transparent !important;
             border-bottom: none !important;
