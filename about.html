@@ -20,7 +20,7 @@
             width: 100%;
         }
 
-        /* Make site header sticky and ensure it handles the container width */
+        /* Make site header sticky and ensure it spans full width while centering inner content */
         .site-header {
             position: sticky;
             top: 0;
@@ -30,12 +30,14 @@
             transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 0 !important;
             width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
-        /* Force .nav-inner to match your .wrap maximum width and padding exactly */
+        /* Force .nav-inner to match your standard .wrap width and padding exactly */
         .site-header .nav-inner {
-            max-width: 1200px !important;
             width: 100% !important;
+            max-width: var(--max-width, 1200px) !important;
             margin: 0 auto !important;
             padding-left: 24px !important;
             padding-right: 24px !important;
