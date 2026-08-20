@@ -94,16 +94,35 @@
             width: 100%;
         }
 
-        /* Footer transparency settings */
+        /* ==========================================================
+           FOOTER CLEAN OVERRIDES (Fixes unwanted pill borders)
+           ========================================================== */
         .site-footer {
             background: transparent !important;
         }
+        
+        .site-footer .contact-detail {
+            border: none !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            padding: 12px 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+
         .site-footer dt {
             color: #94a3b8 !important;
+            font-weight: 500;
         }
         .site-footer dd, .site-footer .tbd {
             color: #ffffff !important;
             opacity: 1 !important;
+            margin: 0 !important;
+            text-align: right;
         }
 
         /* ==========================================================
@@ -126,7 +145,7 @@
         }
 
         /* Premium Form Card Enhancement */
-        .contact-form, .contact-detail {
+        .contact-form {
             background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 16px;
@@ -424,16 +443,16 @@
                         <p style="max-width:42ch; color: #94a3b8;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
                     </div>
                     <dl>
-                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                        <div class="contact-detail">
                             <dt>Office</dt><dd class="tbd">To be added</dd>
                         </div>
-                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                        <div class="contact-detail">
                             <dt>Warehouse</dt><dd class="tbd">To be added</dd>
                         </div>
-                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                        <div class="contact-detail">
                             <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com" style="color:#ffffff;">export@seaweedasia.com</a></dd>
                         </div>
-                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                        <div class="contact-detail">
                             <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
                         </div>
                     </dl>
