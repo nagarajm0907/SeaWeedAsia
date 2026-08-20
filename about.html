@@ -12,49 +12,56 @@
             color: #111827 !important;
         }
         
-        /* Perfectly seamless header and hero blend with zero lines */
+        /* Master container holding header & hero together as one continuous background image */
+        .header-hero-wrapper {
+            background: url('story-bg.png') no-repeat center top;
+            background-size: cover;
+            width: 100%;
+        }
+
+        /* Make site header fully transparent to let the wave background pass through */
         .site-header {
-            background: url('story-bg.png') !important;
-            background-size: cover !important;
-            background-position: center top !important;
+            background: transparent !important;
             border-bottom: none !important;
             margin-bottom: 0 !important;
         }
 
+        /* Make hero seamlessly attach with transparent background */
         .hero {
-            background: url('story-bg.png') !important;
-            background-size: cover !important;
-            background-position: center bottom !important;
+            background: transparent !important;
             border-top: none !important;
             padding-top: 20px !important;
+            padding-bottom: 60px;
         }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="nav-inner">
-            <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
-            <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html" aria-current="page">About</a>
-                <a href="products.html">Products</a>
-                <a href="process.html">Process</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-    </header>
+    <div class="header-hero-wrapper">
+        <header class="site-header">
+            <div class="nav-inner">
+                <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
+                <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html" aria-current="page">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="process.html">Process</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <!-- Ocean background flows continuously from the header with no seam -->
-    <section class="hero">
-        <div class="wrap">
-            <span class="tag">Since 2023</span>
-            <h1 style="max-width:20ch;">Our Story</h1>
-            <p class="lede">SeaweedAsia started with a simple frustration: too many layers between the farmer who grows the seaweed and the buyer who needs it.</p>
-        </div>
-    </section>
+        <!-- Ocean wave background flows seamlessly through the header and hero -->
+        <section class="hero">
+            <div class="wrap">
+                <span class="tag">Since 2023</span>
+                <h1 style="max-width:20ch;">Our Story</h1>
+                <p class="lede">SeaweedAsia started with a simple frustration: too many layers between the farmer who grows the seaweed and the buyer who needs it.</p>
+            </div>
+        </section>
+    </div>
 
     <section>
         <div class="wrap">
