@@ -12,12 +12,22 @@
             color: #111827 !important;
         }
         
-        /* Make the header transparent and flow into the ocean background */
+        /* Force the ocean background through the header */
         .site-header {
-            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.45)), url('story-bg.png');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.45)), url('story-bg.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        /* Make hero seamlessly attach right under the header */
+        .hero {
+            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.55)), url('story-bg.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            padding-top: 50px !important;
         }
     </style>
 </head>
@@ -39,7 +49,7 @@
     </header>
 
     <!-- Ocean background flows continuously from the header -->
-    <section class="hero" style="padding:70px 0 60px; background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.55)), url('story-bg.png'); background-size: cover; background-position: center;">
+    <section class="hero">
         <div class="wrap">
             <span class="tag">Since 2023</span>
             <h1 style="max-width:20ch;">Our Story</h1>
