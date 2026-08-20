@@ -27,11 +27,11 @@
             margin-bottom: 0 !important;
         }
 
-        /* Make hero seamlessly attach with transparent background */
+        /* Make hero seamlessly attach with transparent background and proper spacing */
         .hero {
             background: transparent !important;
             border-top: none !important;
-            padding-top: 20px !important;
+            padding-top: 10px !important;
             padding-bottom: 60px;
         }
 
@@ -42,7 +42,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* Subtle Glassmorphism Tag Styling */
+        /* Subtle Glassmorphism Tag Styling - positioned neatly below nav */
         .hero .tag {
             background: rgba(255, 255, 255, 0.06) !important;
             border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -55,6 +55,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            margin-bottom: 12px;
         }
         .hero .tag::before {
             content: '';
@@ -110,9 +111,13 @@
 
         .stat-card-custom {
             background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 16px;
-            padding: 28px 24px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
             text-align: left;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             transform-style: preserve-3d;
@@ -129,18 +134,17 @@
 
         .stat-card-custom b {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            color: #2b4c3f;
+            color: #1e293b;
+            line-height: 1.2;
+            margin-bottom: 6px;
             display: block;
-            line-height: 1.1;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
         }
 
         .stat-card-custom span {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -196,7 +200,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(43, 76, 63, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(30, 41, 59, 0.06) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -272,7 +276,7 @@
                 </div>
             </div>
             
-            <!-- Redesigned Aligned Stat Cards with Modern Font & 3D Tilt -->
+            <!-- Redesigned Clean, Aligned Stat Cards with Modern Font & 3D Tilt -->
             <div class="stat-grid-custom">
                 <div class="stat-card-custom">
                     <b>~25+</b>
@@ -466,7 +470,7 @@
             const observer = new IntersectionObserver(revealOnScroll, { root: null, threshold: 0.1 });
             reveals.forEach(reveal => observer.observe(reveal));
 
-            // Advanced 3D Tilt & Shimmer Interaction for Cards (including Stat Cards)
+            // Advanced 3D Tilt & Shimmer Interaction for Cards & Stat Cards
             const tiltElements = document.querySelectorAll(".card, .stat-card-custom");
             tiltElements.forEach(card => {
                 card.addEventListener("mousemove", (e) => {
