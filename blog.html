@@ -113,6 +113,8 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
             display: flex;
             flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
         .blog-card:hover {
@@ -185,7 +187,7 @@
             transition: color 0.2s ease;
         }
 
-        .blog-link:hover {
+        .blog-card:hover .blog-link {
             color: #8dba9d;
         }
 
@@ -247,8 +249,7 @@
     <section class="reveal" style="padding: 50px 0 80px;">
         <div class="wrap">
             <div class="blog-grid">
-                <!-- Blog 1: South Sulawesi -->
-                <article class="blog-card">
+                <a href="blog-sulawesi-cottonii.html" class="blog-card">
                     <div class="blog-img-container">
                         <img src="blog-sulawesi-cottonii.png" alt="Kappaphycus Alvarezii Farming in South Sulawesi">
                     </div>
@@ -256,12 +257,11 @@
                         <div class="blog-meta"><span>South Sulawesi</span><span>4 min read</span></div>
                         <h3>The Golden Standard: Sourcing Premium Cottonii from South Sulawesi</h3>
                         <p>Discover how the crystal-clear shallow waters of Bone and Takalar yield high-gel-strength Kappaphycus alvarezii for global carrageenan processors.</p>
-                        <a href="#" class="blog-link">Read Article &rarr;</a>
+                        <span class="blog-link">Read Article &rarr;</span>
                     </div>
-                </article>
+                </a>
 
-                <!-- Blog 2: East Nusa Tenggara -->
-                <article class="blog-card">
+                <a href="blog-ntt-spinosum.html" class="blog-card">
                     <div class="blog-img-container">
                         <img src="blog-ntt-spinosum.png" alt="Spinosum Farming in East Nusa Tenggara">
                     </div>
@@ -269,12 +269,11 @@
                         <div class="blog-meta"><span>East Nusa Tenggara</span><span>5 min read</span></div>
                         <h3>Rigor in the Reefs: Why East Nusa Tenggara Produces Superior Spinosum</h3>
                         <p>An inside look at how high-salinity tidal currents around Flores and Rote create ideal conditions for robust Eucheuma spinosum cultivation.</p>
-                        <a href="#" class="blog-link">Read Article &rarr;</a>
+                        <span class="blog-link">Read Article &rarr;</span>
                     </div>
-                </article>
+                </a>
 
-                <!-- Blog 3: Java Sea / Central Java -->
-                <article class="blog-card">
+                <a href="blog-java-gracilaria.html" class="blog-card">
                     <div class="blog-img-container">
                         <img src="blog-java-gracilaria.png" alt="Gracilaria Harvest in Central Java">
                     </div>
@@ -282,12 +281,11 @@
                         <div class="blog-meta"><span>Central Java</span><span>4 min read</span></div>
                         <h3>Pond-Based Purity: Sustainable Gracilaria Farming Across Northern Java</h3>
                         <p>Exploring how brackishwater pond (tambak) systems in Jepara and Rembang provide a stable, eco-friendly supply of agarophyte raw material.</p>
-                        <a href="#" class="blog-link">Read Article &rarr;</a>
+                        <span class="blog-link">Read Article &rarr;</span>
                     </div>
-                </article>
+                </a>
 
-                <!-- Blog 4: Bali & Lombok -->
-                <article class="blog-card">
+                <a href="blog-bali-sun-drying.html" class="blog-card">
                     <div class="blog-img-container">
                         <img src="blog-bali-sun-drying.png" alt="Traditional Sun-Drying in Lombok">
                     </div>
@@ -295,110 +293,10 @@
                         <div class="blog-meta"><span>Lombok & Bali</span><span>3 min read</span></div>
                         <h3>The Art of Natural Sun-Drying: Achieving Ideal Moisture Targets</h3>
                         <p>How coastal farming communities in Lombok utilize equatorial sunshine and gentle sea breezes to lock in purity without chemical intervention.</p>
-                        <a href="#" class="blog-link">Read Article &rarr;</a>
+                        <span class="blog-link">Read Article &rarr;</span>
                     </div>
-                </article>
+                </a>
 
-                <!-- Blog 5: Madura Island -->
-                <article class="blog-card">
+                <a href="blog-madura-logistics.html" class="blog-card">
                     <div class="blog-img-container">
-                        <img src="blog-madura-logistics.png" alt="Madura Island Seaweed Logistics">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta"><span>Madura Island</span><span>5 min read</span></div>
-                        <h3>From Island to Port: Streamlining Export Logistics from Madura</h3>
-                        <p>An operational breakdown of our direct collection networks, strict moisture testing protocols, and fast transport lines to Surabaya ports.</p>
-                        <a href="#" class="blog-link">Read Article &rarr;</a>
-                    </div>
-                </article>
-
-                <!-- Blog 6: Maluku & Papua -->
-                <article class="blog-card">
-                    <div class="blog-img-container">
-                        <img src="blog-maluku-wild-harvest.png" alt="Wild Sargassum and Seaweed in Maluku">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta"><span>Maluku & Papua</span><span>6 min read</span></div>
-                        <h3>Untouched Waters: The Biodiversity and Potential of Eastern Indonesia</h3>
-                        <p>A look at sustainable harvesting initiatives for wild-origin Sargassum and specialty biomass across the pristine marine ecosystems of Maluku.</p>
-                        <a href="#" class="blog-link">Read Article &rarr;</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Master wrapper for footer & wave transition -->
-    <div class="bottom-sections-wrapper" style="margin-top: 40px;">
-        <footer class="site-footer reveal" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 50px;">
-            <div class="wrap">
-                <div class="grid-2">
-                    <div>
-                        <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
-                        <p style="max-width:42ch; color: #94a3b8;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
-                    </div>
-                    <dl>
-                        <div class="contact-detail"><dt>Office</dt><dd class="tbd">To be added</dd></div>
-                        <div class="contact-detail"><dt>Warehouse</dt><dd class="tbd">To be added</dd></div>
-                        <div class="contact-detail"><dt>Email</dt><dd><a href="mailto:export@seaweedasia.com" style="color:#ffffff;">export@seaweedasia.com</a></dd></div>
-                        <div class="contact-detail"><dt>WhatsApp</dt><dd class="tbd">To be added</dd></div>
-                    </dl>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html#products">Products</a>
-                    <a href="index.html#quality">Quality</a>
-                    <a href="index.html#sourcing">Sourcing</a>
-                    <a href="about.html">About</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="footer-bottom">
-                    &copy; 2026 SeaweedAsia. All rights reserved.
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Chatbot widget -->
-    <button id="sa-chat-toggle" aria-label="Open chat">&#128172;</button>
-    <div id="sa-chat-panel">
-        <div class="sa-chat-head">
-            <span>SeaweedAsia Export Desk</span>
-            <button id="sa-chat-close" aria-label="Close chat">&times;</button>
-        </div>
-        <div class="sa-chat-body" id="sa-chat-body">
-            <div class="sa-msg bot">Hi! Ask me about MOQs, species, samples, or shipping — or leave a question for our export desk.</div>
-        </div>
-        <form class="sa-chat-input" id="sa-chat-form">
-            <input type="text" id="sa-chat-input" placeholder="Type a message…" autocomplete="off">
-            <button type="submit">Send</button>
-        </form>
-    </div>
-
-    <script src="main.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const siteHeader = document.getElementById("siteHeader");
-            window.addEventListener("scroll", function() {
-                if (window.scrollY > 30) {
-                    siteHeader.classList.add("scrolled");
-                } else {
-                    siteHeader.classList.remove("scrolled");
-                }
-            });
-
-            const reveals = document.querySelectorAll(".reveal");
-            const revealOnScroll = function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-            const observer = new IntersectionObserver(revealOnScroll, { root: null, threshold: 0.1 });
-            reveals.forEach(reveal => observer.observe(reveal));
-        });
-    </script>
-</body>
-</html>
+                        <img src="blog-madura-logistics.png
