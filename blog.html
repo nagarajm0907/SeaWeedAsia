@@ -17,14 +17,12 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
 
-        /* Master container holding header & hero together */
         .header-hero-wrapper {
             background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
             width: 100%;
             color: #ffffff;
         }
 
-        /* Make site header sticky */
         .site-header {
             position: sticky;
             top: 0;
@@ -84,7 +82,6 @@
 
         .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
-        /* Blog Grid Styling */
         .blog-section { padding: 60px 0; }
         .blog-grid {
             display: grid;
@@ -106,6 +103,7 @@
             flex-direction: column;
             text-decoration: none;
             color: inherit;
+            height: 100%;
         }
 
         .blog-card:hover {
@@ -115,22 +113,24 @@
 
         .blog-img-container {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 16 / 9;
             background: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748b;
             font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px;
         }
 
         .blog-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
-        .blog-meta { font-size: 0.78rem; font-weight: 600; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between; }
+        .blog-meta { font-size: 0.78rem; font-weight: 600; color: #3b7a57; text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between; }
         .blog-card h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 10px; }
         .blog-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
-        .blog-link { font-size: 0.9rem; font-weight: 600; color: #1e293b; }
+        .blog-link { font-size: 0.9rem; font-weight: 600; color: var(--primary); }
 
-        /* Footer Styling */
         .site-footer {
             background: #071120;
             color: #ffffff;
@@ -173,7 +173,7 @@
         <div class="wrap">
             <div class="blog-grid">
                 <!-- Blog 1 -->
-                <a href="#" class="blog-card">
+                <a href="blog-sulawesi-cottonii.html" class="blog-card">
                     <div class="blog-img-container">South Sulawesi Image</div>
                     <div class="blog-content">
                         <div class="blog-meta"><span>South Sulawesi</span><span>4 min read</span></div>
