@@ -20,11 +20,24 @@
             width: 100%;
         }
 
-        /* Make site header fully transparent to let the target wave background pass through */
+        /* Make site header sticky and transition smoothly on scroll */
         .site-header {
-            background: transparent !important;
-            border-bottom: none !important;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 0 !important;
+        }
+
+        /* Scrolled state for sticky header with aligned colors */
+        .site-header.scrolled {
+            background: rgba(10, 25, 47, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(141, 186, 157, 0.2) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
         /* Make hero seamlessly attach with transparent background and proper spacing */
@@ -237,7 +250,7 @@
 </head>
 <body>
     <div class="header-hero-wrapper">
-        <header class="site-header">
+        <header class="site-header" id="siteHeader">
             <div class="nav-inner">
                 <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
                 <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
@@ -457,6 +470,16 @@
     <script src="main.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Sticky header highlight effect on scroll
+            const siteHeader = document.getElementById("siteHeader");
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 30) {
+                    siteHeader.classList.add("scrolled");
+                } else {
+                    siteHeader.classList.remove("scrolled");
+                }
+            });
+
             // Scroll reveal animation observer
             const reveals = document.querySelectorAll(".reveal");
             const revealOnScroll = function(entries, observer) {
