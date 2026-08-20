@@ -20,7 +20,7 @@
             width: 100%;
         }
 
-        /* Make site header sticky and ensure inner wrapper controls alignment */
+        /* Make site header sticky and ensure it handles the container width */
         .site-header {
             position: sticky;
             top: 0;
@@ -32,15 +32,17 @@
             width: 100%;
         }
 
-        /* Constrain header content using standard site .wrap to align with page content */
+        /* Force .nav-inner to match your .wrap maximum width and padding exactly */
         .site-header .nav-inner {
-            max-width: var(--max-width, 1200px);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
+            max-width: 1200px !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            height: 80px !important;
         }
 
         /* Scrolled state for sticky header with aligned colors & glassmorphism */
