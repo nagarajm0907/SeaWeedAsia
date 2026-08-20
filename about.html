@@ -78,13 +78,14 @@
             transform: translateY(0);
         }
 
-        /* Card Hover Depth Effect */
+        /* 3D Tilt Card Base Styles */
         .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         /* Button Pulse & Glow Interaction */
@@ -176,21 +177,21 @@
             <div class="grid-3" style="margin-top:24px;">
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
-                        <img src="quality-photo.png" alt="Technician inspecting dried seaweed samples with a magnifying loupe" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="quality-photo.png" alt="Technician inspecting dried seaweed samples with a magnifying loupe" style="width:100%;height:160px;object-fit:cover;display:block;">
                     </div>
                     <h3 style="margin:0;">Quality</h3>
                     <p style="font-size:0.9rem;margin-top:10px;">Field grading, lab certification, and full traceability on every shipment, with GPS coordinates for every farm site.</p>
                 </div>
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
-                        <img src="sustainability-photo.png" alt="Farmer's hands holding freshly harvested seaweed" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="sustainability-photo.png" alt="Farmer's hands holding freshly harvested seaweed" style="width:100%;height:160px;object-fit:cover;display:block;">
                     </div>
                     <h3 style="margin:0;">Sustainability</h3>
                     <p style="font-size:0.9rem;margin-top:10px;">Fair pricing for our farming cooperatives, paired with production guidance and clear SOPs so farmers know what to grow and how.</p>
                 </div>
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
-                        <img src="innovation-photo.png" alt="Hand holding a tablet displaying a GPS farm map" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="innovation-photo.png" alt="Hand holding a tablet displaying a GPS farm map" style="width:100%;height:160px;object-fit:cover;display:block;">
                     </div>
                     <h3 style="margin:0;">Innovation</h3>
                     <p style="font-size:0.9rem;margin-top:10px;">GPS-tagged traceability, digital harvest records, and continuous refinement of our drying and grading methods, so quality control keeps improving as we grow.</p>
@@ -206,28 +207,28 @@
             <div class="grid-2" style="margin-top:24px;">
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="contract-partnership.png" alt="Buyer and partner shaking hands over a signed partnership agreement" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="contract-partnership.png" alt="Buyer and partner shaking hands over a signed partnership agreement" style="width:100%;height:180px;object-fit:cover;display:block;">
                     </div>
                     <h3>Professional, Contract-Based Partnership</h3>
                     <p style="font-size:0.9rem;">Every order runs on a formal contract with clear terms from the start.</p>
                 </div>
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="quality-control.png" alt="Lab technician inspecting seaweed samples under a microscope" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="quality-control.png" alt="Lab technician inspecting seaweed samples under a microscope" style="width:100%;height:180px;object-fit:cover;display:block;">
                     </div>
                     <h3>In-House Quality Control</h3>
                     <p style="font-size:0.9rem;">QC and lab testing handled entirely by our own team, never outsourced.</p>
                 </div>
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="export-desk.png" alt="Export desk staff member coordinating shipments on a headset" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="export-desk.png" alt="Export desk staff member coordinating shipments on a headset" style="width:100%;height:180px;object-fit:cover;display:block;">
                     </div>
                     <h3>Direct Export Desk</h3>
                     <p style="font-size:0.9rem;">We communicate directly in English, Bahasa Indonesia, and Hindi, with no broker in between.</p>
                 </div>
                 <div class="card">
                     <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="direct-relationships.png" alt="Handshake with a farming cooperative partner in the field" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                        <img src="direct-relationships.png" alt="Handshake with a farming cooperative partner in the field" style="width:100%;height:180px;object-fit:cover;display:block;">
                     </div>
                     <h3>Direct Relationships</h3>
                     <p style="font-size:0.9rem;">With the farmers who grow every shipment, and full traceability from farm plot to container.</p>
@@ -333,6 +334,33 @@
             const observer = new IntersectionObserver(revealOnScroll, observerOptions);
             reveals.forEach(reveal => {
                 observer.observe(reveal);
+            });
+
+            /* 3D Tilt Card Interactive Effect */
+            const cards = document.querySelectorAll(".card");
+            cards.forEach(card => {
+                card.addEventListener("mousemove", (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within card
+                    const y = e.clientY - rect.top;  // y position within card
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -8; // Max tilt deg
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+                    card.style.transition = "transform 0.5s ease, box-shadow 0.3s ease";
+                });
+
+                card.addEventListener("mouseenter", () => {
+                    card.style.transition = "none"; // Instant response during mousemove tracking
+                });
             });
         });
     </script>
