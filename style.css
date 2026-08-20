@@ -170,7 +170,15 @@ section.on-dark {
   background-repeat: no-repeat;
   color: var(--sand-100);
 }
-section.on-sand-alt { background: var(--sand-200); }
+section.on-sand-alt {
+  background-color: var(--sand-200);
+  background-image:
+    linear-gradient(rgba(241,235,224,0.5), rgba(241,235,224,0.5)),
+    url('values-bg-texture.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 section.tight { padding: 48px 0; }
 
 h1, h2, h3 {
