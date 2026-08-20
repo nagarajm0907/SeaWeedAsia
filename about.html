@@ -47,13 +47,61 @@
             background: transparent !important;
         }
 
-        /* Enhance visibility and contrast for footer contact details and placeholder text */
+        /* Enhance visibility and contrast for footer contact details */
         .site-footer dt {
             color: #94a3b8 !important;
         }
         .site-footer dd, .site-footer .tbd {
-            color: #e2e8f0 !important;
-            opacity: 0.95 !important;
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        /* ==========================================================
+           MODERN ANIMATIONS & INTERACTIVE EFFECTS
+           ========================================================== */
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Hover Depth Effect */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Button Pulse & Glow Interaction */
+        .btn-primary {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Subtle Image Zoom on Hover */
+        .grid-2 img {
+            transition: transform 0.5s ease;
+        }
+        .grid-2 img:hover {
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -77,7 +125,7 @@
 
         <!-- Ocean wave background flows seamlessly through the header and hero -->
         <section class="hero">
-            <div class="wrap">
+            <div class="wrap reveal">
                 <span class="tag">Since 2023</span>
                 <h1 style="max-width:20ch;">Our Story</h1>
                 <p class="lede">SeaweedAsia started with a simple frustration: too many layers between the farmer who grows the seaweed and the buyer who needs it.</p>
@@ -85,7 +133,7 @@
         </section>
     </div>
 
-    <section>
+    <section class="reveal">
         <div class="wrap">
             <div class="grid-2" style="align-items:center;gap:48px;">
                 <div>
@@ -93,8 +141,8 @@
                     <p>Since 2023, we've built something different &mdash; an export house that works directly with coastal farming cooperatives across the Indonesian archipelago, from Nias to Papua. No layers, no handoffs. Our own team grades the harvest, runs the lab tests, and manages the container all the way to the port.</p>
                     <p>That direct model now moves an estimated 50+ containers a year, sourced from 32 cooperatives, to buyers in 5 countries &mdash; but the reason for it hasn't changed. Farmers get fair, dependable pricing and a partner who shows up season after season. Manufacturers get seaweed they can trace back to the exact farm bed it grew on.</p>
                 </div>
-                <div>
-                    <img src="aerial-drone-farm.png" alt="Aerial drone view of seaweed farming lines in turquoise coastal water" style="width:100%;height:100%;min-height:280px;object-fit:cover;border-radius:16px;display:block;">
+                <div style="overflow:hidden;border-radius:16px;">
+                    <img src="aerial-drone-farm.png" alt="Aerial drone view of seaweed farming lines in turquoise coastal water" style="width:100%;height:100%;min-height:280px;object-fit:cover;display:block;">
                 </div>
             </div>
             <div class="stat-row" style="margin-top:36px;">
@@ -106,7 +154,7 @@
         </div>
     </section>
 
-    <section class="on-dark">
+    <section class="on-dark reveal">
         <div class="wrap grid-2">
             <div>
                 <span class="tag">Vision</span>
@@ -121,23 +169,29 @@
         </div>
     </section>
 
-    <section class="on-sand-alt">
+    <section class="on-sand-alt reveal">
         <div class="wrap">
             <span class="tag">What we stand for</span>
             <h2>Our Values</h2>
             <div class="grid-3" style="margin-top:24px;">
                 <div class="card">
-                    <img src="quality-photo.png" alt="Technician inspecting dried seaweed samples with a magnifying loupe" style="width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:16px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
+                        <img src="quality-photo.png" alt="Technician inspecting dried seaweed samples with a magnifying loupe" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3 style="margin:0;">Quality</h3>
                     <p style="font-size:0.9rem;margin-top:10px;">Field grading, lab certification, and full traceability on every shipment, with GPS coordinates for every farm site.</p>
                 </div>
                 <div class="card">
-                    <img src="sustainability-photo.png" alt="Farmer's hands holding freshly harvested seaweed" style="width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:16px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
+                        <img src="sustainability-photo.png" alt="Farmer's hands holding freshly harvested seaweed" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3 style="margin:0;">Sustainability</h3>
                     <p style="font-size:0.9rem;margin-top:10px;">Fair pricing for our farming cooperatives, paired with production guidance and clear SOPs so farmers know what to grow and how.</p>
                 </div>
                 <div class="card">
-                    <img src="innovation-photo.png" alt="Hand holding a tablet displaying a GPS farm map" style="width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:16px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
+                        <img src="innovation-photo.png" alt="Hand holding a tablet displaying a GPS farm map" style="width:100%;height:160px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3 style="margin:0;">Innovation</h3>
                     <p style="font-size:0.9rem;margin-top:10px;">GPS-tagged traceability, digital harvest records, and continuous refinement of our drying and grading methods, so quality control keeps improving as we grow.</p>
                 </div>
@@ -145,28 +199,36 @@
         </div>
     </section>
 
-    <section>
+    <section class="reveal">
         <div class="wrap">
             <span class="tag">Why buyers work with us</span>
             <h2>Direct, From Farm to Contract</h2>
             <div class="grid-2" style="margin-top:24px;">
                 <div class="card">
-                    <img src="contract-partnership.png" alt="Buyer and partner shaking hands over a signed partnership agreement" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:14px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
+                        <img src="contract-partnership.png" alt="Buyer and partner shaking hands over a signed partnership agreement" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3>Professional, Contract-Based Partnership</h3>
                     <p style="font-size:0.9rem;">Every order runs on a formal contract with clear terms from the start.</p>
                 </div>
                 <div class="card">
-                    <img src="quality-control.png" alt="Lab technician inspecting seaweed samples under a microscope" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:14px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
+                        <img src="quality-control.png" alt="Lab technician inspecting seaweed samples under a microscope" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3>In-House Quality Control</h3>
                     <p style="font-size:0.9rem;">QC and lab testing handled entirely by our own team, never outsourced.</p>
                 </div>
                 <div class="card">
-                    <img src="export-desk.png" alt="Export desk staff member coordinating shipments on a headset" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:14px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
+                        <img src="export-desk.png" alt="Export desk staff member coordinating shipments on a headset" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3>Direct Export Desk</h3>
                     <p style="font-size:0.9rem;">We communicate directly in English, Bahasa Indonesia, and Hindi, with no broker in between.</p>
                 </div>
                 <div class="card">
-                    <img src="direct-relationships.png" alt="Handshake with a farming cooperative partner in the field" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:14px;display:block;">
+                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
+                        <img src="direct-relationships.png" alt="Handshake with a farming cooperative partner in the field" style="width:100%;height:180px;object-fit:cover;display:block;transition:transform 0.4s ease;">
+                    </div>
                     <h3>Direct Relationships</h3>
                     <p style="font-size:0.9rem;">With the farmers who grow every shipment, and full traceability from farm plot to container.</p>
                 </div>
@@ -174,7 +236,7 @@
         </div>
     </section>
 
-    <section class="on-sand-alt">
+    <section class="on-sand-alt reveal">
         <div class="wrap">
             <span class="tag">Where we source</span>
             <h2>Our Sourcing Footprint</h2>
@@ -185,9 +247,9 @@
         </div>
     </section>
 
-    <!-- Master wrapper for bottom CTA and Footer with optimized text visibility -->
+    <!-- Master wrapper for bottom CTA and Footer with optimized animations -->
     <div class="bottom-cta-footer-wrapper">
-        <section class="on-dark center cta-bottom-bg" style="margin-bottom: 0; padding-bottom: 60px;">
+        <section class="on-dark center cta-bottom-bg reveal" style="margin-bottom: 0; padding-bottom: 60px;">
             <div class="wrap">
                 <span class="tag">Talk to us</span>
                 <h2>Want to See Where Your Seaweed Comes From?</h2>
@@ -195,7 +257,7 @@
             </div>
         </section>
 
-        <footer class="site-footer">
+        <footer class="site-footer reveal">
             <div class="wrap">
                 <div class="grid-2">
                     <div>
@@ -249,6 +311,30 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        /* Lightweight Intersection Observer for Scroll Fade-In Animation */
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll(".reveal");
+            
+            const revealOnScroll = function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
 
+            const observerOptions = {
+                root: null,
+                threshold: 0.12
+            };
+
+            const observer = new IntersectionObserver(revealOnScroll, observerOptions);
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+    </script>
 </body>
 </html>
