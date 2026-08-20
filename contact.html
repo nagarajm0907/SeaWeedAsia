@@ -64,27 +64,20 @@
         }
 
         /* Subtle Glassmorphism Tag Styling */
-        .hero .tag {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            color: #cbd5e1 !important;
-            backdrop-filter: blur(8px);
+        .hero .tag, section .tag {
+            background: rgba(141, 186, 157, 0.1) !important;
+            border: 1px solid rgba(141, 186, 157, 0.25) !important;
+            color: #2d5a41 !important;
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
+            font-weight: 600;
             letter-spacing: 0.05em;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             margin-bottom: 12px;
-        }
-        .hero .tag::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background-color: #8dba9d;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #8dba9d;
+            text-transform: uppercase;
         }
 
         /* Master wrapper for bottom sections, FAQ, CTA and footer with wave graphics */
@@ -95,7 +88,7 @@
         }
 
         /* ==========================================================
-           FOOTER CLEAN OVERRIDES (Fixes unwanted pill borders)
+           FOOTER CLEAN OVERRIDES
            ========================================================== */
         .site-footer {
             background: transparent !important;
@@ -126,7 +119,7 @@
         }
 
         /* ==========================================================
-           ENHANCED FORM & CARD INTERACTIONS
+           ENHANCED FORM & DIRECT CONTACT SECTION STYLING
            ========================================================== */
         html {
             scroll-behavior: smooth;
@@ -148,15 +141,87 @@
         .contact-form {
             background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
             transition: box-shadow 0.4s ease, border-color 0.4s ease;
         }
         
         .contact-form:hover {
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(141, 186, 157, 0.15);
-            border-color: rgba(141, 186, 157, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 25px rgba(141, 186, 157, 0.15);
+            border-color: rgba(141, 186, 157, 0.4);
+        }
+
+        /* Upgraded Direct Contact Card Styling */
+        .direct-contact-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+        .direct-contact-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border-color: rgba(141, 186, 157, 0.4);
+        }
+
+        .contact-row-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .contact-row-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .contact-row-item:first-child {
+            padding-top: 0;
+        }
+
+        .contact-label-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .contact-icon-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(141, 186, 157, 0.12);
+            color: #2d5a41;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .contact-label-group span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .contact-value {
+            font-size: 0.95rem;
+            color: #1e293b;
+            font-weight: 500;
+            text-align: right;
+        }
+        .contact-value.tbd {
+            color: #94a3b8;
+            font-style: italic;
+        }
+        .contact-value a {
+            color: #10b981;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-value a:hover {
+            color: #059669;
+            text-decoration: underline;
         }
 
         /* ==========================================================
@@ -371,25 +436,41 @@
             <div>
                 <span class="tag">Direct connections</span>
                 <h2>Reach Us Directly</h2>
-                <div style="background: #ffffff; border-radius: 16px; padding: 24px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-top: 24px;">
-                    <dl style="margin: 0;">
-                        <div class="contact-detail" style="border: none; padding: 12px 0; border-bottom: 1px solid #f1f5f9; box-shadow: none;">
-                            <dt style="font-weight: 600; color: #64748b;">Office</dt><dd class="tbd" style="color: #1e293b; margin-top: 4px;">To be added</dd>
+                
+                <!-- Upgraded Direct Contact Card with icons -->
+                <div class="direct-contact-card" style="margin-top: 24px;">
+                    <div class="contact-row-item">
+                        <div class="contact-label-group">
+                            <div class="contact-icon-box">&#127968;</div>
+                            <span>Office</span>
                         </div>
-                        <div class="contact-detail" style="border: none; padding: 12px 0; border-bottom: 1px solid #f1f5f9; box-shadow: none;">
-                            <dt style="font-weight: 600; color: #64748b;">Warehouse</dt><dd class="tbd" style="color: #1e293b; margin-top: 4px;">To be added</dd>
+                        <div class="contact-value tbd">To be added</div>
+                    </div>
+                    <div class="contact-row-item">
+                        <div class="contact-label-group">
+                            <div class="contact-icon-box">&#128230;</div>
+                            <span>Warehouse</span>
                         </div>
-                        <div class="contact-detail" style="border: none; padding: 12px 0; border-bottom: 1px solid #f1f5f9; box-shadow: none;">
-                            <dt style="font-weight: 600; color: #64748b;">Email</dt><dd style="margin-top: 4px;"><a href="mailto:export@seaweedasia.com" class="link-inline" style="color: #10b981; font-weight: 500;">export@seaweedasia.com</a></dd>
+                        <div class="contact-value tbd">To be added</div>
+                    </div>
+                    <div class="contact-row-item">
+                        <div class="contact-label-group">
+                            <div class="contact-icon-box">&#9993;</div>
+                            <span>Email</span>
                         </div>
-                        <div class="contact-detail" style="border: none; padding: 12px 0; box-shadow: none;">
-                            <dt style="font-weight: 600; color: #64748b;">WhatsApp</dt><dd class="tbd" style="color: #1e293b; margin-top: 4px;">To be added</dd>
+                        <div class="contact-value"><a href="mailto:export@seaweedasia.com">export@seaweedasia.com</a></div>
+                    </div>
+                    <div class="contact-row-item">
+                        <div class="contact-label-group">
+                            <div class="contact-icon-box">&#128241;</div>
+                            <span>WhatsApp</span>
                         </div>
-                    </dl>
+                        <div class="contact-value tbd">To be added</div>
+                    </div>
                 </div>
 
-                <h3 style="margin-top:36px; margin-bottom: 12px;">Find Us</h3>
-                <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+                <h3 style="margin-top:36px; margin-bottom: 12px; font-size: 1.25rem;">Find Us</h3>
+                <div style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 15px 35px rgba(0,0,0,0.04);">
                     <iframe class="map-embed" style="height:280px; width: 100%; border:0; display: block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                         src="https://www.google.com/maps?q=Jakarta,Indonesia&output=embed"></iframe>
                 </div>
