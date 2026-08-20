@@ -5,39 +5,217 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeaweedAsia — Contact Us</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Master container holding header & hero together with precise image positioning */
+        .header-hero-wrapper {
+            background: url('story-bg.png') no-repeat;
+            background-size: cover;
+            background-position: 0% 15%;
+            width: 100%;
+        }
+
+        /* Make site header sticky and ensure it spans full width while centering inner content */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 0 !important;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Force .nav-inner to match your standard .wrap width and padding exactly */
+        .site-header .nav-inner {
+            width: 100% !important;
+            max-width: var(--max-width, 1200px) !important;
+            margin: 0 auto !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            height: 80px !important;
+        }
+
+        /* Scrolled state for sticky header with aligned colors & glassmorphism */
+        .site-header.scrolled {
+            background: rgba(10, 25, 47, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(141, 186, 157, 0.2) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Make hero seamlessly attach with transparent background */
+        .hero {
+            background: transparent !important;
+            border-top: none !important;
+            padding: 50px 0 60px !important;
+        }
+
+        .hero .lede {
+            color: #e2e8f0 !important;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Subtle Glassmorphism Tag Styling */
+        .hero .tag {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            color: #cbd5e1 !important;
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .hero .tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #8dba9d;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #8dba9d;
+        }
+
+        /* Master wrapper for bottom sections, FAQ, CTA and footer with wave graphics */
+        .bottom-sections-wrapper {
+            background: linear-gradient(rgba(10, 25, 47, 0.5), rgba(10, 25, 47, 0.8)), url('story-bg.png') no-repeat center bottom;
+            background-size: cover;
+            width: 100%;
+        }
+
+        /* Footer transparency settings */
+        .site-footer {
+            background: transparent !important;
+        }
+        .site-footer dt {
+            color: #94a3b8 !important;
+        }
+        .site-footer dd, .site-footer .tbd {
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        /* ==========================================================
+           ENHANCED FORM & CARD INTERACTIONS
+           ========================================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Premium Form Card Enhancement */
+        .contact-form, .contact-detail, .faq-item {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        
+        .contact-form:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(141, 186, 157, 0.15);
+            border-color: rgba(141, 186, 157, 0.3);
+        }
+
+        /* FAQ Item Styling */
+        .faq-item {
+            padding: 24px;
+            margin-bottom: 16px;
+            background: #ffffff;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+            border-color: rgba(141, 186, 157, 0.4);
+        }
+        .faq-item h3 {
+            color: #1e293b;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        .faq-item p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Button Glow Animation */
+        .btn-primary {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            animation: softPulse 3s infinite ease-in-out;
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.5);
+            animation: none;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(255, 107, 107, 0); }
+        }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="nav-inner">
-            <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
-            <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="process.html">Process</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html" aria-current="page">Contact</a>
-            </nav>
-        </div>
-    </header>
+    <div class="header-hero-wrapper">
+        <header class="site-header" id="siteHeader">
+            <div class="nav-inner">
+                <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
+                <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="process.html">Process</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html" aria-current="page">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <section class="hero" style="padding:70px 0 60px;">
-        <div class="wrap">
-            <span class="tag">Response within 1 business day</span>
-            <h1 style="max-width:18ch;">Let's Talk Export</h1>
-            <p class="lede">Need a sample, a quote, or have a question about a specific species? Our export desk responds within 1 business day.</p>
-        </div>
-    </section>
+        <section class="hero">
+            <div class="wrap reveal">
+                <span class="tag">Response within 1 business day</span>
+                <h1 style="max-width:18ch;">Let's Talk Export</h1>
+                <p class="lede">Need a sample, a quote, or have a question about a specific species? Our export desk responds within 1 business day.</p>
+            </div>
+        </section>
+    </div>
 
-    <section id="rfq">
-        <div class="wrap grid-2" style="align-items:start;">
+    <section id="rfq" class="reveal" style="padding-top: 40px;">
+        <div class="wrap grid-2" style="align-items:start; gap: 40px;">
             <div>
                 <span class="tag">Bulk / industrial buyers</span>
                 <h2>Request for Quote (RFQ)</h2>
-                <p style="font-size:0.92rem;max-width:52ch;">For container-scale orders. Fill in as much as you can &mdash; our export desk will follow up with pricing and a sample within 5 working days.</p>
-                <form class="contact-form" action="#" method="post" style="margin-top:10px;">
+                <p style="font-size:0.92rem;max-width:52ch; margin-bottom: 24px;">For container-scale orders. Fill in as much as you can &mdash; our export desk will follow up with pricing and a sample within 5 working days.</p>
+                
+                <form class="contact-form" action="#" method="post">
                     <div class="form-row">
                         <div>
                             <label for="name">Name</label>
@@ -48,7 +226,7 @@
                             <input type="text" id="company" name="company" required>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row" style="margin-top:16px;">
                         <div>
                             <label for="country">Country</label>
                             <input type="text" id="country" name="country" required>
@@ -59,8 +237,8 @@
                         </div>
                     </div>
 
-                    <fieldset>
-                        <legend>Order Details</legend>
+                    <fieldset style="border: none; padding: 0; margin-top: 24px;">
+                        <legend style="font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 1.1rem;">Order Details</legend>
                         <div class="form-row">
                             <div>
                                 <label for="species">Species of Interest</label>
@@ -109,109 +287,117 @@
                         </div>
                     </fieldset>
 
-                    <div>
+                    <div style="margin-top: 16px;">
                         <label for="message">Additional Notes</label>
-                        <textarea id="message" name="message" placeholder="Spec requirements, timeline, or anything else we should know"></textarea>
+                        <textarea id="message" name="message" placeholder="Spec requirements, timeline, or anything else we should know" style="min-height: 100px;"></textarea>
                     </div>
-                    <div class="cta-row">
-                        <button type="submit" class="btn btn-primary">Submit RFQ</button>
+                    <div class="cta-row" style="margin-top: 24px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; justify-content: center;">Submit RFQ</button>
                     </div>
                 </form>
             </div>
 
             <div>
+                <span class="tag">Direct connections</span>
                 <h2>Reach Us Directly</h2>
-                <dl>
-                    <div class="contact-detail">
-                        <dt>Office</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail">
-                        <dt>Warehouse</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail">
-                        <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com" class="link-inline">export@seaweedasia.com</a></dd>
-                    </div>
-                    <div class="contact-detail">
-                        <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
-                    </div>
-                </dl>
+                <div style="background: #ffffff; border-radius: 16px; padding: 24px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-top: 24px;">
+                    <dl style="margin: 0;">
+                        <div class="contact-detail" style="border: none; padding: 12px 0; border-bottom: 1px solid #f1f5f9; box-shadow: none;">
+                            <dt style="font-weight: 600; color: #64748b;">Office</dt><dd class="tbd" style="color: #1e293b; margin-top: 4px;">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border: none; padding: 12px 0; border-bottom: 1px solid #f1f5f9; box-shadow: none;">
+                            <dt style="font-weight: 600; color: #64748b;">Warehouse</dt><dd class="tbd" style="color: #1e293b; margin-top: 4px;">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border: none; padding: 12px 0; border-bottom: 1px solid #f1f5f9; box-shadow: none;">
+                            <dt style="font-weight: 600; color: #64748b;">Email</dt><dd style="margin-top: 4px;"><a href="mailto:export@seaweedasia.com" class="link-inline" style="color: #10b981; font-weight: 500;">export@seaweedasia.com</a></dd>
+                        </div>
+                        <div class="contact-detail" style="border: none; padding: 12px 0; box-shadow: none;">
+                            <dt style="font-weight: 600; color: #64748b;">WhatsApp</dt><dd class="tbd" style="color: #1e293b; margin-top: 4px;">To be added</dd>
+                        </div>
+                    </dl>
+                </div>
 
-                <h3 style="margin-top:30px;">Find Us</h3>
-                <iframe class="map-embed" style="height:280px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps?q=Jakarta,Indonesia&output=embed"></iframe>
-                <p class="map-note">Placeholder pin &mdash; will be updated with our exact office address once confirmed.</p>
+                <h3 style="margin-top:36px; margin-bottom: 12px;">Find Us</h3>
+                <div style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+                    <iframe class="map-embed" style="height:280px; width: 100%; border:0; display: block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=Jakarta,Indonesia&output=embed"></iframe>
+                </div>
+                <p class="map-note" style="font-size: 0.85rem; color: #64748b; margin-top: 8px;">Placeholder pin &mdash; will be updated with our exact office address once confirmed.</p>
             </div>
         </div>
     </section>
 
-    <section class="on-sand-alt">
-        <div class="wrap">
-            <span class="tag">Common questions</span>
-            <h2>FAQ</h2>
-            <div style="margin-top:20px;">
-                <div class="faq-item">
-                    <h3>What are your payment terms?</h3>
-                    <p>Typically a 30% deposit via T/T upon order confirmation, with the remaining 70% due before shipment. Letters of Credit (L/C) can be arranged for larger orders.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What Incoterms do you offer?</h3>
-                    <p>FOB and CIF as standard, with CNF available on request.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What is your minimum order quantity?</h3>
-                    <p>1 container.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How long does production and shipping take?</h3>
-                    <p>Typically 14&ndash;30 days, depending on species and order timeline.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do you provide samples before a full order?</h3>
-                    <p>Yes &mdash; request one through the form above. Depending on logistics, samples typically take up to 30 days to arrive.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Which ports do you ship from?</h3>
-                    <p>All major ports across Indonesia.</p>
+    <!-- Master wrapper for FAQ, footer, and ocean wave background continuity -->
+    <div class="bottom-sections-wrapper" style="margin-top: 60px;">
+        <section class="reveal" style="padding-top: 40px;">
+            <div class="wrap">
+                <span class="tag">Common questions</span>
+                <h2 style="color: #ffffff;">FAQ</h2>
+                <div style="margin-top:24px;">
+                    <div class="faq-item">
+                        <h3>What are your payment terms?</h3>
+                        <p>Typically a 30% deposit via T/T upon order confirmation, with the remaining 70% due before shipment. Letters of Credit (L/C) can be arranged for larger orders.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What Incoterms do you offer?</h3>
+                        <p>FOB and CIF as standard, with CNF available on request.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What is your minimum order quantity?</h3>
+                        <p>1 container.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How long does production and shipping take?</h3>
+                        <p>Typically 14&ndash;30 days, depending on species and order timeline.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Do you provide samples before a full order?</h3>
+                        <p>Yes &mdash; request one through the form above. Depending on logistics, samples typically take up to 30 days to arrive.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Which ports do you ship from?</h3>
+                        <p>All major ports across Indonesia.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="site-footer">
-        <div class="wrap">
-            <div class="grid-2">
-                <div>
-                    <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
-                    <p style="max-width:42ch;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+        <footer class="site-footer reveal" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px;">
+            <div class="wrap">
+                <div class="grid-2">
+                    <div>
+                        <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
+                        <p style="max-width:42ch; color: #94a3b8;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+                    </div>
+                    <dl>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                            <dt>Office</dt><dd class="tbd">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                            <dt>Warehouse</dt><dd class="tbd">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                            <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com" style="color:#ffffff;">export@seaweedasia.com</a></dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15); background: transparent; padding: 8px 0; box-shadow: none;">
+                            <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
+                        </div>
+                    </dl>
                 </div>
-                <dl>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Office</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Warehouse</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com">export@seaweedasia.com</a></dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
-                    </div>
-                </dl>
+                <div class="footer-links">
+                    <a href="index.html#products">Products</a>
+                    <a href="index.html#quality">Quality</a>
+                    <a href="index.html#sourcing">Sourcing</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-bottom">
+                    &copy; 2026 SeaweedAsia. All rights reserved.
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="index.html#products">Products</a>
-                <a href="index.html#quality">Quality</a>
-                <a href="index.html#sourcing">Sourcing</a>
-                <a href="about.html">About</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 SeaweedAsia. All rights reserved.
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <!-- Chatbot widget -->
     <button id="sa-chat-toggle" aria-label="Open chat">&#128172;</button>
@@ -230,6 +416,31 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Sticky header scroll state
+            const siteHeader = document.getElementById("siteHeader");
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 30) {
+                    siteHeader.classList.add("scrolled");
+                } else {
+                    siteHeader.classList.remove("scrolled");
+                }
+            });
 
+            // Scroll reveal observer
+            const reveals = document.querySelectorAll(".reveal");
+            const revealOnScroll = function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            const observer = new IntersectionObserver(revealOnScroll, { root: null, threshold: 0.1 });
+            reveals.forEach(reveal => observer.observe(reveal));
+        });
+    </script>
 </body>
 </html>
