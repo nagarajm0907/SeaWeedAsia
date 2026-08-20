@@ -152,6 +152,13 @@
             border-color: rgba(141, 186, 157, 0.4);
         }
 
+        /* Hide office hub image specifically on mobile devices */
+        @media (max-width: 768px) {
+            .mobile-hide-image {
+                display: none !important;
+            }
+        }
+
         /* ==========================================================
            REDESIGNED PREMIUM FAQ STYLING
            ========================================================== */
@@ -365,8 +372,8 @@
                 <span class="tag">Global logistics hub</span>
                 <h2>Office &amp; Facilities</h2>
                 
-                <!-- Firefly Generated Image Integration -->
-                <div style="margin-top: 20px; margin-bottom: 24px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 15px 35px rgba(0,0,0,0.04);">
+                <!-- Firefly Generated Image Integration (Hidden on mobile via .mobile-hide-image) -->
+                <div class="mobile-hide-image" style="margin-top: 20px; margin-bottom: 24px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 15px 35px rgba(0,0,0,0.04);">
                     <img src="contact-hub-visual.png" alt="SeaweedAsia Global Logistics Hub Office" style="width: 100%; height: auto; display: block; object-fit: cover;">
                 </div>
 
