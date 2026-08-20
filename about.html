@@ -16,7 +16,7 @@
         .header-hero-wrapper {
             background: url('story-bg.png') no-repeat;
             background-size: cover;
-            background-position: 0% 15%; /* Adjust this vertical percentage if you want to shift the image up or down */
+            background-position: 0% 15%;
             width: 100%;
         }
 
@@ -33,6 +33,12 @@
             border-top: none !important;
             padding-top: 20px !important;
             padding-bottom: 60px;
+        }
+
+        /* Full vivid background image for the bottom call-to-action section */
+        .cta-bottom-bg {
+            background: linear-gradient(rgba(10, 25, 47, 0.3), rgba(10, 25, 47, 0.4)), url('story-bg.png') no-repeat center bottom !important;
+            background-size: cover !important;
         }
     </style>
 </head>
@@ -164,7 +170,8 @@
         </div>
     </section>
 
-    <section class="on-dark center">
+    <!-- Bottom CTA section with full vivid background image -->
+    <section class="on-dark center cta-bottom-bg">
         <div class="wrap">
             <span class="tag">Talk to us</span>
             <h2>Want to See Where Your Seaweed Comes From?</h2>
