@@ -617,13 +617,14 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
    to a thin empty div placed immediately after </div> of
    .header-hero-wrapper. Height is intentionally small so it never
    overlaps hero content above it. */
+/* Fade experiment removed per feedback — a straight, clean edge between
+   the wave-hero and the next section reads as more professional than a
+   blended gradient. .hero-fade divs left in markup now render at 0
+   height so no HTML edits were required to remove the effect. */
 .hero-fade {
-  height: 90px;
-  margin-top: -1px;
-  background: linear-gradient(to bottom, var(--ocean-900), rgba(15, 37, 55, 0));
-}
-@media (max-width: 600px) {
-  .hero-fade { height: 56px; }
+  height: 0;
+  margin: 0;
+  background: none;
 }
 
 .header-hero-wrapper > *:first-child,
