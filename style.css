@@ -46,7 +46,13 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; margin: 0; padding: 0; }
+html { 
+  scroll-behavior: smooth; 
+  margin: 0; 
+  padding: 0; 
+  height: auto !important;
+  min-height: 100%;
+}
 
 body {
   margin: 0;
@@ -56,6 +62,9 @@ body {
   background: var(--sand-100);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  height: auto !important;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }
@@ -193,7 +202,7 @@ h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
 h3 { font-size: 1.25rem; }
 p { margin: 0 0 16px; max-width: 68ch; }
 .lede { font-size: 1.15rem; color: var(--teal-800); }
-section.on-dark .lede { color: var(--kelp-300); }
+section.on-dark .lede { color: #cbd5e1; }
 
 .rule {
   border: none;
@@ -253,7 +262,7 @@ section.on-dark .lede { color: var(--kelp-300); }
 }
 .cert-pill.tbd { color: var(--sand-300); font-style: italic; border-style: dashed; }
 
-/* -------------------- Blog post header (back link + tag + title spacing) -------------------- */
+/* -------------------- Blog post header -------------------- */
 .post-back {
   display: block;
   margin-bottom: 22px;
@@ -492,12 +501,6 @@ fieldset legend { font-family: var(--font-mono); font-size: 0.75rem; text-transf
 .faq-item h3 { font-size: 1.02rem; margin-bottom: 8px; font-family: var(--font-body); font-weight: 600; }
 .faq-item p { margin: 0; color: var(--ocean-700); }
 
-/* -------------------- Contact detail rows -------------------- */
-.contact-detail { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--sand-300); }
-.contact-detail dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; color: var(--teal-700); }
-.contact-detail dd { margin: 0; }
-.tbd { color: var(--teal-700); font-style: italic; }
-
 /* -------------------- Testimonials placeholder -------------------- */
 .testimonial-placeholder {
   border: 1px dashed rgba(255,255,255,0.3);
@@ -506,25 +509,6 @@ fieldset legend { font-family: var(--font-mono); font-size: 0.75rem; text-transf
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--sand-300);
-}
-
-/* -------------------- Footer -------------------- */
-footer.site-footer {
-  background: var(--ocean-900);
-  color: var(--sand-200);
-  padding: 56px 0 32px;
-}
-footer.site-footer .grid-2 { align-items: start; }
-footer.site-footer a { color: var(--sand-200); text-decoration: none; }
-footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline; }
-.footer-links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 10px; font-size: 0.9rem; }
-.footer-bottom {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid var(--ocean-700);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
   color: var(--sand-300);
 }
 
@@ -602,32 +586,16 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 
 /* ============================================================
    UNIFIED PAGE HERO — wave background (was about.html-only)
-   Apply on every page by wrapping <header class="site-header">
-   and the page's <section class="hero"> in:
-   <div class="header-hero-wrapper"> ... </div>
    ============================================================ */
 
 .header-hero-wrapper {
   position: relative;
   width: 100%;
-  overflow-x: hidden;          /* guards horizontal bleed only */
-  display: flow-root;          /* prevents child-margin collapse from
-                                   exposing the sand body-background at
-                                   the top edge, WITHOUT the vertical
-                                   overflow:hidden that breaks the
-                                   position:sticky header inside it */
+  overflow-x: hidden;
+  display: flow-root;
   background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
 }
 
-/* Smooth fade from the wave-hero's dark base colour into whatever
-   section follows, instead of a hard seam. Add class="hero-fade"
-   to a thin empty div placed immediately after </div> of
-   .header-hero-wrapper. Height is intentionally small so it never
-   overlaps hero content above it. */
-/* Fade experiment removed per feedback — a straight, clean edge between
-   the wave-hero and the next section reads as more professional than a
-   blended gradient. .hero-fade divs left in markup now render at 0
-   height so no HTML edits were required to remove the effect. */
 .hero-fade {
   height: 0;
   margin: 0;
@@ -687,14 +655,8 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   }
 }
 
-
 /* ============================================================
    UNIFIED FOOTER — wave background
-   Apply on About / Products / Process / Gallery / Blog / Contact
-   ONLY — NOT on Home (index.html keeps its own deep-ocean
-   .on-dark closing-CTA background feeding into a plain footer).
-   Wrap the last CTA section + <footer> in:
-   <div class="footer-wave-wrapper"> ... </div>
    ============================================================ */
 
 .footer-wave-wrapper {
@@ -718,11 +680,8 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .footer-wave-wrapper .site-footer dd,
 .footer-wave-wrapper .site-footer .tbd { color: #ffffff !important; opacity: 1 !important; }
 
-
 /* ============================================================
-   HOMEPAGE HERO — compact variant so the full hero (nav through
-   stat row) fits inside a single viewport without scrolling.
-   Applied via class="hero hero-compact" on index.html only.
+   HOMEPAGE HERO — compact variant
    ============================================================ */
 
 .header-hero-wrapper .hero.hero-compact {
@@ -750,20 +709,15 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   .hero-compact .stat-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 }
 
-
 /* ============================================================
    HOMEPAGE CTA + FOOTER — continuous deep-ocean background
-   Home keeps the ocean-depths photo (not the wave), but it must
-   run seamlessly through both the closing CTA and the footer
-   instead of stopping at a hard seam. Wrap both in:
-   <div class="home-footer-wrapper"> ... </div>
    ============================================================ */
 
 .home-footer-wrapper {
-  position: relative;
+  position: static !important;
+  display: block !important;
+  height: auto !important;
   width: 100%;
-  overflow-x: hidden;
-  display: flow-root;
   background-color: var(--teal-950);
   background-image:
     linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
@@ -778,14 +732,6 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background-image: none !important;
 }
 
-
-/* ============================================================
-   FIX — Homepage closing CTA ("Ready to Bring the Archipelago…")
-   Guaranteed minimum height + vertical centering so the
-   cover-image never looks cropped/cut-off on short content.
-   Applied via class="on-dark cta-final" in index.html.
-   ============================================================ */
-
 section.cta-final {
   min-height: 380px;
   display: flex;
@@ -794,6 +740,207 @@ section.cta-final {
 }
 @media (max-width: 600px) {
   section.cta-final { min-height: 300px; }
+}
+
+/* ============================================================
+   PREMIUM FOOTER & CTA STYLING (ENHANCED SPACING & CONTRAST)
+   ============================================================ */
+
+.site-footer {
+  position: relative !important;
+  display: block !important;
+  background-color: #0d261e;
+  color: #e2e8f0;
+  width: 100%;
+  padding: 100px 0 40px 0;
+}
+
+/* --- CTA SECTION BLOCK --- */
+.cta-final-block {
+  padding-bottom: 80px;
+  margin-bottom: 70px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-final-block .text-center {
+  text-align: center;
+}
+
+.cta-final-block .tag {
+  display: inline-flex;
+  padding: 6px 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8dba9d;
+  background: rgba(141, 186, 157, 0.1);
+  border: 1px solid rgba(141, 186, 157, 0.3);
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+
+.cta-final-block h2 {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  letter-spacing: -0.02em;
+}
+
+.cta-final-block .lede {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  max-width: 640px;
+  margin: 0 auto 36px auto;
+}
+
+.cta-action {
+  display: flex;
+  justify-content: center;
+}
+
+.cta-final-block .btn-primary {
+  display: inline-block;
+  padding: 16px 36px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--coral-500);
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 10px 25px -5px rgba(255, 107, 82, 0.4);
+  transition: all 0.25s ease;
+}
+
+.cta-final-block .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(255, 107, 82, 0.5);
+}
+
+/* --- FOOTER MAIN CONTENT --- */
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+.footer-brand-info .brand {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.footer-brand-info .brand span {
+  color: var(--coral-500);
+}
+
+.footer-brand-info .brand-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  max-width: 44ch;
+}
+
+/* --- CONTACT LIST & ROWS --- */
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-detail:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contact-detail .label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #cbd5e1;
+}
+
+.contact-detail .value {
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.contact-detail .value.tbd {
+  font-style: italic;
+  opacity: 0.5;
+}
+
+.contact-detail .value a {
+  color: #8dba9d;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-detail .value a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* --- NAV LINKS & BOTTOM BAR --- */
+.footer-middle {
+  padding: 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 32px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #8dba9d;
+}
+
+.footer-bottom {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* Responsive Handling */
+@media (max-width: 868px) {
+  .site-footer {
+    padding: 60px 0 30px 0;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-links {
+    gap: 20px;
+  }
 }
 
 /* -------------------- Utility -------------------- */
