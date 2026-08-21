@@ -46,10 +46,11 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; margin: 0; padding: 0; }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--sand-100);
@@ -590,6 +591,123 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .sa-chat-input input:focus { outline: none; }
 .sa-chat-input button {
   background: var(--coral-500); color: #fff; border: none; padding: 0 18px; cursor: pointer; font-weight: 600;
+}
+
+/* ============================================================
+   UNIFIED PAGE HERO — wave background (was about.html-only)
+   Apply on every page by wrapping <header class="site-header">
+   and the page's <section class="hero"> in:
+   <div class="header-hero-wrapper"> ... </div>
+   ============================================================ */
+
+.header-hero-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;            /* stops child margins from ever
+                                   exposing the sand body-background at
+                                   the top edge */
+  background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
+}
+
+.header-hero-wrapper > *:first-child,
+.header-hero-wrapper .site-header {
+  margin-top: 0 !important;
+}
+
+.header-hero-wrapper .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .3s ease, backdrop-filter .3s ease,
+              border-color .3s ease, box-shadow .3s ease;
+  width: 100%;
+}
+
+.header-hero-wrapper .site-header.scrolled {
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(141, 186, 157, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.header-hero-wrapper .hero {
+  background: transparent !important;
+  border-top: none !important;
+  padding-top: 10px !important;
+  padding-bottom: 60px;
+  margin-top: 0;
+}
+
+.header-hero-wrapper .hero .lede {
+  color: #e2e8f0 !important;
+  opacity: 0.95;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header-hero-wrapper .hero .tag {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 760px) {
+  .header-hero-wrapper .main-nav.open {
+    background: rgba(10, 25, 47, 0.92);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    padding: 14px 20px;
+  }
+}
+
+
+/* ============================================================
+   UNIFIED FOOTER — wave background
+   Apply on About / Products / Process / Gallery / Blog / Contact
+   ONLY — NOT on Home (index.html keeps its own deep-ocean
+   .on-dark closing-CTA background feeding into a plain footer).
+   Wrap the last CTA section + <footer> in:
+   <div class="footer-wave-wrapper"> ... </div>
+   ============================================================ */
+
+.footer-wave-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.65)),
+    url('story-bg.png') no-repeat center bottom / cover;
+}
+
+.footer-wave-wrapper .site-footer,
+.footer-wave-wrapper .cta-bottom-bg,
+.footer-wave-wrapper section.on-dark {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.footer-wave-wrapper .site-footer dt { color: #94a3b8 !important; }
+.footer-wave-wrapper .site-footer dd,
+.footer-wave-wrapper .site-footer .tbd { color: #ffffff !important; opacity: 1 !important; }
+
+
+/* ============================================================
+   FIX — Homepage closing CTA ("Ready to Bring the Archipelago…")
+   Guaranteed minimum height + vertical centering so the
+   cover-image never looks cropped/cut-off on short content.
+   Applied via class="on-dark cta-final" in index.html.
+   ============================================================ */
+
+section.cta-final {
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  background-position: center 40%;
+}
+@media (max-width: 600px) {
+  section.cta-final { min-height: 300px; }
 }
 
 /* -------------------- Utility -------------------- */
