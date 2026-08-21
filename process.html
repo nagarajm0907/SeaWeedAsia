@@ -7,29 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="nav-inner">
-            <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
-            <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="process.html" aria-current="page">Process</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-    </header>
+    <div class="header-hero-wrapper">
+        <header class="site-header" id="siteHeader">
+            <div class="nav-inner">
+                <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
+                <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="process.html" aria-current="page">Process</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <section class="hero" style="padding:70px 0 60px;">
-        <div class="wrap">
-            <span class="tag">Farm to container</span>
-            <h1 style="max-width:20ch;">Our Process</h1>
-            <p class="lede">Five steps, every one logged against a batch ID, from the moment a seedling goes onto a line to the moment a container leaves port.</p>
-        </div>
-    </section>
+        <section class="hero">
+            <div class="wrap">
+                <span class="tag">Farm to container</span>
+                <h1 style="max-width:20ch;">Our Process</h1>
+                <p class="lede">Five steps, every one logged against a batch ID, from the moment a seedling goes onto a line to the moment a container leaves port.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="hero-fade"></div>
 
     <section>
         <div class="wrap">
@@ -71,49 +75,51 @@
         </div>
     </section>
 
-    <section class="center">
-        <div class="wrap">
-            <span class="tag">See it yourself</span>
-            <h2>Want the Full Photo Set From Farm to Port?</h2>
-            <a href="gallery.html" class="btn btn-primary">View Gallery</a>
-        </div>
-    </section>
+    <div class="footer-wave-wrapper">
+        <section class="on-dark center cta-bottom-bg" style="margin-bottom: 0; padding-bottom: 60px;">
+            <div class="wrap">
+                <span class="tag">See it yourself</span>
+                <h2>Want the Full Photo Set From Farm to Port?</h2>
+                <a href="gallery.html" class="btn btn-primary">View Gallery</a>
+            </div>
+        </section>
 
-    <footer class="site-footer">
-        <div class="wrap">
-            <div class="grid-2">
-                <div>
-                    <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
-                    <p style="max-width:42ch;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+        <footer class="site-footer">
+            <div class="wrap">
+                <div class="grid-2">
+                    <div>
+                        <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
+                        <p style="max-width:42ch;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+                    </div>
+                    <dl>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>Office</dt><dd class="tbd">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>Warehouse</dt><dd class="tbd">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com" style="color:#ffffff;">export@seaweedasia.com</a></dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
+                        </div>
+                    </dl>
                 </div>
-                <dl>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Office</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Warehouse</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com">export@seaweedasia.com</a></dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
-                    </div>
-                </dl>
+                <div class="footer-links">
+                    <a href="index.html#products">Products</a>
+                    <a href="index.html#quality">Quality</a>
+                    <a href="index.html#sourcing">Sourcing</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-bottom">
+                    &copy; 2026 SeaweedAsia. All rights reserved.
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="index.html#products">Products</a>
-                <a href="index.html#quality">Quality</a>
-                <a href="index.html#sourcing">Sourcing</a>
-                <a href="about.html">About</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 SeaweedAsia. All rights reserved.
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <!-- Chatbot widget -->
     <button id="sa-chat-toggle" aria-label="Open chat">&#128172;</button>

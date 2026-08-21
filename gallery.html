@@ -7,29 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="nav-inner">
-            <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
-            <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-            <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="process.html">Process</a>
-                <a href="gallery.html" aria-current="page">Gallery</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-    </header>
+    <div class="header-hero-wrapper">
+        <header class="site-header" id="siteHeader">
+            <div class="nav-inner">
+                <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
+                <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="process.html">Process</a>
+                    <a href="gallery.html" aria-current="page">Gallery</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <section class="hero" style="padding:70px 0 60px;">
-        <div class="wrap">
-            <span class="tag">Farm site &middot; Farmers &middot; Warehouse &middot; Export shipment</span>
-            <h1 style="max-width:20ch;">Gallery</h1>
-            <p class="lede">From farm to container, in pictures.</p>
-        </div>
-    </section>
+        <section class="hero">
+            <div class="wrap">
+                <span class="tag">Farm site &middot; Farmers &middot; Warehouse &middot; Export shipment</span>
+                <h1 style="max-width:20ch;">Gallery</h1>
+                <p class="lede">From farm to container, in pictures.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="hero-fade"></div>
 
     <section>
         <div class="wrap">
@@ -91,41 +95,43 @@
         </div>
     </section>
 
-    <footer class="site-footer">
-        <div class="wrap">
-            <div class="grid-2">
-                <div>
-                    <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
-                    <p style="max-width:42ch;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+    <div class="footer-wave-wrapper">
+        <footer class="site-footer" style="padding-top: 72px;">
+            <div class="wrap">
+                <div class="grid-2">
+                    <div>
+                        <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
+                        <p style="max-width:42ch;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+                    </div>
+                    <dl>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>Office</dt><dd class="tbd">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>Warehouse</dt><dd class="tbd">To be added</dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com" style="color:#ffffff;">export@seaweedasia.com</a></dd>
+                        </div>
+                        <div class="contact-detail" style="border-color:rgba(255,255,255,0.15);">
+                            <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
+                        </div>
+                    </dl>
                 </div>
-                <dl>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Office</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Warehouse</dt><dd class="tbd">To be added</dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com">export@seaweedasia.com</a></dd>
-                    </div>
-                    <div class="contact-detail" style="border-color:#1c3d33;">
-                        <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
-                    </div>
-                </dl>
+                <div class="footer-links">
+                    <a href="index.html#products">Products</a>
+                    <a href="index.html#quality">Quality</a>
+                    <a href="index.html#sourcing">Sourcing</a>
+                    <a href="about.html">About</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-bottom">
+                    &copy; 2026 SeaweedAsia. All rights reserved.
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="index.html#products">Products</a>
-                <a href="index.html#quality">Quality</a>
-                <a href="index.html#sourcing">Sourcing</a>
-                <a href="about.html">About</a>
-                <a href="blog.html">Blog</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 SeaweedAsia. All rights reserved.
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <!-- Chatbot widget -->
     <button id="sa-chat-toggle" aria-label="Open chat">&#128172;</button>

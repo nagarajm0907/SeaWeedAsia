@@ -603,10 +603,27 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .header-hero-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;            /* stops child margins from ever
+  overflow-x: hidden;          /* guards horizontal bleed only */
+  display: flow-root;          /* prevents child-margin collapse from
                                    exposing the sand body-background at
-                                   the top edge */
+                                   the top edge, WITHOUT the vertical
+                                   overflow:hidden that breaks the
+                                   position:sticky header inside it */
   background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
+}
+
+/* Smooth fade from the wave-hero's dark base colour into whatever
+   section follows, instead of a hard seam. Add class="hero-fade"
+   to a thin empty div placed immediately after </div> of
+   .header-hero-wrapper. Height is intentionally small so it never
+   overlaps hero content above it. */
+.hero-fade {
+  height: 90px;
+  margin-top: -1px;
+  background: linear-gradient(to bottom, var(--ocean-900), var(--sand-100));
+}
+@media (max-width: 600px) {
+  .hero-fade { height: 56px; }
 }
 
 .header-hero-wrapper > *:first-child,
@@ -675,7 +692,8 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .footer-wave-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  display: flow-root;
   background:
     linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.65)),
     url('story-bg.png') no-repeat center bottom / cover;
@@ -735,7 +753,8 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .home-footer-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  display: flow-root;
   background-color: var(--teal-950);
   background-image:
     linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
