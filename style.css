@@ -694,6 +694,64 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 
 
 /* ============================================================
+   HOMEPAGE HERO — compact variant so the full hero (nav through
+   stat row) fits inside a single viewport without scrolling.
+   Applied via class="hero hero-compact" on index.html only.
+   ============================================================ */
+
+.header-hero-wrapper .hero.hero-compact {
+  padding-top: 6px !important;
+  padding-bottom: 36px;
+}
+.hero-compact h1 {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  max-width: 22ch;
+  margin-bottom: 12px;
+}
+.hero-compact .lede {
+  font-size: 1.02rem;
+  margin-bottom: 18px;
+  max-width: 62ch;
+}
+.hero-compact .cta-row { margin-top: 2px; }
+.hero-compact .cert-row { margin-top: 16px; margin-bottom: 4px; }
+.hero-compact .stat-row { margin-top: 16px; }
+.hero-compact .stat { padding: 14px 14px; }
+.hero-compact .stat b { font-size: 1.6rem; }
+.hero-compact .stat span { font-size: 0.7rem; }
+@media (max-width: 900px) {
+  .hero-compact .stat-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+
+/* ============================================================
+   HOMEPAGE CTA + FOOTER — continuous deep-ocean background
+   Home keeps the ocean-depths photo (not the wave), but it must
+   run seamlessly through both the closing CTA and the footer
+   instead of stopping at a hard seam. Wrap both in:
+   <div class="home-footer-wrapper"> ... </div>
+   ============================================================ */
+
+.home-footer-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--teal-950);
+  background-image:
+    linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
+    url('ocean-depths-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.home-footer-wrapper section.on-dark,
+.home-footer-wrapper .site-footer {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+
+/* ============================================================
    FIX — Homepage closing CTA ("Ready to Bring the Archipelago…")
    Guaranteed minimum height + vertical centering so the
    cover-image never looks cropped/cut-off on short content.
