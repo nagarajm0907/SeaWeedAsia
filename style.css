@@ -720,7 +720,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 
 .header-hero-wrapper .hero.hero-compact {
   padding-top: 6px !important;
-  padding-bottom: 130px;
+  padding-bottom: 180px;
 }
 #trust-intro { padding-top: 40px; }
 .hero-compact h1 {
