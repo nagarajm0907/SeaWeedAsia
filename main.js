@@ -8,6 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ---- Sticky header glass effect (shared across all pages with .header-hero-wrapper) ----
+  var siteHeader = document.getElementById('siteHeader');
+  if (siteHeader) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 30) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    });
+  }
+
   // ---- Chatbot widget (front-end demo — wire to a real backend later) ----
   var chatToggle = document.getElementById('sa-chat-toggle');
   var chatPanel = document.getElementById('sa-chat-panel');
@@ -15,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var chatBody = document.getElementById('sa-chat-body');
   var chatForm = document.getElementById('sa-chat-form');
   var chatInput = document.getElementById('sa-chat-input');
-
   if (chatToggle && chatPanel) {
     chatToggle.addEventListener('click', function () {
       chatPanel.classList.toggle('open');
@@ -23,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     chatClose.addEventListener('click', function () {
       chatPanel.classList.remove('open');
     });
-
     var canned = [
       { match: /moq|minimum/i, reply: "Our minimum order is 1 container. Want help estimating volume for your species of interest?" },
       { match: /sample/i, reply: "You can request a free sample through our Contact page — samples typically take up to 30 days to arrive." },
@@ -31,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
       { match: /species|cottonii|spinosum|gracilaria|sargassum|sea lettuce/i, reply: "We export Cottonii, Spinosum, Gracilaria, Sea Lettuce, and Sargassum — check the Products page for specs on each." },
       { match: /ship|incoterm|port/i, reply: "We ship FOB and CIF as standard (CNF on request) from major Indonesian ports. Lead time is usually 14–30 days." },
     ];
-
     function addMsg(text, who) {
       var el = document.createElement('div');
       el.className = 'sa-msg ' + who;
@@ -39,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
       chatBody.appendChild(el);
       chatBody.scrollTop = chatBody.scrollHeight;
     }
-
     chatForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var val = chatInput.value.trim();
