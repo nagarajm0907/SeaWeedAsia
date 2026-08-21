@@ -3,235 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeaweedAsia — Industry Insights & Hubs</title>
+    <title>SeaweedAsia — Industry Insights &amp; Origins</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --primary: #0a192f;
-            --accent: #8dba9d;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --max-width: 1200px;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; background-color: var(--bg-light); color: var(--text-main); line-height: 1.5; }
-
-        /* Exact Inner Page Header Container Match */
-        .header-hero-wrapper {
-            background: #0a192f;
-            width: 100%;
-            color: #ffffff;
-            border-bottom: 1px solid rgba(141, 186, 157, 0.15);
-        }
-
-        .site-header {
-            width: 100%;
-            background: #0a192f;
-            display: flex;
-            justify-content: center;
-        }
-
-        .site-header .nav-inner {
-            width: 100%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 90px;
-        }
-
-        .brand { font-size: 1.25rem; font-weight: 700; color: #ffffff; text-decoration: none; display: flex; align-items: center; gap: 2px; }
-        .brand span { color: var(--accent); }
-
-        .main-nav { display: flex; gap: 28px; align-items: center; }
-        .main-nav a { color: #cbd5e1; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
-        .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--accent); }
-
-        /* Page Hero Section */
-        .hero {
-            padding: 40px 24px 60px;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .hero .tag {
-            background: rgba(141, 186, 157, 0.15);
-            border: 1px solid rgba(141, 186, 157, 0.3);
-            color: var(--accent);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-
-        .hero h1 { font-size: 2.5rem; margin-bottom: 12px; line-height: 1.2; color: #ffffff; }
-        .hero .lede { color: #94a3b8; font-size: 1.05rem; max-width: 600px; }
-
-        .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-
-        /* Blog Grid Styling */
-        .blog-section { padding: 60px 0; background: var(--bg-light); }
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        @media(max-width: 950px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media(max-width: 650px) { .blog-grid { grid-template-columns: 1fr; } }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        @media (max-width: 950px) { .blog-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 650px) { .blog-grid { grid-template-columns: 1fr; } }
 
         .blog-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
+            background: var(--white);
+            border: 1px solid var(--sand-300);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: block;
             text-decoration: none;
             color: inherit;
+            transition: transform .15s ease, box-shadow .15s ease;
         }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
-        }
-
-        .blog-img-container {
-            width: 100%;
-            height: 180px;
-            background: #e2e8f0;
-            overflow: hidden;
-        }
-
-        .blog-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
+        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(15,37,55,0.1); }
+        .blog-img { width: 100%; height: 190px; background: var(--sand-200); overflow: hidden; }
+        .blog-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .blog-content { padding: 24px; }
-        .blog-meta { font-size: 0.78rem; font-weight: 600; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between; }
-        .blog-card h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 10px; }
-        .blog-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
-        .blog-link { font-size: 0.9rem; font-weight: 600; color: #1e293b; display: inline-block; }
-
-        /* Highly Visible Wave Patterned Footer Background */
-        .site-footer {
-            background-color: #071120;
-            background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(141, 186, 157, 0.25), transparent),
-                repeating-radial-gradient(circle at 50% 120%, rgba(141, 186, 157, 0.07) 0, rgba(141, 186, 157, 0.07) 40px, transparent 40px, transparent 80px),
-                linear-gradient(to bottom, #071120, #040914);
-            color: #ffffff;
-            padding: 80px 24px 40px;
-            margin-top: 60px;
-            border-top: 2px solid rgba(141, 186, 157, 0.3);
-        }
-
-        .footer-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        @media(max-width: 768px) { .footer-container { grid-template-columns: 1fr; gap: 40px; } }
-
-        .footer-brand-col p {
-            max-width: 42ch;
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-top: 15px;
-            line-height: 1.6;
-        }
-
-        .footer-info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .footer-info-item .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #8dba9d;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 4px;
-        }
-
-        .footer-info-item .value {
-            font-size: 0.95rem;
-            color: #ffffff;
-            font-style: italic;
-        }
-
-        .footer-bottom {
-            max-width: var(--max-width);
-            margin: 60px auto 0 auto;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
-        .footer-nav a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
-        .footer-nav a:hover { color: #ffffff; }
+        .blog-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+        .blog-card p { color: var(--ocean-700); font-size: 0.92rem; margin-bottom: 16px; }
+        .blog-link { font-size: 0.9rem; font-weight: 600; color: var(--coral-600); }
     </style>
 </head>
 <body>
+    <header class="site-header">
+        <div class="nav-inner">
+            <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
+            <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="process.html">Process</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="blog.html" aria-current="page">Blog</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="header-hero-wrapper">
-        <header class="site-header">
-            <div class="nav-inner">
-                <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
-                <nav class="main-nav">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="products.html">Products</a>
-                    <a href="process.html">Process</a>
-                    <a href="gallery.html">Gallery</a>
-                    <a href="blog.html" aria-current="page">Blog</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-            </div>
-        </header>
+    <section class="hero" style="padding:70px 0 60px;">
+        <div class="wrap">
+            <span class="tag">Knowledge &amp; sourcing hub</span>
+            <h1 style="max-width:20ch;">Industry Insights &amp; Indonesian Origins</h1>
+            <p class="lede">Deep dives into our coastal farming regions, species processing, and export standards — straight from the export desk.</p>
+        </div>
+    </section>
 
-        <section class="hero">
-            <span class="tag">Knowledge & Sourcing Hub</span>
-            <h1>Industry Insights & Indonesian Origins</h1>
-            <p class="lede">Explore our deep dives into Indonesia's coastal farming regions, species processing, and global export standards.</p>
-        </section>
-    </div>
-
-    <section class="blog-section">
+    <section>
         <div class="wrap">
             <div class="blog-grid">
                 <a href="blog-sulawesi-cottonii.html" class="blog-card">
-                    <div class="blog-img-container"><img src="blog-sulawesi-cottonii.png" alt="South Sulawesi"></div>
+                    <div class="blog-img"><img src="blog-sulawesi-cottonii.png" alt="South Sulawesi cottonii farm"></div>
                     <div class="blog-content">
-                        <div class="blog-meta"><span>South Sulawesi</span><span>4 min read</span></div>
+                        <div class="card meta" style="display:inline-block;">South Sulawesi · 4 min read</div>
                         <h3>The Golden Standard: Sourcing Premium Cottonii</h3>
-                        <p>Discover how crystal-clear shallow waters yield high-gel-strength Kappaphycus alvarezii.</p>
+                        <p>How crystal-clear shallow waters yield high-gel-strength Eucheuma Cottonii.</p>
                         <span class="blog-link">Read Article &rarr;</span>
                     </div>
                 </a>
 
                 <a href="blog-ntt-spinosum.html" class="blog-card">
-                    <div class="blog-img-container"><img src="blog-ntt-spinosum.png" alt="East Nusa Tenggara"></div>
+                    <div class="blog-img"><img src="blog-ntt-spinosum.png" alt="East Nusa Tenggara spinosum farm"></div>
                     <div class="blog-content">
-                        <div class="blog-meta"><span>East Nusa Tenggara</span><span>5 min read</span></div>
+                        <div class="card meta" style="display:inline-block;">East Nusa Tenggara · 5 min read</div>
                         <h3>Rigor in the Reefs: Superior Spinosum Cultivation</h3>
+                        <p>Why Spinosum from these reef flats holds a softer, more elastic gel.</p>
+                        <span class="blog-link">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="blog-bali-sun-drying.html" class="blog-card">
+                    <div class="blog-img"><img src="blog-bali-sun-drying.png" alt="Sun-drying seaweed racks in Bali"></div>
+                    <div class="blog-content">
+                        <div class="card meta" style="display:inline-block;">Bali · 4 min read</div>
+                        <h3>Why We Still Sun-Dry, Not Kiln-Dry</h3>
+                        <p>The traditional bamboo-rack method our Bali farmers use, and why it protects gel strength.</p>
+                        <span class="blog-link">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="blog-java-gracilaria.html" class="blog-card">
+                    <div class="blog-img"><img src="blog-java-gracilaria.png" alt="Gracilaria pond farm in Java"></div>
+                    <div class="blog-content">
+                        <div class="card meta" style="display:inline-block;">Java · 4 min read</div>
+                        <h3>Pond-Farmed, Not Ocean-Grown: Understanding Gracilaria</h3>
+                        <p>Why brackish-pond Gracilaria gives a cleaner, lower-ash agar-grade harvest.</p>
+                        <span class="blog-link">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="blog-madura-logistics.html" class="blog-card">
+                    <div class="blog-img"><img src="blog-madura-logistics.png" alt="Port shipment logistics near Madura"></div>
+                    <div class="blog-content">
+                        <div class="card meta" style="display:inline-block;">Export Logistics · 3 min read</div>
+                        <h3>Farm to Port: What Actually Happens After Baling</h3>
+                        <p>A plain walkthrough of the shipping leg — from baled cargo to a loaded container.</p>
+                        <span class="blog-link">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="blog-maluku-wild-harvest.html" class="blog-card">
+                    <div class="blog-img"><img src="blog-maluku-wild-harvest.png" alt="Wild seaweed harvest in Maluku"></div>
+                    <div class="blog-content">
+                        <div class="card meta" style="display:inline-block;">Maluku · 5 min read</div>
+                        <h3>Wild-Collected, Carefully Tracked: Sourcing Sargassum</h3>
+                        <p>How we manage traceability for a species that isn't farmed on lines.</p>
+                        <span class="blog-link">Read Article &rarr;</span>
+                    </div>
+                </a>
+
+                <a href="blog-sulawesi-tenggara.html" class="blog-card">
+                    <div class="blog-img"><img src="blog-sulawesi-tenggara.png" alt="Southeast Sulawesi coastal farm"></div>
+                    <div class="blog-content">
+                        <div class="card meta" style="display:inline-block;">Southeast Sulawesi · 4 min read</div>
+                        <h3>Inside Our Southeast Sulawesi Farming Network</h3>
+                        <p>A closer look at one of our core sourcing regions and how batches are tracked from bed to bale.</p>
+                        <span class="blog-link">Read Article &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="center">
+        <div class="wrap">
+            <span class="tag">Talk to us</span>
+            <h2>Have a Question We Haven't Covered?</h2>
+            <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <div class="grid-2">
+                <div>
+                    <p class="brand" style="font-size:1.15rem;margin-bottom:10px;">SeaweedAsia<span style="color:#8dba9d">.</span></p>
+                    <p style="max-width:42ch;">SeaweedAsia is a founder-led export house building direct, traceable sourcing relationships with Indonesian coastal farmers — one mapped farm, one verified container at a time.</p>
+                </div>
+                <dl>
+                    <div class="contact-detail" style="border-color:#1c3d33;">
+                        <dt>Office</dt><dd class="tbd">To be added</dd>
+                    </div>
+                    <div class="contact-detail" style="border-color:#1c3d33;">
+                        <dt>Warehouse</dt><dd class="tbd">To be added</dd>
+                    </div>
+                    <div class="contact-detail" style="border-color:#1c3d33;">
+                        <dt>Email</dt><dd><a href="mailto:export@seaweedasia.com">export@seaweedasia.com</a></dd>
+                    </div>
+                    <div class="contact-detail" style="border-color:#1c3d33;">
+                        <dt>WhatsApp</dt><dd class="tbd">To be added</dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="footer-links">
+                <a href="index.html#products">Products</a>
+                <a href="index.html#quality">Quality</a>
+                <a href="index.html#sourcing">Sourcing</a>
+                <a href="about.html">About</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 SeaweedAsia. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot widget -->
+    <button id="sa-chat-toggle" aria-label="Open chat">&#128172;</button>
+    <div id="sa-chat-panel">
+        <div class="sa-chat-head">
+            <span>SeaweedAsia Export Desk</span>
+            <button id="sa-chat-close" aria-label="Close chat">&times;</button>
+        </div>
+        <div class="sa-chat-body" id="sa-chat-body">
+            <div class="sa-msg bot">Hi! Ask me about MOQs, species, samples, or shipping — or leave a question for our export desk.</div>
+        </div>
+        <form class="sa-chat-input" id="sa-chat-form">
+            <input type="text" id="sa-chat-input" placeholder="Type a message…" autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
