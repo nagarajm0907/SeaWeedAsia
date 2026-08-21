@@ -6,13 +6,38 @@
     <title>SeaweedAsia — Farm to Port: What Actually Happens After Baling</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Wave-textured wrapper for header + hero, matching the About page */
+        .header-hero-wrapper {
+            background: linear-gradient(rgba(10,25,47,0.5), rgba(10,25,47,0.7)), url('story-bg.png') no-repeat;
+            background-size: cover;
+            background-position: 0% 15%;
+            width: 100%;
+        }
+        .header-hero-wrapper .site-header { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .header-hero-wrapper .hero { background: transparent !important; }
+        .header-hero-wrapper .hero .lede { color: #e2e8f0 !important; }
+
+        /* Wave-textured wrapper for closing CTA + footer, matching the About page */
+        .bottom-cta-footer-wrapper {
+            background: linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.65)), url('story-bg.png') no-repeat center bottom;
+            background-size: cover;
+            width: 100%;
+        }
+        .bottom-cta-footer-wrapper .cta-bottom-bg,
+        .bottom-cta-footer-wrapper .site-footer { background: transparent !important; }
+        .bottom-cta-footer-wrapper .site-footer dt { color: #94a3b8 !important; }
+        .bottom-cta-footer-wrapper .site-footer dd,
+        .bottom-cta-footer-wrapper .site-footer .tbd { color: #ffffff !important; opacity: 1 !important; }
+
         .post-hero-img { width: 100%; max-height: 420px; object-fit: cover; border-radius: var(--radius-lg); margin: 0 auto 40px; display: block; }
         .post-body { max-width: 68ch; margin: 0 auto; }
         .post-body p { margin-bottom: 18px; font-size: 1.02rem; line-height: 1.7; }
         .post-back { display: inline-block; margin-bottom: 24px; color: var(--coral-600); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+        .header-hero-wrapper .post-back { color: #ffb3ab; }
     </style>
 </head>
 <body>
+    <div class="header-hero-wrapper">
     <header class="site-header">
         <div class="nav-inner">
             <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
@@ -28,13 +53,14 @@
             </nav>
         </div>
     </header>
-    <section class="hero" style="padding:60px 0 40px;">
-        <div class="wrap" style="max-width:68ch;">
-            <a href="blog.html" class="post-back">&larr; Back to all articles</a>
-            <span class="tag">Export Logistics &middot; 3 min read</span>
-            <h1 style="max-width:22ch;">Farm to Port: What Actually Happens After Baling</h1>
-        </div>
-    </section>
+        <section class="hero" style="padding:50px 0 40px;">
+            <div class="wrap" style="max-width:68ch;">
+                <a href="blog.html" class="post-back">&larr; Back to all articles</a>
+                <span class="tag">Export Logistics &middot; 3 min read</span>
+                <h1 style="max-width:22ch;">Farm to Port: What Actually Happens After Baling</h1>
+            </div>
+        </section>
+    </div>
 
     <section>
         <div class="wrap">
@@ -51,13 +77,14 @@
         </div>
     </section>
 
-    <section class="center">
-        <div class="wrap">
-            <span class="tag">Talk to us</span>
-            <h2>Want This Batch Data for a Real Order?</h2>
-            <a href="contact.html" class="btn btn-primary">Request Bulk Quote</a>
-        </div>
-    </section>
+    <div class="bottom-cta-footer-wrapper">
+        <section class="on-dark center cta-bottom-bg" style="padding-bottom:60px;">
+            <div class="wrap">
+                <span class="tag">Talk to us</span>
+                <h2>Want This Batch Data for a Real Order?</h2>
+                <a href="contact.html" class="btn btn-primary">Request Bulk Quote</a>
+            </div>
+        </section>
 
     <footer class="site-footer">
         <div class="wrap">
@@ -94,6 +121,7 @@
             </div>
         </div>
     </footer>
+    </div>
 
     <!-- Chatbot widget -->
     <button id="sa-chat-toggle" aria-label="Open chat">&#128172;</button>
