@@ -665,20 +665,6 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
 }
 
-/* Fade the dark hero into the sand section below instead of an
-   abrupt cut. Sits inside the wrapper (overflow:hidden keeps it
-   contained), so it never overlaps the following section. */
-.header-hero-wrapper::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 160px;
-  background: linear-gradient(to bottom, transparent, var(--sand-100));
-  pointer-events: none;
-}
-
 .header-hero-wrapper > *:first-child,
 .header-hero-wrapper .site-header {
   margin-top: 0 !important;
