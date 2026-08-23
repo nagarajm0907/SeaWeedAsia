@@ -603,12 +603,18 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .process-feature {
   position: relative;
   min-height: 560px;
-  background: var(--sand-200) url('dry-process.png') no-repeat center / cover;
   display: flex;
   align-items: center;
   gap: 5%;
   padding: 56px 6%;
   overflow: hidden;
+  background-color: var(--sand-200);
+  background-image:
+    linear-gradient(90deg, rgba(248,245,240,0) 0%, rgba(248,245,240,0) 46%, rgba(248,245,240,0.72) 66%, rgba(248,245,240,0.88) 100%),
+    url('dry-process.png');
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
 }
 .process-feature-photo {
   position: relative;
@@ -632,15 +638,6 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   z-index: 2;
   margin-left: auto;
   max-width: 480px;
-  padding: 10px 14px;
-}
-.process-feature-text::before {
-  content: "";
-  position: absolute;
-  inset: -24px -28px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.42) 55%, rgba(255,255,255,0) 85%);
-  z-index: -1;
-  border-radius: 28px;
 }
 .process-feature-text h2 { color: var(--ocean-900); }
 .process-feature-text p { color: var(--ocean-900); }
