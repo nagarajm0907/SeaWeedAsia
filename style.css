@@ -1,10 +1,14 @@
 /* ============================================================
-   SeaweedAsia — Design System
+   SeaweedAsia — Design System v2
+   Concept: Reef & Coral. Warm, high-conviction B2B export site —
+   soft rounded shapes, coral accents, deep ocean-blue text,
+   still stamped with the manifest/traceability data motifs.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
+  /* Reef & Coral palette */
   --coral-500: #FF6B5B;
   --coral-600: #D94E40;
   --coral-mist: #FFF0ED;
@@ -18,6 +22,7 @@
   --ink: #0F2537;
   --white: #ffffff;
 
+  /* legacy aliases kept so existing markup classes still resolve */
   --teal-950: var(--ocean-900);
   --teal-900: var(--ocean-700);
   --teal-800: var(--ocean-700);
@@ -41,13 +46,7 @@
 
 * { box-sizing: border-box; }
 
-html { 
-  scroll-behavior: smooth; 
-  margin: 0; 
-  padding: 0; 
-  height: auto !important;
-  min-height: 100%;
-}
+html { scroll-behavior: smooth; margin: 0; padding: 0; }
 
 body {
   margin: 0;
@@ -57,9 +56,6 @@ body {
   background: var(--sand-100);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  height: auto !important;
-  min-height: 100%;
-  overflow-x: hidden;
 }
 
 img { max-width: 100%; display: block; }
@@ -71,7 +67,7 @@ a { color: inherit; }
   padding: 0 28px;
 }
 
-/* -------------------- Manifest tag -------------------- */
+/* -------------------- Manifest tag (signature element) -------------------- */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -197,7 +193,7 @@ h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); }
 h3 { font-size: 1.25rem; }
 p { margin: 0 0 16px; max-width: 68ch; }
 .lede { font-size: 1.15rem; color: var(--teal-800); }
-section.on-dark .lede { color: #cbd5e1; }
+section.on-dark .lede { color: var(--kelp-300); }
 
 .rule {
   border: none;
@@ -231,7 +227,7 @@ section.on-dark .lede { color: #cbd5e1; }
   color: inherit;
 }
 .btn-outline:hover { background: rgba(255,255,255,0.08); }
-.cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 0; }
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
 .link-inline { color: var(--coral-600); font-weight: 600; text-decoration: none; }
 .link-inline:hover { text-decoration: underline; }
 
@@ -244,20 +240,20 @@ section.on-dark .lede { color: #cbd5e1; }
 .hero .tag { color: var(--coral-500); background: rgba(255,107,91,0.12); border-color: rgba(255,107,91,0.35); }
 .hero h1 { max-width: 17ch; }
 .hero p.lede { max-width: 58ch; }
-.cert-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.cert-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
 .cert-pill {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   color: var(--sand-100);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.18);
   border-radius: var(--radius-full);
-  padding: 7px 16px;
+  padding: 6px 14px;
 }
 .cert-pill.tbd { color: var(--sand-300); font-style: italic; border-style: dashed; }
 
-/* -------------------- Blog post header -------------------- */
+/* -------------------- Blog post header (back link + tag + title spacing) -------------------- */
 .post-back {
   display: block;
   margin-bottom: 22px;
@@ -268,39 +264,32 @@ section.on-dark .lede { color: #cbd5e1; }
 }
 .post-back:hover { text-decoration: underline; }
 .header-hero-wrapper .post-back { color: #ffb3ab; }
-.header-hero-wrapper .hero .tag { margin-bottom: 22px; }
-.header-hero-wrapper .hero h1 { margin-top: 6px; margin-bottom: 22px; letter-spacing: -0.01em; }
-.header-hero-wrapper .hero .lede { margin-bottom: 34px; }
+.header-hero-wrapper .hero .tag { margin-bottom: 18px; }
+.header-hero-wrapper .hero h1 { margin-top: 6px; }
 
 /* -------------------- Stat / track record row -------------------- */
 .stat-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-top: 40px;
+  gap: 20px;
+  margin-top: 20px;
 }
 .stat {
   border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius-md);
-  padding: 24px 20px;
+  padding: 22px 18px;
   font-family: var(--font-mono);
   background: rgba(255,255,255,0.04);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.16);
-  transition: transform .18s ease, box-shadow .18s ease;
 }
-.stat:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.22); }
 .stat b {
   display: block;
   font-family: var(--font-display);
   font-size: 2.1rem;
   font-weight: 700;
   color: var(--coral-500);
-  margin-bottom: 6px;
-  line-height: 1.1;
 }
-.stat span { font-size: 0.76rem; color: var(--sand-300); text-transform: uppercase; letter-spacing: 0.05em; }
-section:not(.on-dark) .stat { border-color: var(--sand-300); background: var(--white); box-shadow: 0 8px 22px rgba(15,37,55,0.06); }
-section:not(.on-dark) .stat:hover { box-shadow: 0 14px 30px rgba(15,37,55,0.1); }
+.stat span { font-size: 0.78rem; color: var(--sand-300); text-transform: uppercase; letter-spacing: 0.04em; }
+section:not(.on-dark) .stat { border-color: var(--sand-300); background: var(--white); }
 section:not(.on-dark) .stat span { color: var(--ocean-700); }
 @media (max-width: 700px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
 
@@ -443,17 +432,6 @@ ul.checklist li::before {
   font-family: var(--font-mono); font-size: 0.78rem; color: var(--ocean-700);
   padding: 16px; text-align: center;
 }
-.product-photo {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  min-height: 220px;
-}
-.product-photo img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
 
 /* -------------------- Map -------------------- */
 .map-embed {
@@ -507,347 +485,11 @@ fieldset legend { font-family: var(--font-mono); font-size: 0.75rem; text-transf
 .faq-item h3 { font-size: 1.02rem; margin-bottom: 8px; font-family: var(--font-body); font-weight: 600; }
 .faq-item p { margin: 0; color: var(--ocean-700); }
 
-/* -------------------- Page Hero -------------------- */
-.header-hero-wrapper {
-  position: relative;
-  width: 100%;
-  display: flow-root;
-  background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
-}
-
-.hero-fade {
-  height: 0;
-  margin: 0;
-  background: none;
-}
-
-.header-hero-wrapper > *:first-child,
-.header-hero-wrapper .site-header {
-  margin-top: 0 !important;
-}
-
-.header-hero-wrapper .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background .3s ease, backdrop-filter .3s ease,
-              border-color .3s ease, box-shadow .3s ease;
-  width: 100%;
-}
-
-.header-hero-wrapper .site-header.scrolled {
-  background: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(141, 186, 157, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.header-hero-wrapper .hero {
-  background: transparent !important;
-  border-top: none !important;
-  padding-top: 10px !important;
-  padding-bottom: 60px;
-  margin-top: 0;
-}
-
-.header-hero-wrapper .hero .lede {
-  color: #e2e8f0 !important;
-  opacity: 0.95;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.header-hero-wrapper .hero .tag {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #cbd5e1 !important;
-  backdrop-filter: blur(8px);
-}
-
-@media (max-width: 760px) {
-  .header-hero-wrapper .main-nav.open {
-    background: rgba(10, 25, 47, 0.92);
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
-    padding: 14px 20px;
-  }
-}
-
-/* -------------------- Footer -------------------- */
-.footer-wave-wrapper {
-  position: relative;
-  width: 100%;
-  overflow-x: hidden;
-  display: flow-root;
-  background:
-    linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.65)),
-    url('story-bg.png') no-repeat center bottom / cover;
-}
-
-.footer-wave-wrapper .site-footer,
-.footer-wave-wrapper .cta-bottom-bg,
-.footer-wave-wrapper section.on-dark {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-.footer-wave-wrapper .site-footer dt { color: #94a3b8 !important; }
-.footer-wave-wrapper .site-footer dd,
-.footer-wave-wrapper .site-footer .tbd { color: #ffffff !important; opacity: 1 !important; }
-
-/* -------------------- Homepage Hero -------------------- */
-.header-hero-wrapper .hero.hero-compact {
-  padding-top: 6px !important;
-  padding-bottom: 180px;
-}
-#trust-intro { padding-top: 40px; }
-.hero-compact h1 {
-  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
-  max-width: 22ch;
-  margin-bottom: 20px;
-}
-.hero-compact .lede {
-  font-size: 1.05rem;
-  margin-bottom: 30px;
-  max-width: 62ch;
-}
-.hero-compact .cta-row { margin-top: 4px; }
-.hero-compact .cert-row { margin-top: 30px; margin-bottom: 8px; }
-.hero-compact .stat-row { margin-top: 34px; }
-.hero-compact .stat { padding: 18px 16px; }
-.hero-compact .stat b { font-size: 1.7rem; }
-.hero-compact .stat span { font-size: 0.72rem; }
-@media (max-width: 900px) {
-  .hero-compact .stat-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-}
-
-/* -------------------- Continuous Ocean Section -------------------- */
-.home-footer-wrapper {
-  position: static !important;
-  display: block !important;
-  height: auto !important;
-  width: 100%;
-  background-color: var(--teal-950);
-  background-image:
-    linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
-    url('ocean-depths-bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.home-footer-wrapper section.on-dark,
-.home-footer-wrapper .site-footer {
-  background: transparent !important;
-  background-image: none !important;
-}
-
-section.cta-final {
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  background-position: center 40%;
-  padding-bottom: 40px;
-}
-@media (max-width: 600px) {
-  section.cta-final { min-height: 260px; }
-}
-
-/* -------------------- Footer Layout -------------------- */
-.site-footer {
-  position: relative !important;
-  display: block !important;
-  background-color: #0d261e;
-  color: #e2e8f0;
-  width: 100%;
-  padding: 48px 0 40px 0;
-}
-
-.cta-final-block {
-  padding-bottom: 80px;
-  margin-bottom: 70px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cta-final-block .text-center {
-  text-align: center;
-}
-
-.cta-final-block .tag {
-  display: inline-flex;
-  padding: 6px 16px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #8dba9d;
-  background: rgba(141, 186, 157, 0.1);
-  border: 1px solid rgba(141, 186, 157, 0.3);
-  border-radius: 50px;
-  margin-bottom: 24px;
-}
-
-.cta-final-block h2 {
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 700;
-  line-height: 1.25;
-  color: #ffffff;
-  max-width: 800px;
-  margin: 0 auto 20px auto;
-  letter-spacing: -0.02em;
-}
-
-.cta-final-block .lede {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #94a3b8;
-  max-width: 640px;
-  margin: 0 auto 36px auto;
-}
-
-.cta-action {
-  display: flex;
-  justify-content: center;
-}
-
-.cta-final-block .btn-primary {
-  display: inline-block;
-  padding: 16px 36px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: var(--coral-500);
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 10px 25px -5px rgba(255, 107, 82, 0.4);
-  transition: all 0.25s ease;
-}
-
-.cta-final-block .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px -5px rgba(255, 107, 82, 0.5);
-}
-
-.footer-top-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 60px;
-}
-
-.footer-brand-info .brand {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-
-.footer-brand-info .brand span {
-  color: var(--coral-500);
-}
-
-.footer-brand-info .brand-desc {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #94a3b8;
-  max-width: 44ch;
-}
-
-.footer-contact-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.contact-detail:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.contact-detail .label {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #cbd5e1;
-}
-
-.contact-detail .value {
-  font-size: 0.95rem;
-  color: #94a3b8;
-}
-
-.contact-detail .value.tbd {
-  font-style: italic;
-  opacity: 0.5;
-}
-
-.contact-detail .value a {
-  color: #8dba9d;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-detail .value a:hover {
-  color: #ffffff;
-  text-decoration: underline;
-}
-
-.footer-middle {
-  padding: 28px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 32px;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 36px;
-}
-
-.footer-links a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: #8dba9d;
-}
-
-.footer-bottom {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: #64748b;
-}
-
-@media (max-width: 868px) {
-  .site-footer {
-    padding: 60px 0 30px 0;
-  }
-  .footer-top-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .footer-links {
-    gap: 20px;
-  }
-}
-
-.center { text-align: center; }
-.mt-0 { margin-top: 0; }
+/* -------------------- Contact detail rows -------------------- */
+.contact-detail { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--sand-300); }
+.contact-detail dt { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; color: var(--teal-700); }
+.contact-detail dd { margin: 0; }
+.tbd { color: var(--teal-700); font-style: italic; }
 
 /* -------------------- Testimonials placeholder -------------------- */
 .testimonial-placeholder {
@@ -857,6 +499,25 @@ section.cta-final {
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.85rem;
+  color: var(--sand-300);
+}
+
+/* -------------------- Footer -------------------- */
+footer.site-footer {
+  background: var(--ocean-900);
+  color: var(--sand-200);
+  padding: 56px 0 32px;
+}
+footer.site-footer .grid-2 { align-items: start; }
+footer.site-footer a { color: var(--sand-200); text-decoration: none; }
+footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 10px; font-size: 0.9rem; }
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ocean-700);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--sand-300);
 }
 
@@ -931,3 +592,252 @@ section.cta-final {
 .sa-chat-input button {
   background: var(--coral-500); color: #fff; border: none; padding: 0 18px; cursor: pointer; font-weight: 600;
 }
+
+/* ============================================================
+   SHARED SCROLL-REVEAL ANIMATION
+   One consistent fade+lift-in effect, used site-wide. Add
+   class="reveal" to any section/wrap; main.js handles the rest
+   via IntersectionObserver — same behaviour on every page.
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+/* ============================================================
+   PROCESS PAGE — step thumbnails
+   Adds a small photo per step without touching the base .step
+   layout used elsewhere (e.g. homepage's text-only steps preview).
+   Scoped via .steps-photo so it only applies where opted in.
+   ============================================================ */
+
+.steps-photo .step {
+  grid-template-columns: 56px 150px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.steps-photo .step-thumb {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 104px;
+}
+.steps-photo .step-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.steps-photo .step:hover .step-thumb img { transform: scale(1.06); }
+@media (max-width: 700px) {
+  .steps-photo .step {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .steps-photo .step-thumb { height: 180px; order: 2; }
+  .steps-photo .step .num { order: 1; }
+  .steps-photo .step > div:last-child { order: 3; }
+}
+
+
+/* ============================================================
+   UNIFIED PAGE HERO — wave background (was about.html-only)
+   Apply on every page by wrapping <header class="site-header">
+   and the page's <section class="hero"> in:
+   <div class="header-hero-wrapper"> ... </div>
+   ============================================================ */
+
+.header-hero-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;            /* stops child margins from ever
+                                   exposing the sand body-background at
+                                   the top edge */
+  background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
+}
+
+/* Fade the dark hero into the sand section below instead of an
+   abrupt cut. Sits inside the wrapper (overflow:hidden keeps it
+   contained), so it never overlaps the following section. */
+.header-hero-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, var(--sand-100));
+  pointer-events: none;
+}
+
+.header-hero-wrapper > *:first-child,
+.header-hero-wrapper .site-header {
+  margin-top: 0 !important;
+}
+
+.header-hero-wrapper .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .3s ease, backdrop-filter .3s ease,
+              border-color .3s ease, box-shadow .3s ease;
+  width: 100%;
+}
+
+.header-hero-wrapper .site-header.scrolled {
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(141, 186, 157, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.header-hero-wrapper .hero {
+  background: transparent !important;
+  border-top: none !important;
+  padding-top: 10px !important;
+  padding-bottom: 60px;
+  margin-top: 0;
+}
+
+.header-hero-wrapper .hero .lede {
+  color: #e2e8f0 !important;
+  opacity: 0.95;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header-hero-wrapper .hero .tag {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 760px) {
+  .header-hero-wrapper .main-nav.open {
+    background: rgba(10, 25, 47, 0.92);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    padding: 14px 20px;
+  }
+}
+
+
+/* ============================================================
+   UNIFIED FOOTER — wave background
+   Apply on About / Products / Process / Gallery / Blog / Contact
+   ONLY — NOT on Home (index.html keeps its own deep-ocean
+   .on-dark closing-CTA background feeding into a plain footer).
+   Wrap the last CTA section + <footer> in:
+   <div class="footer-wave-wrapper"> ... </div>
+   ============================================================ */
+
+.footer-wave-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.65)),
+    url('story-bg.png') no-repeat center bottom / cover;
+}
+
+.footer-wave-wrapper .site-footer,
+.footer-wave-wrapper .cta-bottom-bg,
+.footer-wave-wrapper section.on-dark {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+.footer-wave-wrapper .site-footer dt { color: #94a3b8 !important; }
+.footer-wave-wrapper .site-footer dd,
+.footer-wave-wrapper .site-footer .tbd { color: #ffffff !important; opacity: 1 !important; }
+
+
+/* ============================================================
+   HOMEPAGE HERO — compact variant so the full hero (nav through
+   stat row) fits inside a single viewport without scrolling.
+   Applied via class="hero hero-compact" on index.html only.
+   ============================================================ */
+
+.header-hero-wrapper .hero.hero-compact {
+  padding-top: 6px !important;
+  padding-bottom: 36px;
+}
+.hero-compact h1 {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  max-width: 22ch;
+  margin-bottom: 12px;
+}
+.hero-compact .lede {
+  font-size: 1.02rem;
+  margin-bottom: 18px;
+  max-width: 62ch;
+}
+.hero-compact .cta-row { margin-top: 2px; }
+.hero-compact .cert-row { margin-top: 16px; margin-bottom: 4px; }
+.hero-compact .stat-row { margin-top: 16px; }
+.hero-compact .stat { padding: 14px 14px; }
+.hero-compact .stat b { font-size: 1.6rem; }
+.hero-compact .stat span { font-size: 0.7rem; }
+@media (max-width: 900px) {
+  .hero-compact .stat-row { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+
+/* ============================================================
+   HOMEPAGE CTA + FOOTER — continuous deep-ocean background
+   Home keeps the ocean-depths photo (not the wave), but it must
+   run seamlessly through both the closing CTA and the footer
+   instead of stopping at a hard seam. Wrap both in:
+   <div class="home-footer-wrapper"> ... </div>
+   ============================================================ */
+
+.home-footer-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--teal-950);
+  background-image:
+    linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
+    url('ocean-depths-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.home-footer-wrapper section.on-dark,
+.home-footer-wrapper .site-footer {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+
+/* ============================================================
+   FIX — Homepage closing CTA ("Ready to Bring the Archipelago…")
+   Guaranteed minimum height + vertical centering so the
+   cover-image never looks cropped/cut-off on short content.
+   Applied via class="on-dark cta-final" in index.html.
+   ============================================================ */
+
+section.cta-final {
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  background-position: center 40%;
+}
+@media (max-width: 600px) {
+  section.cta-final { min-height: 300px; }
+}
+
+/* -------------------- Utility -------------------- */
+.center { text-align: center; }
+.mt-0 { margin-top: 0; }

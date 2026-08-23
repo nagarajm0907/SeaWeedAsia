@@ -20,6 +20,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ---- Scroll reveal animation (shared across all pages, class="reveal") ----
+  var reveals = document.querySelectorAll('.reveal');
+  if (reveals.length) {
+    var revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0.1 });
+    reveals.forEach(function (el) { revealObserver.observe(el); });
+  }
+
   // ---- Chatbot widget (front-end demo — wire to a real backend later) ----
   var chatToggle = document.getElementById('sa-chat-toggle');
   var chatPanel = document.getElementById('sa-chat-panel');

@@ -79,23 +79,11 @@
 
         /* ==========================================================
            MAXIMUM LEVEL ANIMATIONS & VISUAL EFFECTS
+           (.reveal fade-in is now shared — see style.css / main.js)
            ========================================================== */
 
         html {
             scroll-behavior: smooth;
-        }
-
-        /* Scroll Reveal Animation Classes with Staggering */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
         }
 
         /* High-Intensity 3D Tilt Card Effect */
@@ -187,8 +175,6 @@
             </div>
         </section>
     </div>
-
-    <div class="hero-fade"></div>
 
     <section class="reveal">
         <div class="wrap">
@@ -384,19 +370,6 @@
     <script src="main.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Scroll reveal animation observer
-            const reveals = document.querySelectorAll(".reveal");
-            const revealOnScroll = function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-            const observer = new IntersectionObserver(revealOnScroll, { root: null, threshold: 0.1 });
-            reveals.forEach(reveal => observer.observe(reveal));
-
             // Advanced 3D Tilt & Shimmer Interaction for Cards & Stat Cards
             const tiltElements = document.querySelectorAll(".card, .stat-card-custom");
             tiltElements.forEach(card => {
