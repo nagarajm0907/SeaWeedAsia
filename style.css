@@ -837,3 +837,86 @@ section.cta-final {
 
 .center { text-align: center; }
 .mt-0 { margin-top: 0; }
+
+/* -------------------- Testimonials placeholder -------------------- */
+.testimonial-placeholder {
+  border: 1px dashed rgba(255,255,255,0.3);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--sand-300);
+}
+
+/* -------------------- Chatbot widget -------------------- */
+#sa-chat-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  background: var(--coral-500);
+  color: #fff;
+  border: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255,107,91,0.45);
+  transition: transform .15s ease;
+}
+#sa-chat-toggle:hover { transform: scale(1.06); }
+
+#sa-chat-panel {
+  position: fixed;
+  bottom: 94px;
+  right: 24px;
+  z-index: 100;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  height: 420px;
+  background: var(--sand-100);
+  border: 1px solid var(--sand-300);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(15,37,55,0.25);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+#sa-chat-panel.open { display: flex; }
+.sa-chat-head {
+  background: var(--ocean-900);
+  color: var(--sand-100);
+  padding: 14px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sa-chat-head button {
+  background: none; border: none; color: var(--sand-200); cursor: pointer; font-size: 1rem;
+}
+.sa-chat-body {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.88rem;
+}
+.sa-msg { max-width: 85%; padding: 10px 14px; border-radius: var(--radius-md); line-height: 1.45; }
+.sa-msg.bot { background: var(--sand-200); align-self: flex-start; border-bottom-left-radius: 4px; }
+.sa-msg.user { background: var(--coral-500); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.sa-chat-input { display: flex; border-top: 1px solid var(--sand-300); }
+.sa-chat-input input {
+  border: none; flex: 1; padding: 12px 16px; font-size: 0.88rem; border-radius: 0;
+}
+.sa-chat-input input:focus { outline: none; }
+.sa-chat-input button {
+  background: var(--coral-500); color: #fff; border: none; padding: 0 18px; cursor: pointer; font-weight: 600;
+}
