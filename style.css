@@ -500,7 +500,6 @@ fieldset legend { font-family: var(--font-mono); font-size: 0.75rem; text-transf
 .header-hero-wrapper {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
   display: flow-root;
   background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
 }
@@ -633,13 +632,14 @@ fieldset legend { font-family: var(--font-mono); font-size: 0.75rem; text-transf
 }
 
 section.cta-final {
-  min-height: 380px;
+  min-height: 300px;
   display: flex;
   align-items: center;
   background-position: center 40%;
+  padding-bottom: 40px;
 }
 @media (max-width: 600px) {
-  section.cta-final { min-height: 300px; }
+  section.cta-final { min-height: 260px; }
 }
 
 /* -------------------- Footer Layout -------------------- */
@@ -649,7 +649,7 @@ section.cta-final {
   background-color: #0d261e;
   color: #e2e8f0;
   width: 100%;
-  padding: 100px 0 40px 0;
+  padding: 48px 0 40px 0;
 }
 
 .cta-final-block {
