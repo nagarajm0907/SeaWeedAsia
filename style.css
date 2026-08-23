@@ -443,6 +443,17 @@ ul.checklist li::before {
   font-family: var(--font-mono); font-size: 0.78rem; color: var(--ocean-700);
   padding: 16px; text-align: center;
 }
+.product-photo {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 220px;
+}
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
 
 /* -------------------- Map -------------------- */
 .map-embed {
