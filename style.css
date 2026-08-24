@@ -378,7 +378,7 @@ ul.checklist li::before {
 }
 .gallery-grid figure { margin: 0; }
 .gallery-grid .gallery-photo { position: relative; overflow: hidden; border-radius: var(--radius-lg); }
-.gallery-grid img { width: 100%; height: 260px; object-fit: cover; display: block; transition: transform .2s ease; }
+.gallery-grid img { width: 100%; height: 320px; object-fit: cover; display: block; transition: transform .2s ease; }
 .gallery-grid figure:hover img { transform: scale(1.04); }
 .gallery-grid figcaption {
   font-family: var(--font-mono);
@@ -664,7 +664,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   overflow: hidden;
   border-radius: var(--radius-md);
   margin-bottom: 14px;
-  height: 150px;
+  height: 220px;
 }
 .product-card-photo img {
   width: 100%;
@@ -677,11 +677,13 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 
 /* -------------------- Values section decorative elements -------------------- */
 .values-decor { position: relative; overflow: hidden; }
-.decor-icon { position: absolute; pointer-events: none; }
-.decor-1 { top: 18px; right: 8%; }
-.decor-2 { bottom: 10%; left: 4%; }
-.decor-3 { top: 40%; right: 2%; }
-@media (max-width: 900px) { .decor-icon { display: none; } }
+.decor-icon { display: none; pointer-events: none; }
+@media (min-width: 1400px) {
+  .decor-icon { display: block; position: absolute; z-index: 0; }
+  .decor-1 { top: 32px; right: 40px; }
+  .decor-2 { bottom: 48px; left: 32px; }
+  .decor-3 { top: 46%; right: 16px; }
+}
 
 /* -------------------- Quality-checked badge on cards -------------------- */
 .check-badge {
@@ -698,22 +700,26 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   margin-bottom: 12px;
 }
 
-/* -------------------- Testimonial card -------------------- */
+/* -------------------- Testimonial cards -------------------- */
+.testimonial-grid { align-items: stretch; }
 .testimonial-card {
   background: var(--white);
   border: 1px solid var(--sand-300);
   border-radius: var(--radius-lg);
   padding: 32px;
-  max-width: 68ch;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .testimonial-quote {
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 1.55;
   color: var(--ink);
   margin-bottom: 18px;
+  flex: 1;
 }
-.testimonial-author { display: flex; flex-direction: column; gap: 2px; }
+.testimonial-author { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
 .testimonial-name { font-weight: 700; color: var(--ocean-900); }
 .testimonial-role { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ocean-700); }
 
@@ -752,14 +758,14 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
    ============================================================ */
 
 .steps-photo .step {
-  grid-template-columns: 56px 150px 1fr;
-  gap: 22px;
+  grid-template-columns: 56px 220px 1fr;
+  gap: 24px;
   align-items: center;
 }
 .steps-photo .step-thumb {
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 104px;
+  height: 150px;
 }
 .steps-photo .step-thumb img {
   width: 100%;
@@ -775,7 +781,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
     flex-direction: column;
     gap: 12px;
   }
-  .steps-photo .step-thumb { height: 180px; order: 2; }
+  .steps-photo .step-thumb { height: 210px; order: 2; }
   .steps-photo .step .num { order: 1; }
   .steps-photo .step > div:last-child { order: 3; }
 }
