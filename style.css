@@ -675,15 +675,20 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 }
 .card:hover .product-card-photo img { transform: scale(1.05); }
 
-/* -------------------- Values section decorative elements -------------------- */
+/* -------------------- Values section per-card watermark icons -------------------- */
 .values-decor { position: relative; overflow: hidden; }
-.decor-icon { display: none; pointer-events: none; }
-@media (min-width: 1400px) {
-  .decor-icon { display: block; position: absolute; z-index: 0; }
-  .decor-1 { top: 32px; right: 40px; }
-  .decor-2 { bottom: 48px; left: 32px; }
-  .decor-3 { top: 46%; right: 16px; }
+.value-card { position: relative; overflow: hidden; }
+.value-card h3, .value-card p { position: relative; z-index: 1; }
+.value-icon {
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  opacity: 0.14;
+  z-index: 0;
+  pointer-events: none;
 }
+@media (max-width: 600px) { .value-icon { width: 56px; height: 56px; } }
 
 /* -------------------- Quality-checked badge on cards -------------------- */
 .check-badge {
@@ -729,6 +734,10 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background: var(--sand-200);
 }
 .coming-soon-card h3 { color: var(--ocean-700); }
+
+/* -------------------- Homepage blog preview cards (anchor-wrapped) -------------------- */
+.home-blog-card { text-decoration: none; color: inherit; }
+.home-blog-card .link-inline { display: inline-block; margin-top: 4px; }
 
 
 /* ============================================================
