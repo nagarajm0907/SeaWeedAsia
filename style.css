@@ -1,25 +1,28 @@
 /* ============================================================
-   SeaweedAsia — Design System v2
-   Concept: Reef & Coral. Warm, high-conviction B2B export site —
-   soft rounded shapes, coral accents, deep ocean-blue text,
-   still stamped with the manifest/traceability data motifs.
+   SeaweedAsia — Design System v3
+   Concept: Seaweed & Ocean. B2B export site recolored to the
+   official Seaweed Asia brand guideline — Seaweed Green /
+   Ocean Turquoise / Seaweed Charcoal — still stamped with the
+   manifest/traceability data motifs.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Reef & Coral palette */
-  --coral-500: #FF6B5B;
-  --coral-600: #D94E40;
-  --coral-mist: #FFF0ED;
-  --ocean-900: #0F2537;
-  --ocean-700: #1E3E59;
-  --sand-100: #F8F5F0;
-  --sand-200: #F1EBE0;
-  --sand-300: #E4D9C6;
-  --kelp-600: #2E6F40;
-  --kelp-300: #9ac4a4;
-  --ink: #0F2537;
+  /* Seaweed Asia brand palette (variable names kept the same
+     as before so every rule below still resolves correctly —
+     only the hex values changed) */
+  --coral-500: #26A65B;   /* Seaweed Green — primary action color */
+  --coral-600: #1E8549;   /* darker green — hover/pressed state */
+  --coral-mist: #E6F6F1;  /* Sea Mist — light green background */
+  --ocean-900: #0E1F1C;   /* Seaweed Charcoal — dark header/hero bg */
+  --ocean-700: #2D3A37;   /* Dark Grey — secondary text/borders */
+  --sand-100: #F5F7F5;    /* Warm White — body background */
+  --sand-200: #E1F6FA;    /* Ocean Mist — alt section background */
+  --sand-300: #D9DFDB;    /* Light Grey — card/table borders */
+  --kelp-600: #00B3C6;    /* Ocean Turquoise — accent (checkmarks, quality badge) */
+  --kelp-300: #7DD9E3;    /* light turquoise — text on dark sections */
+  --ink: #0E1F1C;
   --white: #ffffff;
 
   /* legacy aliases kept so existing markup classes still resolve */
@@ -28,7 +31,7 @@
   --teal-800: var(--ocean-700);
   --teal-700: var(--ocean-700);
   --kelp-500: var(--kelp-600);
-  --rope-line: #cbb997;
+  --rope-line: #6B7672;
   --rust-500: var(--coral-500);
   --rust-600: var(--coral-600);
 
@@ -78,14 +81,14 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--coral-600);
   background: var(--coral-mist);
-  border: 1px solid #ffd9d1;
+  border: 1px solid #B9E6C9;
   padding: 6px 14px;
   border-radius: var(--radius-full);
   margin-bottom: 18px;
 }
 .tag::before { content: "●"; font-size: 0.55rem; color: var(--coral-500); }
-section.on-dark .tag { color: var(--coral-500); background: rgba(255,107,91,0.12); border-color: rgba(255,107,91,0.35); }
-.tag.kelp { color: var(--kelp-600); background: #eaf5ec; border-color: #c9e6cf; }
+section.on-dark .tag { color: var(--coral-500); background: rgba(38,166,91,0.12); border-color: rgba(38,166,91,0.35); }
+.tag.kelp { color: var(--kelp-600); background: #E1F6FA; border-color: #A8E6ED; }
 .tag.kelp::before { color: var(--kelp-600); }
 
 /* -------------------- Header / nav -------------------- */
@@ -164,7 +167,7 @@ section {
 section.on-dark {
   background-color: var(--teal-950);
   background-image:
-    linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
+    linear-gradient(180deg, rgba(14,31,28,0.55), rgba(14,31,28,0.72)),
     url('ocean-depths-bg.png');
   background-size: cover;
   background-position: center;
@@ -174,7 +177,7 @@ section.on-dark {
 section.on-sand-alt {
   background-color: var(--sand-200);
   background-image:
-    linear-gradient(rgba(241,235,224,0.5), rgba(241,235,224,0.5)),
+    linear-gradient(rgba(225,246,250,0.5), rgba(225,246,250,0.5)),
     url('values-bg-texture.png');
   background-size: cover;
   background-position: center;
@@ -218,9 +221,9 @@ section.on-dark .lede { color: var(--kelp-300); }
 .btn-primary {
   background: var(--coral-500);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(255,107,91,0.35);
+  box-shadow: 0 8px 24px rgba(38,166,91,0.35);
 }
-.btn-primary:hover { background: var(--coral-600); box-shadow: 0 10px 28px rgba(217,78,64,0.4); }
+.btn-primary:hover { background: var(--coral-600); box-shadow: 0 10px 28px rgba(30,133,73,0.4); }
 .btn-outline {
   background: transparent;
   border-color: currentColor;
@@ -233,11 +236,11 @@ section.on-dark .lede { color: var(--kelp-300); }
 
 /* -------------------- Hero -------------------- */
 .hero {
-  background: radial-gradient(circle at 15% 0%, rgba(255,107,91,0.16), transparent 45%), var(--ocean-900);
+  background: radial-gradient(circle at 15% 0%, rgba(38,166,91,0.16), transparent 45%), var(--ocean-900);
   color: var(--sand-100);
   padding: 96px 0 74px;
 }
-.hero .tag { color: var(--coral-500); background: rgba(255,107,91,0.12); border-color: rgba(255,107,91,0.35); }
+.hero .tag { color: var(--coral-500); background: rgba(38,166,91,0.12); border-color: rgba(38,166,91,0.35); }
 .hero h1 { max-width: 17ch; }
 .hero p.lede { max-width: 58ch; }
 .cert-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
@@ -263,7 +266,7 @@ section.on-dark .lede { color: var(--kelp-300); }
   font-size: 0.9rem;
 }
 .post-back:hover { text-decoration: underline; }
-.header-hero-wrapper .post-back { color: #ffb3ab; }
+.header-hero-wrapper .post-back { color: #7DD9E3; }
 .header-hero-wrapper .hero .tag { margin-bottom: 18px; }
 .header-hero-wrapper .hero h1 { margin-top: 6px; }
 
@@ -307,7 +310,7 @@ section:not(.on-dark) .stat span { color: var(--ocean-700); }
   padding: 28px;
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(15,37,55,0.08); }
+.card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(14,31,28,0.08); }
 section.on-dark .card {
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.22);
@@ -326,7 +329,7 @@ section.on-dark .card {
   margin-bottom: 12px;
   display: inline-block;
 }
-section.on-dark .card .meta { color: var(--coral-500); background: rgba(255,107,91,0.14); }
+section.on-dark .card .meta { color: var(--coral-500); background: rgba(38,166,91,0.14); }
 
 /* -------------------- Process steps -------------------- */
 .steps { display: flex; flex-direction: column; gap: 0; }
@@ -415,7 +418,7 @@ ul.checklist li::before {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   background: var(--coral-mist);
-  border: 1px solid #ffd9d1;
+  border: 1px solid #B9E6C9;
   border-radius: var(--radius-full);
   color: var(--coral-600);
   padding: 6px 14px;
@@ -537,7 +540,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   border-radius: 50%;
   font-size: 1.4rem;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(255,107,91,0.45);
+  box-shadow: 0 8px 24px rgba(38,166,91,0.45);
   transition: transform .15s ease;
 }
 #sa-chat-toggle:hover { transform: scale(1.06); }
@@ -553,7 +556,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background: var(--sand-100);
   border: 1px solid var(--sand-300);
   border-radius: var(--radius-lg);
-  box-shadow: 0 16px 40px rgba(15,37,55,0.25);
+  box-shadow: 0 16px 40px rgba(14,31,28,0.25);
   display: none;
   flex-direction: column;
   overflow: hidden;
@@ -612,7 +615,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   overflow: hidden;
   background-color: var(--sand-200);
   background-image:
-    linear-gradient(90deg, rgba(248,245,240,0) 0%, rgba(248,245,240,0) 46%, rgba(248,245,240,0.72) 66%, rgba(248,245,240,0.88) 100%),
+    linear-gradient(90deg, rgba(245,247,245,0) 0%, rgba(245,247,245,0) 46%, rgba(245,247,245,0.72) 66%, rgba(245,247,245,0.88) 100%),
     url('dry-process.png');
   background-size: cover, cover;
   background-position: center, center;
@@ -830,10 +833,10 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 }
 
 .header-hero-wrapper .site-header.scrolled {
-  background: rgba(10, 25, 47, 0.85);
+  background: rgba(14, 31, 28, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(141, 186, 157, 0.2);
+  border-bottom: 1px solid rgba(0, 179, 198, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
@@ -846,7 +849,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 }
 
 .header-hero-wrapper .hero .lede {
-  color: #e2e8f0 !important;
+  color: #D9DFDB !important;
   opacity: 0.95;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -854,13 +857,13 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 .header-hero-wrapper .hero .tag {
   background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #cbd5e1 !important;
+  color: #D9DFDB !important;
   backdrop-filter: blur(8px);
 }
 
 @media (max-width: 760px) {
   .header-hero-wrapper .main-nav.open {
-    background: rgba(10, 25, 47, 0.92);
+    background: rgba(14, 31, 28, 0.92);
     border-radius: 0 0 var(--radius-md) var(--radius-md);
     padding: 14px 20px;
   }
@@ -881,7 +884,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   width: 100%;
   overflow: hidden;
   background:
-    linear-gradient(rgba(10, 25, 47, 0.45), rgba(10, 25, 47, 0.65)),
+    linear-gradient(rgba(14, 31, 28, 0.45), rgba(14, 31, 28, 0.65)),
     url('story-bg.png') no-repeat center bottom / cover;
 }
 
@@ -892,7 +895,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background-image: none !important;
 }
 
-.footer-wave-wrapper .site-footer dt { color: #94a3b8 !important; }
+.footer-wave-wrapper .site-footer dt { color: #6B7672 !important; }
 .footer-wave-wrapper .site-footer dd,
 .footer-wave-wrapper .site-footer .tbd { color: #ffffff !important; opacity: 1 !important; }
 
@@ -942,7 +945,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   overflow: hidden;
   background-color: var(--teal-950);
   background-image:
-    linear-gradient(180deg, rgba(15,37,55,0.55), rgba(15,37,55,0.72)),
+    linear-gradient(180deg, rgba(14,31,28,0.55), rgba(14,31,28,0.72)),
     url('ocean-depths-bg.png');
   background-size: cover;
   background-position: center;
