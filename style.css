@@ -319,6 +319,7 @@ section:not(.on-dark) .stat span { color: var(--ocean-700); }
   height: 100%;
 }
 .why-card .check-badge { margin-bottom: 14px; }
+.why-card .why-icon { width: 56px; height: 56px; margin-bottom: 14px; display: block; }
 .why-card h3 { font-size: 1.05rem; }
 .why-card p { max-width: 32ch; }
 
