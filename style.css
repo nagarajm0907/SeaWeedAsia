@@ -312,6 +312,8 @@ section:not(.on-dark) .stat span { color: var(--ocean-700); }
 
 /* -------------------- "Why choose us" centered icon cards -------------------- */
 .why-card {
+/* -------------------- "Why choose us" centered icon cards -------------------- */
+.why-card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -319,7 +321,24 @@ section:not(.on-dark) .stat span { color: var(--ocean-700); }
   height: 100%;
 }
 .why-card .check-badge { margin-bottom: 14px; }
-.why-card .why-icon { width: 56px; height: 56px; margin-bottom: 14px; display: block; }
+
+/* Fixed sizing container for icons to guarantee absolute uniformity */
+.why-card .why-icon-wrap {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.why-card .why-icon { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+  display: block; 
+}
+
 .why-card h3 { font-size: 1.05rem; }
 .why-card p { max-width: 32ch; }
 
