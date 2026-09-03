@@ -305,9 +305,22 @@ section:not(.on-dark) .stat span { color: var(--ocean-700); }
 /* -------------------- Card grids -------------------- */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-@media (max-width: 900px) { .grid-2, .grid-3, .grid-5 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .grid-2, .grid-3, .grid-5 { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; } }
+
+/* -------------------- "Why choose us" centered icon cards -------------------- */
+.why-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+.why-card .check-badge { margin-bottom: 14px; }
+.why-card h3 { font-size: 1.05rem; }
+.why-card p { max-width: 32ch; }
 
 .card {
   background: var(--white);
