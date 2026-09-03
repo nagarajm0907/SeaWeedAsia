@@ -454,6 +454,105 @@ ul.checklist li::before {
   padding-left: 10px;
 }
 
+/* -------------------- Interactive sourcing map -------------------- */
+.sourcing-map-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-top: 28px;
+}
+@media (max-width: 900px) {
+  .sourcing-map-grid { grid-template-columns: 1fr; }
+}
+.sa-map-stage {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0,179,198,0.07), rgba(38,166,91,0.05));
+  border: 1px solid var(--sand-300);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+.sa-map-stage svg { width: 100%; height: auto; display: block; }
+.sa-map-stage .sa-island { fill: var(--kelp-300); opacity: 0.4; }
+.region-pin {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin-left: -13px;
+  margin-top: -13px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.region-pin::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--coral-500);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(14,31,28,0.35);
+  transition: transform .15s ease, background .15s ease;
+  z-index: 2;
+}
+.region-pin::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--coral-500);
+  opacity: 0.6;
+  animation: sa-pulse 2.4s ease-out infinite;
+}
+.region-pin:hover::before,
+.region-pin:focus-visible::before,
+.region-pin.active::before {
+  transform: scale(1.35);
+  background: var(--kelp-600);
+}
+.region-pin:focus-visible { outline: 2px solid var(--kelp-600); outline-offset: 4px; }
+@keyframes sa-pulse {
+  0% { transform: scale(0.7); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.sa-map-panel {
+  background: var(--white);
+  border: 1px solid var(--sand-300);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  min-height: 280px;
+}
+.sa-map-panel .sa-panel-empty {
+  color: var(--ocean-700);
+  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  justify-content: center;
+}
+.sa-map-panel h3 { margin-bottom: 4px; font-size: 1.2rem; }
+.sa-map-panel dl { margin: 16px 0 0; display: grid; gap: 12px; }
+.sa-map-panel dl > div { border-top: 1px solid var(--sand-300); padding-top: 10px; }
+.sa-map-panel dl > div:first-child { border-top: none; padding-top: 0; }
+.sa-map-panel dt {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ocean-700);
+}
+.sa-map-panel dd { margin: 3px 0 0; font-size: 0.92rem; }
+.sa-map-panel .sa-panel-link { display: inline-block; margin-top: 16px; }
+
 /* -------------------- Forms -------------------- */
 form.contact-form { display: grid; gap: 16px; max-width: 560px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -816,6 +915,19 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background: var(--ocean-900) url('story-bg.png') no-repeat center 15% / cover;
 }
 
+/* Homepage-only hero background — aerial farm photo instead of the
+   generic wave texture. Applied via class="header-hero-wrapper home-hero"
+   on index.html only; every other page keeps story-bg.png. */
+.header-hero-wrapper.home-hero {
+  background-color: var(--ocean-900);
+  background-image:
+    linear-gradient(180deg, rgba(14,31,28,0.72), rgba(14,31,28,0.55) 40%, rgba(14,31,28,0.8)),
+    url('hero-farm-aerial.jpg');
+  background-repeat: no-repeat;
+  background-position: center 38%;
+  background-size: cover;
+}
+
 .header-hero-wrapper > *:first-child,
 .header-hero-wrapper .site-header {
   margin-top: 0 !important;
@@ -908,7 +1020,10 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 
 .header-hero-wrapper .hero.hero-compact {
   padding-top: 6px !important;
-  padding-bottom: 36px;
+  padding-bottom: 150px;
+}
+@media (max-width: 900px) {
+  .header-hero-wrapper .hero.hero-compact { padding-bottom: 60px; }
 }
 .hero-compact h1 {
   font-size: clamp(1.9rem, 3.6vw, 2.7rem);

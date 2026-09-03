@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header-hero-wrapper">
+    <div class="header-hero-wrapper home-hero">
         <header class="site-header" id="siteHeader">
             <div class="nav-inner">
                 <a href="index.html" class="brand">SeaweedAsia<span>.</span></a>
@@ -226,12 +226,45 @@
 
     <section id="sourcing">
         <div class="wrap">
-            <span class="tag">Sourcing regions</span>
-            <h2>Mapped, Farm by Farm</h2>
-            <p class="lede">Sourced from coastal farming communities across the Indonesian archipelago &mdash; from Sumatra to Papua &mdash; with each farm mapped and registered as our traceability network grows.</p>
-            <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Desa+Seriwe,+Lombok,+Indonesia&output=embed"></iframe>
-            <p class="map-note">Farm locations shown are approximate and will be refined as our GPS farm-mapping network expands. Government production data: <a href="https://portaldata.kkp.go.id/datainsight/produksi-ikan-budidaya/detail/RUMPUT%20LAUT" class="link-inline" target="_blank" rel="noopener">portaldata.kkp.go.id &rarr;</a></p>
+            <span class="tag">Sourcing network</span>
+            <h2>Sourcing Seaweed Across Indonesia</h2>
+            <p class="lede">SeaweedAsia is building a growing sourcing network across Indonesia&rsquo;s key seaweed producing regions, connecting global buyers with the right species, origin, specification, and volume.</p>
+            <p>Explore our sourcing network below to see where our seaweed comes from and the species available across different Indonesian regions.</p>
+
+            <div class="sourcing-map-grid">
+                <div class="sa-map-stage">
+                    <svg viewBox="0 0 1000 420" aria-hidden="true" focusable="false">
+                        <path class="sa-island" d="M60,50 C90,35 120,45 140,75 C155,100 165,140 175,180 C185,215 190,245 175,265 C160,280 135,270 115,245 C95,215 75,175 65,130 C58,100 55,70 60,50 Z"/>
+                        <path class="sa-island" d="M230,85 C270,60 330,55 375,75 C410,95 420,130 415,165 C408,200 375,225 335,222 C295,220 255,205 230,175 C210,145 210,110 230,85 Z"/>
+                        <path class="sa-island" d="M185,268 C230,258 280,262 330,268 C375,272 410,270 430,278 C415,290 375,292 330,290 C280,288 225,285 185,280 Z"/>
+                        <path class="sa-island" d="M450,110 C465,95 485,98 495,115 C500,130 515,125 530,138 C545,150 540,168 555,180 C565,195 550,210 535,205 C525,225 505,240 495,225 C490,205 470,200 460,185 C445,170 440,145 445,125 Z"/>
+                        <ellipse class="sa-island" cx="448" cy="282" rx="9" ry="6"/>
+                        <ellipse class="sa-island" cx="470" cy="284" rx="11" ry="6"/>
+                        <path class="sa-island" d="M500,278 C520,274 545,276 565,280 C585,283 610,280 630,284 C650,288 665,292 655,298 C635,300 605,296 580,292 C555,289 520,288 500,284 Z"/>
+                        <ellipse class="sa-island" cx="670" cy="300" rx="20" ry="8"/>
+                        <path class="sa-island" d="M660,120 C675,110 695,115 700,130 C705,145 695,160 705,175 C695,185 680,175 675,160 C665,150 655,135 660,120 Z"/>
+                        <ellipse class="sa-island" cx="705" cy="195" rx="22" ry="7"/>
+                        <ellipse class="sa-island" cx="662" cy="188" rx="13" ry="7"/>
+                        <path class="sa-island" d="M760,140 C800,110 860,105 910,120 C950,135 970,165 960,195 C945,220 900,235 855,225 C810,215 775,190 760,165 Z"/>
+                    </svg>
+
+                    <button type="button" class="region-pin" data-region="south-sulawesi" style="left:47.8%;top:46.4%;" aria-label="South Sulawesi sourcing details"></button>
+                    <button type="button" class="region-pin" data-region="southeast-sulawesi" style="left:52.8%;top:47.6%;" aria-label="Southeast Sulawesi sourcing details"></button>
+                    <button type="button" class="region-pin" data-region="bali" style="left:44.8%;top:67.1%;" aria-label="Bali sourcing details"></button>
+                    <button type="button" class="region-pin" data-region="java" style="left:30%;top:65.5%;" aria-label="Java sourcing details"></button>
+                    <button type="button" class="region-pin" data-region="maluku" style="left:70%;top:45.2%;" aria-label="Maluku sourcing details"></button>
+                    <button type="button" class="region-pin" data-region="ntt" style="left:62%;top:66.2%;" aria-label="East Nusa Tenggara sourcing details"></button>
+                </div>
+
+                <div class="sa-map-panel" id="saMapPanel">
+                    <div class="sa-panel-empty">
+                        <span class="tag" style="margin:0;">6 active sourcing regions</span>
+                        <p style="margin:0;">Hover or tap a highlighted region to see the species, product form, and sourcing status for that area.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="map-note">Only regions where SeaweedAsia has a confirmed, active sourcing relationship are marked here. This map does not represent Indonesia&rsquo;s national seaweed production areas &mdash; for that data, see <a href="https://portaldata.kkp.go.id/datainsight/produksi-ikan-budidaya/detail/RUMPUT%20LAUT" class="link-inline" target="_blank" rel="noopener">portaldata.kkp.go.id &rarr;</a></p>
         </div>
     </section>
 

@@ -34,6 +34,86 @@ document.addEventListener('DOMContentLoaded', function () {
     reveals.forEach(function (el) { revealObserver.observe(el); });
   }
 
+  // ---- Interactive sourcing map (homepage #sourcing section) ----
+  var mapPanel = document.getElementById('saMapPanel');
+  var regionPins = document.querySelectorAll('.region-pin');
+  if (mapPanel && regionPins.length) {
+    var regionData = {
+      'south-sulawesi': {
+        name: 'South Sulawesi',
+        species: 'Eucheuma Cottonii',
+        form: 'Sun-dried &mdash; whole leaf, chips, or milled',
+        status: 'Active sourcing partner network',
+        note: 'One of our highest-volume regions for cottonii.',
+        link: 'blog-sulawesi-cottonii.html'
+      },
+      'southeast-sulawesi': {
+        name: 'Southeast Sulawesi',
+        species: 'Eucheuma Cottonii',
+        form: 'Sun-dried, baled',
+        status: 'Core sourcing region &mdash; active farming cooperatives',
+        note: 'Where most of our GPS-mapped, QR-verified traceability claim is built.',
+        link: 'blog-sulawesi-tenggara.html'
+      },
+      'bali': {
+        name: 'Bali',
+        species: 'Eucheuma Cottonii',
+        form: 'Sun-dried on raised bamboo racks',
+        status: 'Active sourcing partner',
+        note: '',
+        link: 'blog-bali-sun-drying.html'
+      },
+      'java': {
+        name: 'Java',
+        species: 'Gracilaria',
+        form: 'Sun-dried under covered, hygienic conditions',
+        status: 'Active sourcing partner &mdash; pond-farmed',
+        note: '',
+        link: 'blog-java-gracilaria.html'
+      },
+      'maluku': {
+        name: 'Maluku',
+        species: 'Sargassum',
+        form: 'Wild-collected, washed, sun-dried, baled',
+        status: 'Active sourcing partner &mdash; wild-harvest network',
+        note: '',
+        link: 'blog-maluku-wild-harvest.html'
+      },
+      'ntt': {
+        name: 'East Nusa Tenggara',
+        species: 'Eucheuma Spinosum',
+        form: 'Sun-dried',
+        status: 'Active sourcing partner',
+        note: '',
+        link: 'blog-ntt-spinosum.html'
+      }
+    };
+
+    function showRegion(id) {
+      var d = regionData[id];
+      if (!d) return;
+      regionPins.forEach(function (p) {
+        p.classList.toggle('active', p.getAttribute('data-region') === id);
+      });
+      mapPanel.innerHTML =
+        '<span class="tag" style="margin-bottom:10px;">' + d.name + '</span>' +
+        '<h3>' + d.species + '</h3>' +
+        '<dl>' +
+          '<div><dt>Product form</dt><dd>' + d.form + '</dd></div>' +
+          '<div><dt>Sourcing status</dt><dd>' + d.status + '</dd></div>' +
+          '<div><dt>Supply availability</dt><dd>Volume available on request &mdash; <a class="link-inline" href="contact.html">talk to our export desk</a></dd></div>' +
+        '</dl>' +
+        (d.note ? '<p style="font-size:0.88rem;margin-top:14px;">' + d.note + '</p>' : '') +
+        '<a class="link-inline sa-panel-link" href="' + d.link + '">Read the ' + d.name + ' sourcing story &rarr;</a>';
+    }
+
+    regionPins.forEach(function (p) {
+      p.addEventListener('mouseenter', function () { showRegion(p.getAttribute('data-region')); });
+      p.addEventListener('focus', function () { showRegion(p.getAttribute('data-region')); });
+      p.addEventListener('click', function () { showRegion(p.getAttribute('data-region')); });
+    });
+  }
+
   // ---- Chatbot widget (front-end demo — wire to a real backend later) ----
   var chatToggle = document.getElementById('sa-chat-toggle');
   var chatPanel = document.getElementById('sa-chat-panel');
