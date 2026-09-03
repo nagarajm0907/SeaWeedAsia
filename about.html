@@ -5,148 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SeaweedAsia — About Us</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Fix card text contrast on light/sand backgrounds */
-        .on-sand-alt .card h3, 
-        .on-sand-alt .card p {
-            color: #111827 !important;
-        }
-
-        /* ==========================================================
-           REFINED STAT CARDS & TYPOGRAPHY STYLING
-           ========================================================== */
-        .stat-grid-custom {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        @media(max-width: 900px) {
-            .stat-grid-custom {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width: 500px) {
-            .stat-grid-custom {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .stat-card-custom {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            text-align: left;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card-custom:hover {
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 0 20px rgba(141, 186, 157, 0.2);
-            border-color: rgba(141, 186, 157, 0.4);
-        }
-
-        .stat-card-custom b {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #1e293b;
-            line-height: 1.2;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .stat-card-custom span {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #64748b;
-            display: block;
-        }
-
-        /* ==========================================================
-           MAXIMUM LEVEL ANIMATIONS & VISUAL EFFECTS
-           (.reveal fade-in is now shared — see style.css / main.js)
-           ========================================================== */
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* High-Intensity 3D Tilt Card Effect */
-        .card {
-            transform-style: preserve-3d;
-            transform: perspective(1000px);
-            transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-        .card:hover {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 20px rgba(141, 186, 157, 0.2);
-            border-color: rgba(141, 186, 157, 0.4);
-        }
-
-        /* Card Image Zoom on Hover */
-        .card img {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card:hover img {
-            transform: scale(1.06);
-        }
-
-        /* Interactive Glow Shimmer on Cards */
-        .card::after, .stat-card-custom::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(30, 41, 59, 0.06) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        .card:hover::after, .stat-card-custom:hover::after {
-            opacity: 1;
-        }
-
-        /* Floating CTA Button Glow Animation */
-        .btn-primary {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            animation: softPulse 3s infinite ease-in-out;
-        }
-        .btn-primary:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.5);
-            animation: none;
-        }
-
-        @keyframes softPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
-            50% { box-shadow: 0 0 0 12px rgba(255, 107, 107, 0); }
-        }
-
-        /* General Image Parallax Lift */
-        .grid-2 img {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
-        }
-        .grid-2 img:hover {
-            transform: scale(1.03);
-            filter: brightness(1.05);
-        }
-    </style>
 </head>
 <body>
     <div class="header-hero-wrapper">
@@ -176,41 +34,29 @@
         </section>
     </div>
 
+    <!-- ================= OUR STORY ================= -->
+    <!-- Wide single-column paragraph block. First paragraph runs alongside
+         a supporting photo (photo right, text left); the rest of the story
+         drops to a full-width single column below. -->
     <section class="reveal">
         <div class="wrap">
             <div class="grid-2" style="align-items:center;gap:48px;">
                 <div>
                     <p>Brokers add cost. Middlemen add uncertainty. And somewhere in between, quality control becomes someone else's problem.</p>
-                    <p>Since 2023, we've built something different &mdash; an export house that works directly with coastal farming cooperatives across the Indonesian archipelago, from Nias to Papua. No layers, no handoffs. Our own team grades the harvest, runs the lab tests, and manages the container all the way to the port.</p>
-                    <p>That direct model now moves an estimated ~50 containers a year, sourced from 32 cooperatives, to buyers in 5 countries &mdash; but the reason for it hasn't changed. Farmers get fair, dependable pricing and a partner who shows up season after season. Manufacturers get seaweed they can trace back to the exact farm bed it grew on.</p>
                 </div>
                 <div style="overflow:hidden;border-radius:16px;">
                     <img src="aerial-drone-farm.png" alt="Aerial drone view of seaweed farming lines in turquoise coastal water" style="width:100%;height:100%;min-height:280px;object-fit:cover;display:block;">
                 </div>
             </div>
-            
-            <!-- Redesigned Clean, Aligned Stat Cards with Modern Font & 3D Tilt -->
-            <div class="stat-grid-custom">
-                <div class="stat-card-custom">
-                    <b>~50</b>
-                    <span>Containers / year</span>
-                </div>
-                <div class="stat-card-custom">
-                    <b>32</b>
-                    <span>Farming cooperatives</span>
-                </div>
-                <div class="stat-card-custom">
-                    <b>5</b>
-                    <span>Countries supplied</span>
-                </div>
-                <div class="stat-card-custom">
-                    <b>2023</b>
-                    <span>Operating since</span>
-                </div>
+            <div style="max-width:68ch;margin-top:8px;">
+                <p>Since 2023, we've built something different &mdash; an export house that works directly with coastal farming cooperatives across the Indonesian archipelago, from Nias to Papua. No layers, no handoffs. Our own team grades the harvest, runs the lab tests, and manages the container all the way to the port.</p>
+                <p>That direct model now moves an estimated ~50 containers a year, sourced from 32 cooperatives, to buyers in 5 countries &mdash; but the reason for it hasn't changed. Farmers get fair, dependable pricing and a partner who shows up season after season. Manufacturers get seaweed they can trace back to the exact farm bed it grew on.</p>
             </div>
         </div>
     </section>
 
+    <!-- ================= VISION & MISSION ================= -->
+    <!-- 2 equal columns, side by side -->
     <section class="on-dark reveal">
         <div class="wrap grid-2">
             <div>
@@ -226,73 +72,77 @@
         </div>
     </section>
 
-    <section class="on-sand-alt reveal">
+    <!-- ================= BY THE NUMBERS ================= -->
+    <!-- 4-column stat row, same .stat-row / .stat classes as the
+         homepage Track Record stats, so the styling matches exactly. -->
+    <section class="reveal">
+        <div class="wrap">
+            <span class="tag">By the numbers</span>
+            <h2>By the Numbers</h2>
+            <div class="stat-row">
+                <div class="stat"><b>~50</b><span>Containers / year</span></div>
+                <div class="stat"><b>32</b><span>Farming cooperatives</span></div>
+                <div class="stat"><b>5</b><span>Countries supplied</span></div>
+                <div class="stat"><b>2023</b><span>Operating since</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WHAT WE STAND FOR ================= -->
+    <!-- 3 columns (Quality, Sustainability, Innovation), each with a short
+         icon, title, and paragraph — same value-card / value-icon markup
+         used on the homepage Values section. -->
+    <section class="on-dark values-decor reveal">
         <div class="wrap">
             <span class="tag">What we stand for</span>
             <h2>Our Values</h2>
-            <div class="grid-3" style="margin-top:24px;">
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
-                        <img src="quality-photo.png" alt="Technician inspecting dried seaweed samples with a magnifying loupe" style="width:100%;height:160px;object-fit:cover;display:block;">
-                    </div>
-                    <h3 style="margin:0;">Quality</h3>
-                    <p style="font-size:0.9rem;margin-top:10px;">Field grading, lab certification, and full traceability on every shipment, with GPS coordinates for every farm site.</p>
+            <div class="grid-3 values-cards" style="margin-top:24px;">
+                <div class="card value-card">
+                    <svg class="value-icon" width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M36 6l24 9v17c0 16-10.5 27-24 34C22.5 59 12 48 12 32V15l24-9z" stroke="var(--coral-500)" stroke-width="1.4"/>
+                        <path d="M26 35l8 8 14-16" stroke="var(--coral-500)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3>Quality</h3>
+                    <p style="font-size:0.9rem;">Field grading, lab certification, and full traceability on every shipment, with GPS coordinates for every farm site.</p>
                 </div>
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
-                        <img src="sustainability-photo.png" alt="Farmer's hands holding freshly harvested seaweed" style="width:100%;height:160px;object-fit:cover;display:block;">
-                    </div>
-                    <h3 style="margin:0;">Sustainability</h3>
-                    <p style="font-size:0.9rem;margin-top:10px;">Fair pricing for our farming cooperatives, paired with production guidance and clear SOPs so farmers know what to grow and how.</p>
+                <div class="card value-card">
+                    <svg class="value-icon" width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M36 8c-14 10-24 16-24 32a24 24 0 0048 0c0-16-10-22-24-32z" stroke="var(--kelp-300)" stroke-width="1.4"/>
+                        <path d="M36 20v34M36 30c-6-4-10-4-14-2M36 40c6-4 10-4 14-2" stroke="var(--kelp-300)" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                    <h3>Sustainability</h3>
+                    <p style="font-size:0.9rem;">Fair pricing for our farming cooperatives, paired with production guidance and clear SOPs so farmers know what to grow and how.</p>
                 </div>
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:16px;">
-                        <img src="innovation-photo.png" alt="Hand holding a tablet displaying a GPS farm map" style="width:100%;height:160px;object-fit:cover;display:block;">
-                    </div>
-                    <h3 style="margin:0;">Innovation</h3>
-                    <p style="font-size:0.9rem;margin-top:10px;">GPS-tagged traceability, digital harvest records, and continuous refinement of our drying and grading methods, so quality control keeps improving as we grow.</p>
+                <div class="card value-card">
+                    <svg class="value-icon" width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="36" cy="30" r="12" stroke="var(--coral-500)" stroke-width="1.4"/>
+                        <circle cx="36" cy="30" r="3" fill="var(--coral-500)"/>
+                        <path d="M36 42v18M28 66h16" stroke="var(--coral-500)" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <h3>Innovation</h3>
+                    <p style="font-size:0.9rem;">GPS-tagged traceability, digital harvest records, and continuous refinement of our drying and grading methods, so quality control keeps improving as we grow.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ================= WHY BUYERS WORK WITH US ================= -->
+    <!-- Same check-badge card grid used for "Why Choose Us" on the
+         homepage, so the two sections feel consistent site-wide. -->
     <section class="reveal">
         <div class="wrap">
             <span class="tag">Why buyers work with us</span>
             <h2>Direct, From Farm to Contract</h2>
             <div class="grid-2" style="margin-top:24px;">
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="contract-partnership.png" alt="Buyer and partner shaking hands over a signed partnership agreement" style="width:100%;height:180px;object-fit:cover;display:block;">
-                    </div>
-                    <h3>Professional, Contract-Based Partnership</h3>
-                    <p style="font-size:0.9rem;">Every order runs on a formal contract with clear terms from the start.</p>
-                </div>
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="quality-control.png" alt="Lab technician inspecting seaweed samples under a microscope" style="width:100%;height:180px;object-fit:cover;display:block;">
-                    </div>
-                    <h3>In-House Quality Control</h3>
-                    <p style="font-size:0.9rem;">QC and lab testing handled entirely by our own team, never outsourced.</p>
-                </div>
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="export-desk.png" alt="Export desk staff member coordinating shipments on a headset" style="width:100%;height:180px;object-fit:cover;display:block;">
-                    </div>
-                    <h3>Direct Export Desk</h3>
-                    <p style="font-size:0.9rem;">We communicate directly in English, Bahasa Indonesia, Hindi, and Tamil, with no broker in between.</p>
-                </div>
-                <div class="card">
-                    <div style="overflow:hidden;border-radius:12px;margin-bottom:14px;">
-                        <img src="direct-relationships.png" alt="Handshake with a farming cooperative partner in the field" style="width:100%;height:180px;object-fit:cover;display:block;">
-                    </div>
-                    <h3>Direct Relationships</h3>
-                    <p style="font-size:0.9rem;">With the farmers who grow every shipment, and full traceability from farm plot to container.</p>
-                </div>
+                <div class="card"><span class="check-badge">&#10003;</span><h3>Professional, Contract-Based Partnership</h3><p style="font-size:0.9rem;">Every order runs on a formal contract with clear terms from the start.</p></div>
+                <div class="card"><span class="check-badge">&#10003;</span><h3>In-House Quality Control</h3><p style="font-size:0.9rem;">QC and lab testing handled entirely by our own team, never outsourced.</p></div>
+                <div class="card"><span class="check-badge">&#10003;</span><h3>Direct Export Desk</h3><p style="font-size:0.9rem;">We communicate directly in English, Bahasa Indonesia, Hindi, and Tamil, with no broker in between.</p></div>
+                <div class="card"><span class="check-badge">&#10003;</span><h3>Direct Relationships</h3><p style="font-size:0.9rem;">With the farmers who grow every shipment, and full traceability from farm plot to container.</p></div>
             </div>
         </div>
     </section>
 
+    <!-- ================= SOURCING FOOTPRINT ================= -->
     <section class="on-sand-alt reveal">
         <div class="wrap">
             <span class="tag">Where we source</span>
@@ -365,37 +215,5 @@
     </div>
 
     <script src="main.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Advanced 3D Tilt & Shimmer Interaction for Cards & Stat Cards
-            const tiltElements = document.querySelectorAll(".card, .stat-card-custom");
-            tiltElements.forEach(card => {
-                card.addEventListener("mousemove", (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateX = ((y - centerY) / centerY) * -10;
-                    const rotateY = ((x - centerX) / centerX) * 10;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-
-                card.addEventListener("mouseleave", () => {
-                    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-                    card.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease";
-                });
-
-                card.addEventListener("mouseenter", () => {
-                    card.style.transition = "none";
-                });
-            });
-        });
-    </script>
 </body>
 </html>
