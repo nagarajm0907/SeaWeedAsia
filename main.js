@@ -8,6 +8,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ---- Nav "Product" dropdown ----
+  var dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+  dropdownToggles.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var parent = btn.closest('.nav-dropdown');
+      var wasOpen = parent.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown.open').forEach(function (d) { d.classList.remove('open'); });
+      if (!wasOpen) parent.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(function (d) { d.classList.remove('open'); });
+    }
+  });
+
   // ---- Sticky header glass effect (shared across all pages with .header-hero-wrapper) ----
   var siteHeader = document.getElementById('siteHeader');
   if (siteHeader) {
