@@ -49,13 +49,7 @@
 
 * { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  margin: 0;
-  padding: 0;
-  background-color: var(--ocean-900);
-  overscroll-behavior-y: none;
-}
+html { scroll-behavior: smooth; margin: 0; padding: 0; }
 
 body {
   margin: 0;
@@ -305,23 +299,9 @@ section:not(.on-dark) .stat span { color: var(--ocean-700); }
 /* -------------------- Card grids -------------------- */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-@media (max-width: 900px) { .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; } }
-
-/* -------------------- "Why choose us" centered icon cards -------------------- */
-.why-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-}
-.why-card .check-badge { margin-bottom: 14px; }
-.why-card .why-icon { width: 56px; height: 56px; margin-bottom: 14px; display: block; }
-.why-card h3 { font-size: 1.05rem; }
-.why-card p { max-width: 32ch; }
+@media (max-width: 900px) { .grid-2, .grid-3, .grid-5 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .grid-2, .grid-3, .grid-5 { grid-template-columns: 1fr; } }
 
 .card {
   background: var(--white);
@@ -946,6 +926,18 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   background-repeat: no-repeat;
   background-position: center 38%;
   background-size: cover;
+  /* Fill the full screen height, whatever that is, instead of a fixed
+     pixel guess — this is what actually stops the next section from
+     ever peeking in at the bottom on load, on any monitor. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.header-hero-wrapper.home-hero .hero.hero-compact {
+  flex: 1;
+}
+@media (max-width: 760px) {
+  .header-hero-wrapper.home-hero { min-height: 0; }
 }
 
 .header-hero-wrapper > *:first-child,
@@ -1040,10 +1032,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
 
 .header-hero-wrapper .hero.hero-compact {
   padding-top: 6px !important;
-  padding-bottom: 150px;
-}
-@media (max-width: 900px) {
-  .header-hero-wrapper .hero.hero-compact { padding-bottom: 60px; }
+  padding-bottom: 48px;
 }
 .hero-compact h1 {
   font-size: clamp(1.9rem, 3.6vw, 2.7rem);
