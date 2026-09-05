@@ -709,6 +709,24 @@ footer.site-footer .grid-2 { align-items: start; }
 footer.site-footer a { color: var(--sand-200); text-decoration: none; }
 footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline; }
 .footer-links { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 10px; font-size: 0.9rem; }
+.footer-contact-col { display: flex; flex-direction: column; }
+.footer-social { display: flex; gap: 10px; margin-top: 26px; }
+.footer-social a {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--sand-200) !important;
+  text-decoration: none !important;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.footer-social a:hover { background: var(--coral-500); border-color: var(--coral-500); color: #fff !important; }
 .footer-bottom {
   margin-top: 40px;
   padding-top: 20px;
