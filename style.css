@@ -567,7 +567,13 @@ ul.checklist li::before {
   padding: 18px;
 }
 .sa-map-stage svg { width: 100%; height: auto; display: block; }
-.sa-map-stage .sa-island { fill: var(--kelp-300); opacity: 0.4; }
+.sa-map-stage .sa-island { fill: var(--kelp-300); opacity: 0.55; stroke: var(--ocean-700); stroke-width: 1; stroke-opacity: 0.3; }
+.sa-map-stage .sa-island-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--ocean-700);
+  opacity: 0.55;
+}
 .region-pin {
   position: absolute;
   width: 26px;
@@ -727,6 +733,7 @@ footer.site-footer a:hover { color: var(--sand-100); text-decoration: underline;
   transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 .footer-social a:hover { background: var(--coral-500); border-color: var(--coral-500); color: #fff !important; }
+.footer-social a svg { width: 16px; height: 16px; fill: currentColor; }
 .footer-bottom {
   margin-top: 40px;
   padding-top: 20px;
@@ -1234,3 +1241,52 @@ section.cta-final {
 /* -------------------- Utility -------------------- */
 .center { text-align: center; }
 .mt-0 { margin-top: 0; }
+
+/* -------------------- Mid-page CTA banner -------------------- */
+.cta-banner-strip {
+  background: var(--coral-500);
+  color: #ffffff;
+  padding: 52px 0;
+  text-align: center;
+}
+.cta-banner-strip .banner-msg {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  margin: 0 0 22px;
+}
+.cta-banner-strip .banner-sub {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.9);
+  margin-top: 8px;
+}
+.btn-light { background: #ffffff; color: var(--coral-600); box-shadow: none; }
+.btn-light:hover { background: var(--sand-100); }
+
+/* -------------------- Footer (4-column layout) -------------------- */
+.footer-grid-4 {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1.3fr 1.3fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 900px) { .footer-grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .footer-grid-4 { grid-template-columns: 1fr; } }
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--kelp-300);
+  margin: 0 0 14px;
+}
+.footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+.site-footer .contact-detail { grid-template-columns: 1fr; gap: 2px; padding: 8px 0; border-color: rgba(255,255,255,0.15); }
+.site-footer .contact-detail dt { color: var(--kelp-300); }
+.site-footer .contact-detail dd { color: #ffffff; font-size: 0.9rem; }
+.footer-divider { border: none; border-top: 1px solid var(--ocean-700); margin: 40px 0 20px; }
+.footer-grid-4 + .footer-bottom,
+.footer-bottom.center { margin-top: 0; padding-top: 0; border-top: none; }
