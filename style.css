@@ -448,6 +448,102 @@ section.on-dark .step:last-child { border-color: rgba(255,255,255,0.14); }
 }
 @media (max-width: 600px) { .step { grid-template-columns: 50px 1fr; } }
 
+/* -------------------- Process timeline (horizontal, modern) -------------------- */
+.process-timeline { margin-top: 52px; }
+.process-timeline-track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 4px;
+  position: relative;
+}
+.process-timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 27px;
+  left: 27px;
+  right: 27px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sand-300), var(--kelp-300) 50%, var(--sand-300));
+  z-index: 0;
+}
+.process-step {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 8px;
+}
+.process-step-node {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(155deg, var(--coral-500), var(--coral-600));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 0 6px var(--sand-100), 0 8px 18px -8px rgba(30,133,73,0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.process-step:hover .process-step-node {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 0 6px var(--sand-100), 0 14px 24px -10px rgba(30,133,73,0.6);
+}
+.process-step-num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.process-step h3 {
+  font-size: 1.05rem;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.process-step p {
+  font-size: 0.85rem;
+  color: var(--ocean-700);
+  opacity: 0.85;
+  margin: 0;
+  line-height: 1.55;
+  max-width: 200px;
+}
+.process-cta-row {
+  text-align: center;
+  margin-top: 44px;
+}
+@media (max-width: 860px) {
+  .process-timeline-track {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .process-timeline-track::before {
+    top: 0;
+    bottom: 0;
+    left: 26px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, var(--sand-300), var(--kelp-300) 50%, var(--sand-300));
+  }
+  .process-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    padding: 0 0 32px;
+  }
+  .process-step:last-child { padding-bottom: 0; }
+  .process-step-node { margin-bottom: 0; margin-right: 20px; flex-shrink: 0; }
+  .process-step p { max-width: none; }
+  .process-step:hover .process-step-node { transform: none; }
+}
+
 /* -------------------- QC checklist -------------------- */
 ul.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 ul.checklist li {
